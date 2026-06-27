@@ -1,1 +1,463 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="年輕型失智症專題：在記憶退去以前，他們仍然年輕。">
+  <title>還年輕，然後呢？｜年輕型失智症專題</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@600;900&display=swap');
 
+    :root {
+      --ink: #182c3a;
+      --paper: #f3efe6;
+      --white: #fffdf8;
+      --yellow: #f4cf36;
+      --sky: #b8dce7;
+      --orange: #ee7954;
+      --green: #557d6c;
+      --line: rgba(24, 44, 58, .2);
+      --serif: "Noto Serif TC", serif;
+      --sans: "Noto Sans TC", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: var(--sans);
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 20;
+      pointer-events: none;
+      opacity: .16;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.2'/%3E%3C/svg%3E");
+    }
+
+    a { color: inherit; }
+    button { font: inherit; }
+    .progress {
+      position: fixed;
+      inset: 0 auto auto 0;
+      z-index: 30;
+      width: 0;
+      height: 5px;
+      background: var(--yellow);
+    }
+
+    .nav {
+      position: fixed;
+      z-index: 15;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      width: min(1120px, calc(100% - 32px));
+      padding: 10px 12px 10px 20px;
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius: 99px;
+      color: white;
+      background: rgba(24,44,58,.88);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 30px rgba(0,0,0,.13);
+    }
+
+    .nav__brand { margin-right: auto; font-weight: 900; letter-spacing: .08em; }
+    .nav a { text-decoration: none; font-size: 13px; font-weight: 700; }
+    .nav__cta { padding: 7px 15px; color: var(--ink)!important; background: var(--yellow); border-radius: 99px; }
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      color: var(--white);
+      background: var(--ink);
+    }
+
+    .hero::before, .hero::after {
+      content: "";
+      position: absolute;
+      width: 46vw;
+      height: 46vw;
+      border: 1px solid rgba(184,220,231,.35);
+      border-radius: 50%;
+    }
+    .hero::before { top: -23vw; right: -8vw; }
+    .hero::after { bottom: -32vw; left: -16vw; }
+    .hero__content { position: relative; z-index: 2; width: min(1000px, 88vw); padding: 130px 0 70px; }
+    .eyebrow { display: flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 900; letter-spacing: .2em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 38px; height: 3px; background: var(--yellow); }
+    h1 {
+      margin: 30px 0 18px;
+      max-width: 900px;
+      font: 900 clamp(54px, 9.5vw, 124px)/1.05 var(--serif);
+      letter-spacing: -.06em;
+    }
+    h1 em { position: relative; color: var(--yellow); font-style: normal; }
+    h1 em::after {
+      content: "";
+      position: absolute;
+      right: -12px;
+      bottom: .04em;
+      left: -8px;
+      height: .14em;
+      transform: rotate(-2deg);
+      background: var(--orange);
+      opacity: .75;
+    }
+    .hero__lead { max-width: 580px; color: rgba(255,255,255,.76); font-size: clamp(17px,2vw,22px); }
+    .scroll-cue { position: absolute; right: 7vw; bottom: 45px; font-size: 12px; letter-spacing: .2em; writing-mode: vertical-rl; }
+    .scroll-cue::after { content: ""; display: inline-block; width: 1px; height: 60px; margin-top: 12px; background: var(--yellow); animation: pulse 1.7s infinite; }
+    @keyframes pulse { 50% { transform: scaleY(.45); transform-origin: top; } }
+
+    section { position: relative; padding: 110px max(6vw, 24px); }
+    .wrap { width: min(1120px, 100%); margin: auto; }
+    .kicker { margin: 0 0 12px; color: var(--orange); font-size: 13px; font-weight: 900; letter-spacing: .18em; }
+    h2 { margin: 0 0 30px; font: 900 clamp(38px,6vw,72px)/1.25 var(--serif); letter-spacing: -.04em; }
+    h3 { margin: 0; font: 900 28px/1.35 var(--serif); }
+    .lead { max-width: 720px; font-size: clamp(17px, 2vw, 21px); }
+    .note { color: rgba(24,44,58,.62); font-size: 13px; }
+    .tag { display: inline-block; padding: 4px 11px; border: 1px solid currentColor; border-radius: 99px; font-size: 12px; font-weight: 700; letter-spacing: .06em; }
+
+    .video-stage { background: var(--paper); }
+    .video {
+      position: relative;
+      aspect-ratio: 16/9;
+      display: grid;
+      place-items: center;
+      margin-top: 40px;
+      overflow: hidden;
+      color: white;
+      background:
+        linear-gradient(125deg, rgba(24,44,58,.25), rgba(24,44,58,.92)),
+        radial-gradient(circle at 70% 30%, #738c91, var(--ink) 48%);
+      border-radius: 2px;
+      box-shadow: 20px 20px 0 var(--sky);
+    }
+    .video::before { content: "POV / 影片素材預留"; position: absolute; top: 22px; left: 25px; font-size: 12px; letter-spacing: .15em; }
+    .video__play {
+      width: 92px; height: 92px; border: 1px solid rgba(255,255,255,.7); border-radius: 50%;
+      display: grid; place-items: center; color: white; background: rgba(255,255,255,.08); cursor: pointer;
+      transition: .25s ease;
+    }
+    .video__play:hover { transform: scale(1.08); background: var(--yellow); color: var(--ink); }
+    .video__play span { margin-left: 6px; font-size: 30px; }
+    .timecode { position: absolute; right: 24px; bottom: 18px; font-family: monospace; font-size: 13px; }
+    .video__caption { position: absolute; bottom: 12%; left: 8%; margin: 0; font: 700 clamp(20px,3vw,38px)/1.5 var(--serif); }
+
+    .data { color: white; background: var(--ink); }
+    .data-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 1px; margin-top: 50px; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.2); }
+    .stat { min-height: 230px; padding: 28px; background: var(--ink); }
+    .stat:first-child { background: var(--yellow); color: var(--ink); }
+    .stat__num { display: block; margin: 12px 0; font: 900 clamp(55px,7vw,92px)/1 var(--serif); letter-spacing: -.06em; }
+    .placeholder-num { font-size: clamp(38px,6vw,72px); opacity: .62; }
+
+    .definition-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 80px; align-items: start; }
+    .definition blockquote { margin: 0; padding: 30px; border-left: 8px solid var(--yellow); background: var(--white); font: 600 clamp(19px,2.4vw,27px)/1.75 var(--serif); }
+    .types { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .type-card {
+      position: relative; min-height: 210px; padding: 24px; overflow: hidden; border: 1px solid var(--line); background: var(--white); transition: .3s ease;
+    }
+    .type-card:hover { transform: translateY(-7px) rotate(-1deg); box-shadow: 10px 12px 0 var(--sky); }
+    .type-card:nth-child(2n):hover { transform: translateY(-7px) rotate(1deg); box-shadow: 10px 12px 0 var(--yellow); }
+    .type-card__icon { display: block; margin: 18px 0; font-size: 38px; }
+    .type-card p { margin: 0; color: rgba(24,44,58,.62); font-size: 14px; }
+
+    .stories { padding-bottom: 150px; background: #dce9e9; }
+    .stories__intro { display: grid; grid-template-columns: 1fr .8fr; gap: 80px; align-items: end; margin-bottom: 70px; }
+    .story-list { display: grid; gap: 85px; }
+    .story { display: grid; grid-template-columns: 1.08fr .92fr; align-items: center; }
+    .story:nth-child(even) { grid-template-columns: .92fr 1.08fr; }
+    .story:nth-child(even) .story__visual { order: 2; }
+    .story__visual {
+      position: relative; aspect-ratio: 4/3; display: grid; place-items: center; overflow: hidden; color: white;
+      background: linear-gradient(145deg, #698590, #263e4a);
+    }
+    .story:nth-child(2) .story__visual { background: linear-gradient(145deg, #a96855, #522f32); }
+    .story:nth-child(3) .story__visual { background: linear-gradient(145deg, #758462, #344537); }
+    .story:nth-child(4) .story__visual { background: linear-gradient(145deg, #87818f, #383342); }
+    .story__visual::after { content: "影像素材預留"; position: absolute; right: 18px; bottom: 14px; font-size: 11px; letter-spacing: .15em; opacity: .7; }
+    .story__initial { font: 900 110px/1 var(--serif); opacity: .22; }
+    .story__copy { position: relative; z-index: 2; margin-left: -30px; padding: 38px; background: var(--white); box-shadow: 0 18px 45px rgba(24,44,58,.14); }
+    .story:nth-child(even) .story__copy { margin-right: -30px; margin-left: 0; }
+    .story__quote { margin: 22px 0; font: 600 clamp(18px,2vw,25px)/1.65 var(--serif); }
+    .story__meta { display: flex; justify-content: space-between; gap: 20px; padding-top: 15px; border-top: 1px solid var(--line); font-size: 12px; }
+
+    .objects { background: var(--white); }
+    .object-strip { display: grid; grid-template-columns: repeat(6, minmax(180px, 1fr)); gap: 16px; margin-top: 55px; overflow-x: auto; padding: 10px 5px 35px; scroll-snap-type: x mandatory; }
+    .object-card { min-height: 380px; padding: 18px; border: 1px solid var(--line); background: var(--paper); scroll-snap-align: start; transition: .25s; }
+    .object-card:hover { transform: translateY(-8px); }
+    .object-card__image { aspect-ratio: 1; display: grid; place-items: center; margin-bottom: 20px; background: var(--sky); font-size: 66px; filter: grayscale(.2); }
+    .object-card:nth-child(2n) .object-card__image { background: #f0d4c9; }
+    .object-card:nth-child(3n) .object-card__image { background: #d9e2c9; }
+    .object-card h3 { font-size: 21px; }
+    .object-card p { font-size: 13px; line-height: 1.7; }
+
+    .problem { overflow: hidden; color: white; background: var(--orange); }
+    .problem::after { content: "?"; position: absolute; right: -2vw; bottom: -21vw; color: rgba(255,255,255,.1); font: 900 55vw/1 var(--serif); }
+    .problem-grid { position: relative; z-index: 1; display: grid; grid-template-columns: .8fr 1.2fr; gap: 80px; }
+    .problems { counter-reset: item; }
+    .problem-row { display: grid; grid-template-columns: 65px 1fr; gap: 20px; padding: 24px 0; border-top: 1px solid rgba(255,255,255,.42); }
+    .problem-row::before { counter-increment: item; content: "0" counter(item); font: 900 26px/1 var(--serif); color: var(--yellow); }
+    .problem-row h3 { margin-bottom: 8px; }
+    .problem-row p { margin: 0; color: rgba(255,255,255,.76); }
+
+    .upward { background: var(--paper); }
+    .upward-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; }
+    .class-board { padding: 10px; transform: rotate(1.5deg); background: var(--ink); box-shadow: 18px 18px 0 var(--yellow); }
+    .class-photo { aspect-ratio: 4/3; display: grid; place-items: center; color: rgba(255,255,255,.62); border: 1px solid rgba(255,255,255,.3); background: radial-gradient(circle, #506775 1px, transparent 1px); background-size: 20px 20px; }
+    .schedule { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 30px; }
+    .schedule span { padding: 8px 13px; border-radius: 4px; background: var(--white); font-size: 13px; font-weight: 700; }
+
+    .journey { padding: 70px max(6vw,24px); color: white; background: var(--ink); }
+    .map { position: relative; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 25px; margin-top: 40px; }
+    .map__line { position: relative; height: 3px; background: rgba(255,255,255,.25); }
+    .map__line::before { content: ""; position: absolute; left: 0; width: 0; height: 100%; background: var(--yellow); animation: travel 4s ease-in-out infinite; }
+    .map__line::after { content: "●"; position: absolute; top: -14px; color: var(--yellow); animation: train 4s ease-in-out infinite; }
+    @keyframes travel { 0% { width:0 } 70%,100% { width:100% } }
+    @keyframes train { 0% { left:0 } 70%,100% { left:98% } }
+    .city { font: 900 clamp(27px,4vw,48px)/1 var(--serif); }
+
+    .young { padding-top: 150px; background: var(--sky); }
+    .young-logo { font: 900 clamp(75px,16vw,190px)/.8 var(--sans); letter-spacing: -.09em; color: var(--white); text-shadow: 5px 5px 0 var(--ink); }
+    .young-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end; margin-top: 55px; }
+    .cafe-window { min-height: 410px; display: grid; place-items: center; padding: 30px; border: 12px solid var(--ink); border-bottom-width: 42px; background: #f5e4b9; box-shadow: 16px 16px 0 rgba(24,44,58,.18); }
+    .cafe-window::before { content: "YOUNG CAFÉ"; padding: 7px 20px; color: white; background: var(--orange); transform: rotate(-3deg); font-weight: 900; letter-spacing: .15em; }
+
+    .work { color: white; background: var(--green); }
+    .work-grid { display: grid; grid-template-columns: .82fr 1.18fr; gap: 80px; }
+    .work-quote { padding: 32px; color: var(--ink); background: var(--yellow); transform: rotate(-1.5deg); font: 900 clamp(25px,3.5vw,44px)/1.5 var(--serif); }
+    .rights { margin-top: 45px; border-top: 1px solid rgba(255,255,255,.3); }
+    .right-row { display: grid; grid-template-columns: 40px 1fr; gap: 20px; padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,.3); }
+    .right-row strong { color: var(--yellow); font-size: 24px; }
+
+    footer { padding: 65px max(6vw,24px); color: rgba(255,255,255,.65); background: #101d25; font-size: 13px; }
+    .footer-grid { display: flex; justify-content: space-between; gap: 40px; width: min(1120px,100%); margin: auto; }
+    .footer-title { color: white; font: 900 25px var(--serif); }
+
+    .reveal { opacity: 0; transform: translateY(28px); transition: .8s cubic-bezier(.2,.7,.2,1); }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 780px) {
+      .nav a:not(.nav__cta), .nav__brand span { display: none; }
+      section { padding-top: 80px; padding-bottom: 80px; }
+      h1 { font-size: clamp(51px,18vw,78px); }
+      .data-grid, .definition-grid, .stories__intro, .problem-grid, .upward-grid, .young-layout, .work-grid { grid-template-columns: 1fr; gap: 35px; }
+      .types { grid-template-columns: 1fr; }
+      .story, .story:nth-child(even) { grid-template-columns: 1fr; }
+      .story:nth-child(even) .story__visual { order: initial; }
+      .story__copy, .story:nth-child(even) .story__copy { margin: -25px 18px 0; padding: 27px; }
+      .story-list { gap: 55px; }
+      .video { box-shadow: 9px 10px 0 var(--sky); }
+      .video__caption { max-width: 70%; }
+      .young-logo { font-size: 23vw; }
+      .footer-grid { display: block; }
+    }
+  </style>
+</head>
+<body>
+  <div class="progress" aria-hidden="true"></div>
+  <nav class="nav" aria-label="主要導覽">
+    <a class="nav__brand" href="#top">YOD<span>｜年輕型失智症</span></a>
+    <a href="#about">認識疾病</a>
+    <a href="#stories">人物故事</a>
+    <a href="#support">照顧現場</a>
+    <a href="#young">YOUNG</a>
+    <a class="nav__cta" href="#work">工作權</a>
+  </nav>
+
+  <main>
+    <header class="hero" id="top">
+      <div class="hero__content">
+        <p class="eyebrow">Young onset dementia / Web documentary</p>
+        <h1>還年輕，<br>然後<em>呢</em>？</h1>
+        <p class="hero__lead">當失智症提早找上門，工作、家庭與自我認同，都被迫重新安排。這不是老去的故事，而是一群仍在生活中途的人。</p>
+      </div>
+      <div class="scroll-cue">往下閱讀</div>
+    </header>
+
+    <section class="video-stage">
+      <div class="wrap reveal">
+        <p class="kicker">OPENING / POV</p>
+        <h2>如果熟悉的日常，<br>突然不再聽你的話？</h2>
+        <div class="video">
+          <button class="video__play" type="button" aria-label="播放影片 placeholder"><span>▶</span></button>
+          <p class="video__caption">「我沒有遇到困難，<br>我沒有症狀。」</p>
+          <span class="timecode">00:00:00:00</span>
+        </div>
+        <p class="note">＊ POV 開場影片預留區：建議以第一人稱呈現記憶、語言與方向感逐漸失序的日常。</p>
+      </div>
+    </section>
+
+    <section class="data">
+      <div class="wrap reveal">
+        <p class="kicker">DATA / 年輕失智症數據</p>
+        <h2>失智症，不只是<br>老人家的事。</h2>
+        <div class="data-grid">
+          <article class="stat">
+            <span class="tag">核心數字</span>
+            <strong class="stat__num placeholder-num">XX,XXX</strong>
+            <p>台灣年輕型失智症人口估計</p>
+          </article>
+          <article class="stat">
+            <span class="tag">發病年齡</span>
+            <strong class="stat__num">65<span style="font-size:.35em">歲前</span></strong>
+            <p>即被稱為早發性或年輕型失智症</p>
+          </article>
+          <article class="stat">
+            <span class="tag">資料待補</span>
+            <strong class="stat__num placeholder-num">X / X</strong>
+            <p>確診、照顧或就業相關統計</p>
+          </article>
+        </div>
+        <p class="note" style="color:rgba(255,255,255,.55)">＊ 數據與資料來源 placeholder，待確認後替換。</p>
+      </div>
+    </section>
+
+    <section class="definition" id="about">
+      <div class="wrap definition-grid">
+        <div class="reveal">
+          <p class="kicker">01 / 什麼是年輕型失智症</p>
+          <h2>疾病來得比<br>想像中更早</h2>
+          <blockquote>有些病患在 65 歲之前便已發病，我們稱之為早發性失智症（Early-onset dementia），或年輕型失智症（Young onset dementia）。</blockquote>
+        </div>
+        <div class="types reveal" aria-label="四種失智症類型">
+          <article class="type-card"><span class="tag">TYPE 01</span><span class="type-card__icon">↯</span><h3>血管性失智症</h3><p>腦血管疾病造成認知功能受損。</p></article>
+          <article class="type-card"><span class="tag">TYPE 02</span><span class="type-card__icon">◒</span><h3>額顳葉型失智症</h3><p>早期可能出現行為、人格或語言改變。</p></article>
+          <article class="type-card"><span class="tag">TYPE 03</span><span class="type-card__icon">＋</span><h3>可治療型失智症</h3><p>由可逆因素引起，需及早辨識與治療。</p></article>
+          <article class="type-card"><span class="tag">TYPE 04</span><span class="type-card__icon">∞</span><h3>阿茲海默症</h3><p>記憶與認知功能逐步退化。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="stories" id="stories">
+      <div class="wrap">
+        <div class="stories__intro reveal">
+          <div><p class="kicker">02 / 案例故事</p><h2>病名之外，<br>他們有名字</h2></div>
+          <p class="lead">失去的，不只有記憶。語言、工作、人際關係，甚至說出病情的勇氣，都可能一點一點離開原本的位置。</p>
+        </div>
+        <div class="story-list">
+          <article class="story reveal">
+            <div class="story__visual"><span class="story__initial">正</span></div>
+            <div class="story__copy"><span class="tag">42 歲｜血管性失智症</span><h3>正宇：我沒有症狀</h3><p class="story__quote">「我沒有遇到困難，我沒有中風啊……腦袋也沒有傷到邏輯。」</p><div class="story__meta"><span>主題：沒有病識感</span><span>素材：正宇訪問.MP4</span></div></div>
+          </article>
+          <article class="story reveal">
+            <div class="story__visual"><span class="story__initial">熙</span></div>
+            <div class="story__copy"><span class="tag">61 歲｜案例訪談</span><h3>炤熙：話語逐漸離開</h3><p class="story__quote">曾經自然說出口的句子，如今被重複的字、情緒與動作取代。</p><div class="story__meta"><span>主題：喪失語言能力</span><span>素材：炤熙訪問.MP4</span></div></div>
+          </article>
+          <article class="story reveal">
+            <div class="story__visual"><span class="story__initial">祥</span></div>
+            <div class="story__copy"><span class="tag">案例訪談</span><h3>家祥：慢慢被留在圈外</h3><p class="story__quote">「也不是不好，只是他們就比較不會理我。我會跟他們打招呼……」</p><div class="story__meta"><span>主題：鄰里與工作排外</span><span>素材：家祥.m4a</span></div></div>
+          </article>
+          <article class="story reveal">
+            <div class="story__visual"><span class="story__initial">妻</span></div>
+            <div class="story__copy"><span class="tag">照顧者視角</span><h3>炤熙妻子：誰也不敢說</h3><p class="story__quote">幫他穿好衣服、安撫情緒，也替失去收入的家庭撐住日常。確診時，她卻誰也不敢告訴。</p><div class="story__meta"><span>主題：照顧與疾病污名</span><span>素材：訪談音檔待補</span></div></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="objects">
+      <div class="wrap reveal">
+        <p class="kicker">OBJECTS / 案例小物件</p>
+        <h2>一件物品，<br>留住一段日常</h2>
+        <p class="lead">橫向滑動，從六件平凡的小物，看見疾病如何進入工作、關係與生活。</p>
+      </div>
+      <div class="object-strip">
+        <article class="object-card"><div class="object-card__image">▤</div><h3>喜哥的汽車雜誌</h3><p>當熟悉的工作開始變得茫然，他發現自己不再能掌握原來的節奏。</p></article>
+        <article class="object-card"><div class="object-card__image">▱</div><h3>劉鳳蓮的尿布</h3><p>伴侶開始尿失禁後，照顧成為兩人日常裡不能跳過的環節。</p></article>
+        <article class="object-card"><div class="object-card__image">Ｔ</div><h3>邱孟輝的藍色 T 恤</h3><p>按照 101 的順序，慢慢找回今天是星期幾。</p></article>
+        <article class="object-card"><div class="object-card__image">✿</div><h3>家祥的花</h3><p>工作會頭暈，所以出去散步；路邊的花，是他仍然喜歡的風景。</p></article>
+        <article class="object-card"><div class="object-card__image">▧</div><h3>正宇的零食</h3><p>身體因素限制了飲食，也可能在忘記結帳前，先拆開手中的零食。</p></article>
+        <article class="object-card"><div class="object-card__image">☎</div><h3>炤熙妻子的電話</h3><p>一次次拿起電話，耐心向別人解釋他的狀況。</p></article>
+      </div>
+      <p class="note" style="padding:0 max(6vw,24px)">＊ 小物件影像目前以符號 placeholder 呈現，後續可替換為實拍去背照片。</p>
+    </section>
+
+    <section class="problem" id="support">
+      <div class="wrap problem-grid">
+        <div class="reveal"><p class="kicker" style="color:var(--yellow)">03 / 配套問題</p><h2>年輕，反而<br>找不到位置</h2><p class="lead">既有長照體系多以高齡者為想像，年輕型失智症患者的需求，經常掉進制度縫隙。</p></div>
+        <div class="problems reveal">
+          <article class="problem-row"><div><h3>照顧據點太少</h3><p>服務距離與交通成本，讓持續參與成為負擔。</p></div></article>
+          <article class="problem-row"><div><h3>照顧需求不同</h3><p>他們可能仍有工作、育兒與社會參與需求，並不等同高齡照顧。</p></div></article>
+          <article class="problem-row"><div><h3>收案標準困難</h3><p>年齡、失能程度或診斷條件，使有需求的人未必進得了服務系統。</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="upward">
+      <div class="wrap upward-grid">
+        <div class="class-board reveal"><div class="class-photo">向上清活｜課程影像 placeholder</div></div>
+        <div class="reveal"><p class="kicker">A PLACE TO GO / 向上清活</p><h2>一個能接住<br>日常的地方</h2><p class="lead">課程不只是消磨時間。活動、同伴與可預期的節奏，讓患者重新參與，也讓照顧者有片刻喘息。</p><div class="schedule"><span>認知活動</span><span>身體律動</span><span>生活訓練</span><span>藝術創作</span><span>共餐</span></div></div>
+      </div>
+    </section>
+
+    <section class="journey">
+      <div class="wrap reveal">
+        <p class="kicker">THE DISTANCE / 資源的距離</p>
+        <div class="map"><span class="city">台中</span><span class="map__line"></span><span class="city">台北</span></div>
+        <p class="note" style="color:rgba(255,255,255,.6)">台中到台北動畫 placeholder｜用一段移動，具體呈現為了適合的服務所付出的距離與時間。</p>
+      </div>
+    </section>
+
+    <section class="young" id="young">
+      <div class="wrap">
+        <div class="young-logo reveal">YOUNG</div>
+        <div class="young-layout">
+          <div class="reveal"><p class="kicker">YOUNG CAFÉ</p><h2>被看見，<br>也被需要</h2><p class="lead">這裡不是被照顧的終點，而是重新與社會連結的起點。讓仍有能力的人參與工作、學習服務，也讓大眾在一杯咖啡的時間裡，重新認識失智症。</p><p class="note">＊ 此區文案先以內容方向佔位，後續替換為「之前的文案」。</p></div>
+          <div class="cafe-window reveal" aria-label="YOUNG CAFE 影像 placeholder"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="work" id="work">
+      <div class="wrap work-grid">
+        <div class="reveal"><p class="kicker" style="color:var(--yellow)">04 / 工作權</p><h2>確診之後，<br>還能工作嗎？</h2><div class="work-quote">「能力改變了，<br>不代表價值消失了。」</div></div>
+        <div class="reveal"><p class="lead">對仍在工作年齡的患者而言，工作不只是收入，也是身分、尊嚴與社會連結。需要被調整的是職務與環境，而不是立刻將一個人排除。</p><div class="rights"><div class="right-row"><strong>01</strong><div><h3>合理調整</h3><p>拆解任務、調整工時，保留熟悉且能完成的工作。</p></div></div><div class="right-row"><strong>02</strong><div><h3>友善理解</h3><p>讓雇主與同事理解症狀，降低誤解、標籤與排擠。</p></div></div><div class="right-row"><strong>03</strong><div><h3>轉銜支持</h3><p>在疾病進程中，協助患者從原職務平順轉向適合的參與方式。</p></div></div></div><p class="note" style="color:rgba(255,255,255,.58)">＊ 工作權內容目前為濃縮版 placeholder，待完整資料後精修。</p></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-grid"><div><div class="footer-title">還年輕，然後呢？</div><p>年輕型失智症互動專題｜畫面原型 v1</p></div><p>採訪・文字・影像・設計<br>製作團隊資訊 placeholder</p></div>
+  </footer>
+
+  <script>
+    const progress = document.querySelector('.progress');
+    const onScroll = () => {
+      const max = document.documentElement.scrollHeight - innerHeight;
+      progress.style.width = `${Math.min(100, scrollY / max * 100)}%`;
+    };
+    addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: .12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    document.querySelector('.video__play').addEventListener('click', event => {
+      event.currentTarget.innerHTML = '<span style="font-size:15px;margin:0">影片<br>待補</span>';
+      event.currentTarget.style.background = 'var(--yellow)';
+      event.currentTarget.style.color = 'var(--ink)';
+    });
+  </script>
+</body>
+</html>
