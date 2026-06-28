@@ -9,14 +9,17 @@
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@600;900&display=swap');
 
     :root {
-      --ink: #182c3a;
-      --paper: #f3efe6;
+      --ink: #172b3a;
+      --paper: #f4f0e7;
       --white: #fffdf8;
-      --yellow: #f4cf36;
-      --sky: #b8dce7;
-      --orange: #ee7954;
-      --green: #557d6c;
-      --line: rgba(24, 44, 58, .2);
+      --yellow: #e7c43a;
+      --sky: #e8ecea;
+      --orange: #b89627;
+      --green: #172b3a;
+      --muted: #65717a;
+      --line: rgba(23, 43, 58, .18);
+      --line-light: rgba(255, 255, 255, .22);
+      --shadow: 0 8px 24px rgba(23, 43, 58, .08);
       --serif: "Noto Serif TC", serif;
       --sans: "Noto Sans TC", sans-serif;
     }
@@ -28,6 +31,8 @@
       color: var(--ink);
       background: var(--paper);
       font-family: var(--sans);
+      font-size: 16px;
+      font-weight: 400;
       line-height: 1.8;
       overflow-x: hidden;
     }
@@ -38,7 +43,7 @@
       inset: 0;
       z-index: 20;
       pointer-events: none;
-      opacity: .16;
+      opacity: .05;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.2'/%3E%3C/svg%3E");
     }
 
@@ -69,11 +74,11 @@
       color: white;
       background: rgba(24,44,58,.88);
       backdrop-filter: blur(12px);
-      box-shadow: 0 8px 30px rgba(0,0,0,.13);
+      box-shadow: 0 4px 18px rgba(0,0,0,.1);
     }
 
-    .nav__brand { margin-right: auto; font-weight: 900; letter-spacing: .08em; }
-    .nav a { text-decoration: none; font-size: 13px; font-weight: 700; }
+    .nav__brand { margin-right: auto; font-weight: 700; letter-spacing: .06em; }
+    .nav a { text-decoration: none; font-size: 13px; font-weight: 600; }
     .nav__cta { padding: 7px 15px; color: var(--ink)!important; background: var(--yellow); border-radius: 99px; }
 
     .hero {
@@ -99,7 +104,7 @@
     .hero::before { top: -23vw; right: -8vw; }
     .hero::after { bottom: -32vw; left: -16vw; }
     .hero__content { position: relative; z-index: 2; width: min(1000px, 88vw); padding: 130px 0 70px; }
-    .eyebrow { display: flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 900; letter-spacing: .2em; text-transform: uppercase; }
+    .eyebrow { display: flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 600; letter-spacing: .12em; }
     .eyebrow::before { content: ""; width: 38px; height: 3px; background: var(--yellow); }
     h1 {
       margin: 30px 0 18px;
@@ -115,9 +120,8 @@
       bottom: .04em;
       left: -8px;
       height: .14em;
-      transform: rotate(-2deg);
-      background: var(--orange);
-      opacity: .75;
+      background: var(--yellow);
+      opacity: .5;
     }
     .hero__lead { max-width: 580px; color: rgba(255,255,255,.76); font-size: clamp(17px,2vw,22px); }
     .hero__credit { position: absolute; left: 6vw; bottom: 22px; z-index: 2; color: rgba(255,255,255,.72); font-size: 11px; letter-spacing: .04em; }
@@ -127,15 +131,16 @@
 
     section { position: relative; padding: 110px max(6vw, 24px); }
     .wrap { width: min(1120px, 100%); margin: auto; }
-    h2 { margin: 0 0 30px; font: 900 clamp(38px,6vw,72px)/1.25 var(--serif); letter-spacing: -.04em; }
-    h3 { margin: 0; font: 900 28px/1.35 var(--serif); }
-    .lead { max-width: 720px; font-size: clamp(17px, 2vw, 21px); }
-    .note { color: rgba(24,44,58,.62); font-size: 13px; }
-    .tag { display: inline-block; padding: 4px 11px; border: 1px solid currentColor; border-radius: 99px; font-size: 12px; font-weight: 700; letter-spacing: .06em; }
+    h2 { margin: 0 0 30px; font: 900 clamp(38px,5.4vw,64px)/1.25 var(--serif); letter-spacing: -.035em; }
+    h3 { margin: 0; font: 700 26px/1.4 var(--serif); }
+    p { font-weight: 400; }
+    .lead { max-width: 720px; font-size: clamp(17px, 1.8vw, 20px); font-weight: 400; }
+    .note { color: var(--muted); font-size: 13px; font-weight: 400; }
+    .tag { display: inline-block; padding: 4px 11px; border: 1px solid currentColor; border-radius: 99px; font-size: 12px; font-weight: 600; letter-spacing: .04em; }
     .photo-break { position: relative; height: min(72vw, 820px); margin: 0; overflow: hidden; background: var(--ink); }
     .photo-break img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .photo-break::after { content: ""; position: absolute; inset: 55% 0 0; background: linear-gradient(transparent, rgba(10,20,27,.72)); pointer-events: none; }
-    .photo-break figcaption, .news-photo figcaption { position: absolute; z-index: 2; right: max(4vw,24px); bottom: 24px; left: max(4vw,24px); color: rgba(255,255,255,.88); font-size: 13px; text-shadow: 0 1px 8px rgba(0,0,0,.65); }
+    .photo-break figcaption, .news-photo figcaption { position: absolute; z-index: 2; right: max(4vw,24px); bottom: 20px; left: max(4vw,24px); color: rgba(255,255,255,.88); font-size: 13px; font-weight: 400; text-align: left; text-shadow: 0 1px 5px rgba(0,0,0,.5); }
     .photo-duo { display: grid; grid-template-columns: 1.08fr .92fr; gap: 12px; padding: 12px; background: var(--ink); }
     .news-photo { position: relative; min-height: 520px; margin: 0; overflow: hidden; background: var(--ink); }
     .news-photo img { width: 100%; height: 100%; display: block; object-fit: cover; }
@@ -147,116 +152,142 @@
     .stat { min-height: 230px; padding: 28px; background: var(--ink); }
     .stat:first-child { background: var(--yellow); color: var(--ink); }
     .stat__num { display: block; margin: 12px 0; font: 900 clamp(55px,7vw,92px)/1 var(--serif); letter-spacing: -.06em; }
+    .count-up { display: inline-block; min-width: .6em; font-variant-numeric: tabular-nums; }
     .definition { padding-bottom: 70px; }
-    .definition-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 80px; align-items: start; }
-    .definition blockquote { margin: 0; padding: 30px; border-left: 8px solid var(--yellow); background: var(--white); font: 600 clamp(19px,2.4vw,27px)/1.75 var(--serif); }
-    .opening-story blockquote { margin: 0; padding: 28px; border-left: 8px solid var(--yellow); background: var(--white); font: 600 clamp(19px,2.4vw,27px)/1.75 var(--serif); }
+    .definition-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+    .definition blockquote { margin: 0; padding: 28px; border-left: 5px solid var(--yellow); background: var(--white); font: 600 clamp(19px,2.2vw,25px)/1.75 var(--serif); }
+    .opening-story blockquote { margin: 0; padding: 28px; border-left: 5px solid var(--yellow); background: var(--white); font: 600 clamp(19px,2.2vw,25px)/1.75 var(--serif); }
     .brain-story { padding-top: 45px; background: var(--paper); }
     .brain-story__intro { max-width: 760px; margin-bottom: 30px; }
-    .brain-scroll { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(330px, .92fr); gap: 7vw; align-items: start; }
-    .brain-stage { position: sticky; top: 105px; height: calc(100vh - 135px); min-height: 520px; display: grid; place-items: center; overflow: hidden; }
+    .brain-scroll { display: grid; grid-template-columns: minmax(0, 1fr) minmax(360px, 1fr); gap: 4vw; align-items: start; }
+    .brain-stage { position: sticky; top: 105px; height: calc(100vh - 150px); min-height: 500px; display: grid; place-items: center; overflow: hidden; }
     .brain-stage::before { content: ""; position: absolute; width: min(42vw, 560px); aspect-ratio: 1; border: 1px solid rgba(24,44,58,.13); border-radius: 50%; }
-    .brain-figure { position: absolute; inset: 0; margin: 0; opacity: 0; transform: scale(.93); transition: opacity .55s ease, transform .7s ease; pointer-events: none; }
-    .brain-figure.is-active { opacity: 1; transform: scale(1); }
+    .brain-figure { position: absolute; inset: 0; margin: 0; opacity: 0; transition: opacity .55s ease; pointer-events: none; }
+    .brain-figure.is-active { opacity: 1; }
     .brain-figure img { position: absolute; inset: 8% 0 8%; width: 100%; height: 84%; object-fit: contain; }
     .brain-caption { position: absolute; left: 2%; bottom: 3%; margin: 0; color: rgba(24,44,58,.55); font-size: 12px; letter-spacing: .08em; }
-    .brain-label { position: absolute; z-index: 2; width: 150px; padding-top: 8px; border-top: 2px solid var(--orange); font-size: 13px; font-weight: 900; line-height: 1.45; }
-    .brain-label::after { content: ""; position: absolute; top: -2px; width: 85px; border-top: 2px solid var(--orange); transform-origin: left; }
-    .brain-label small { display: block; color: rgba(24,44,58,.58); font-size: 11px; font-weight: 500; }
+    .brain-label { position: absolute; z-index: 2; width: 150px; padding-top: 8px; border-top: 2px solid var(--yellow); font-size: 13px; font-weight: 600; line-height: 1.45; }
+    .brain-label::after { content: ""; position: absolute; top: -2px; width: 85px; border-top: 2px solid var(--yellow); transform-origin: left; }
+    .brain-label small { display: block; color: var(--muted); font-size: 11px; font-weight: 400; }
     .label-left { left: 0; }
     .label-left::after { left: 100%; transform: rotate(18deg); }
     .label-right { right: 0; text-align: right; }
     .label-right::after { right: 100%; transform: rotate(-18deg); transform-origin: right; }
     .label-top { top: 26%; }
     .label-bottom { bottom: 26%; }
-    .brain-figure[data-brain="vascular"] .brain-label { border-color: #d44735; }
-    .brain-figure[data-brain="vascular"] .brain-label::after { border-color: #d44735; }
-    .brain-steps { padding-bottom: 20vh; }
-    .brain-step { min-height: 78vh; display: flex; flex-direction: column; justify-content: center; padding: 60px 0; opacity: .35; transition: opacity .35s ease; }
+    .brain-figure[data-brain="vascular"] .brain-label { border-color: var(--yellow); }
+    .brain-figure[data-brain="vascular"] .brain-label::after { border-color: var(--yellow); }
+    .brain-steps { padding-bottom: 12vh; }
+    .brain-step { min-height: 70vh; display: flex; flex-direction: column; justify-content: center; padding: 44px 0; opacity: .35; transition: opacity .35s ease; }
     .brain-step.is-active { opacity: 1; }
-    .brain-step__number { color: var(--orange); font-size: 12px; font-weight: 900; letter-spacing: .16em; }
-    .brain-step h3 { margin: 12px 0 18px; font-size: clamp(30px,3.5vw,49px); }
+    .brain-step__number { color: #8f710d; font-size: 12px; font-weight: 600; letter-spacing: .12em; }
+    .brain-step h3 { margin: 12px 0 18px; font-size: clamp(30px,3.2vw,44px); }
     .brain-step p { margin: 0 0 16px; font-size: 16px; }
     .brain-effects { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
-    .brain-effects span { padding: 5px 11px; color: var(--ink); background: var(--sky); border-radius: 99px; font-size: 12px; font-weight: 700; }
+    .brain-effects span { padding: 5px 11px; color: var(--ink); background: rgba(231,196,58,.3); border: 1px solid rgba(184,150,39,.35); border-radius: 99px; font-size: 12px; font-weight: 600; }
     .brain-caution { padding: 14px 16px; border-left: 4px solid var(--yellow); background: var(--white); font-size: 13px!important; }
     .brain-sources { padding-top: 25px; border-top: 1px solid var(--line); color: rgba(24,44,58,.62); font-size: 12px; }
     .brain-sources a { text-underline-offset: 3px; }
 
-    .stories { padding-bottom: 150px; background: #dce9e9; }
-    .stories__intro { display: grid; grid-template-columns: 1fr .8fr; gap: 80px; align-items: end; margin-bottom: 70px; }
-    .story-list { display: grid; gap: 85px; }
+    .stories { padding-bottom: 130px; background: var(--paper); }
+    .stories__intro { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: end; margin-bottom: 64px; }
+    .story-list { display: grid; gap: 64px; }
     .story { display: grid; grid-template-columns: 1.08fr .92fr; align-items: center; }
-    .story:nth-child(even) { grid-template-columns: .92fr 1.08fr; }
-    .story:nth-child(even) .story__visual { order: 2; }
+    .story:nth-child(even) { grid-template-columns: 1.08fr .92fr; }
+    .story:nth-child(even) .story__visual { order: initial; }
     .story__visual {
       position: relative; aspect-ratio: 4/3; display: grid; place-items: center; overflow: hidden; color: white;
-      background: linear-gradient(145deg, #698590, #263e4a);
+      background: linear-gradient(145deg, #3f5665, var(--ink));
     }
-    .story:nth-child(2) .story__visual { background: linear-gradient(145deg, #a96855, #522f32); }
-    .story:nth-child(3) .story__visual { background: linear-gradient(145deg, #758462, #344537); }
-    .story:nth-child(4) .story__visual { background: linear-gradient(145deg, #87818f, #383342); }
+    .story:nth-child(2) .story__visual,
+    .story:nth-child(3) .story__visual,
+    .story:nth-child(4) .story__visual { background: linear-gradient(145deg, #3f5665, var(--ink)); }
     .story__initial { font: 900 110px/1 var(--serif); opacity: .22; }
-    .story__copy { position: relative; z-index: 2; margin-left: -30px; padding: 38px; background: var(--white); box-shadow: 0 18px 45px rgba(24,44,58,.14); }
-    .story:nth-child(even) .story__copy { margin-right: -30px; margin-left: 0; }
+    .story__copy { position: relative; z-index: 2; margin-left: -24px; padding: 36px; border: 1px solid var(--line); background: var(--white); box-shadow: var(--shadow); }
+    .story:nth-child(even) .story__copy { margin-right: 0; margin-left: -24px; }
     .story__quote { margin: 22px 0; font: 600 clamp(18px,2vw,25px)/1.65 var(--serif); }
     .story__meta { display: flex; justify-content: space-between; gap: 20px; padding-top: 15px; border-top: 1px solid var(--line); font-size: 12px; }
 
     .objects { overflow: hidden; background: var(--white); }
     .object-strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 45px; }
-    .object-card { min-height: 320px; padding: 24px; border: 1px solid var(--line); background: var(--paper); }
-    .object-card__number { display: block; margin-bottom: 70px; color: var(--orange); font: 900 48px/1 var(--serif); }
-    .object-card h3 { margin-bottom: 14px; font-size: 22px; }
-    .object-card p { margin: 0; color: rgba(24,44,58,.7); font-size: 14px; line-height: 1.75; }
+    .object-card { min-width: 0; border: 1px solid var(--line); background: var(--paper); }
+    .object-card__button { width: 100%; height: 100%; padding: 0; border: 0; color: var(--ink); background: transparent; text-align: left; cursor: pointer; }
+    .object-card__button:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
+    .object-card__image { display: block; width: 100%; aspect-ratio: 4/3; overflow: hidden; background: #ddd8ce; }
+    .object-card__image img { width: 100%; height: 100%; display: block; object-fit: cover; transition: transform .35s ease; }
+    .object-card__button:hover .object-card__image img { transform: scale(1.025); }
+    .object-card__copy { display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: start; padding: 22px; }
+    .object-card__number { color: #8f710d; font: 700 26px/1 var(--serif); }
+    .object-card__title { display: block; margin: 0 0 8px; font: 700 21px/1.4 var(--serif); }
+    .object-card p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.7; }
+    .object-card__hint { display: inline-block; margin-top: 14px; color: #80650b; font-size: 12px; font-weight: 600; }
+    .object-card__detail { display: none; }
 
-    .problem { overflow: hidden; color: white; background: var(--orange); }
-    .problem::after { content: "?"; position: absolute; right: -2vw; bottom: -21vw; color: rgba(255,255,255,.1); font: 900 55vw/1 var(--serif); }
-    .problem-grid { position: relative; z-index: 1; display: grid; grid-template-columns: .8fr 1.2fr; gap: 80px; }
+    .object-modal[hidden] { display: none; }
+    .object-modal { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: 20px; opacity: 0; transition: opacity .25s ease; }
+    .object-modal.is-open { opacity: 1; }
+    .object-modal__backdrop { position: absolute; inset: 0; border: 0; background: rgba(10,22,31,.78); cursor: pointer; }
+    .object-modal__stage { position: relative; width: min(820px, 100%); max-height: calc(100vh - 40px); }
+    .object-modal__close { position: absolute; z-index: 4; top: 14px; right: 14px; width: 42px; height: 42px; border: 1px solid var(--line); border-radius: 50%; color: var(--ink); background: var(--white); font-size: 24px; line-height: 1; cursor: pointer; }
+    .object-modal__content { max-height: calc(100vh - 40px); padding: clamp(42px,6vw,72px); overflow-y: auto; border: 1px solid var(--line); background: var(--white); }
+    .object-modal__back-number { color: #8f710d; font: 700 34px/1 var(--serif); }
+    .object-modal__content h3 { margin: 18px 55px 24px 0; font-size: clamp(30px,4vw,46px); }
+    .object-modal__body { max-width: 720px; font-size: 17px; line-height: 1.9; }
+    .object-modal__body p { margin: 0; }
+
+    .problem { overflow: hidden; color: white; background: var(--ink); }
+    .problem::after { content: "?"; position: absolute; right: -2vw; bottom: -21vw; color: rgba(255,255,255,.035); font: 900 55vw/1 var(--serif); }
+    .problem-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
     .problems { counter-reset: item; }
     .problem-row { display: grid; grid-template-columns: 65px 1fr; gap: 20px; padding: 24px 0; border-top: 1px solid rgba(255,255,255,.42); }
     .problem-row::before { counter-increment: item; content: "0" counter(item); font: 900 26px/1 var(--serif); color: var(--yellow); }
-    .problem-row h3 { margin-bottom: 8px; }
-    .problem-row p { margin: 0; color: rgba(255,255,255,.76); }
+    .problem-row h3 { margin-bottom: 8px; color: var(--white); }
+    .problem-row p { margin: 0; color: rgba(255,255,255,.76); font-weight: 400; }
     .problem-row p + p { margin-top: 12px; }
     .support-sites { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
-    .support-sites span { padding: 6px 11px; color: var(--ink); background: var(--yellow); border-radius: 99px; font-size: 12px; font-weight: 900; }
+    .support-sites span { padding: 6px 11px; color: var(--ink); background: var(--yellow); border-radius: 99px; font-size: 12px; font-weight: 600; }
     .support-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 18px 0; }
-    .support-metric { padding: 15px; color: var(--ink); background: var(--white); }
-    .support-metric strong { display: block; color: var(--orange); font: 900 28px/1.2 var(--serif); }
-    .support-metric span { font-size: 12px; font-weight: 700; }
-    .support-quote { margin: 18px 0 8px; padding: 18px 20px; color: var(--ink); background: var(--yellow); font: 700 17px/1.75 var(--serif); }
-    .support-quote cite { display: block; margin-top: 8px; font: 500 11px/1.5 var(--sans); letter-spacing: .04em; }
+    .support-metric { padding: 15px; color: var(--ink); border: 1px solid var(--line); background: var(--white); }
+    .support-metric strong { display: block; color: #8f710d; font: 700 28px/1.2 var(--serif); }
+    .support-metric span { font-size: 12px; font-weight: 600; }
+    .support-quote { margin: 18px 0 8px; padding: 18px 20px; color: var(--ink); border-left: 5px solid var(--yellow); background: var(--white); font: 600 17px/1.75 var(--serif); }
+    .support-quote cite { display: block; margin-top: 8px; font: 400 11px/1.5 var(--sans); letter-spacing: .04em; }
 
     .upward { background: var(--paper); }
-    .upward-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; }
+    .upward-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
     .care-photo { position: relative; min-height: 620px; margin: 0; overflow: hidden; }
     .care-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-    .care-photo blockquote { position: absolute; right: 24px; bottom: 24px; left: 24px; margin: 0; padding: 22px; color: var(--ink); background: rgba(255,253,248,.92); font: 700 20px/1.7 var(--serif); }
-    .young { padding-top: 150px; background: var(--sky); }
-    .young-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end; margin-top: 55px; }
-    .cafe-window { min-height: 410px; display: flex; flex-direction: column; gap: 18px; align-items: center; justify-content: center; padding: 30px; border: 12px solid var(--ink); border-bottom-width: 42px; background: #f5e4b9; box-shadow: 16px 16px 0 rgba(24,44,58,.18); text-align: center; }
+    .care-photo blockquote { position: absolute; right: 24px; bottom: 24px; left: 24px; margin: 0; padding: 22px; color: var(--ink); border-left: 5px solid var(--yellow); background: rgba(255,253,248,.94); font: 600 20px/1.7 var(--serif); }
+    .young { padding-top: 110px; background: var(--paper); }
+    .young-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; margin-top: 0; }
+    .cafe-window { min-height: 410px; display: flex; flex-direction: column; gap: 14px; align-items: stretch; justify-content: center; margin: 0; padding: 10px; border: 1px solid var(--line); background: var(--white); box-shadow: none; text-align: left; }
     .cafe-window img { width: 100%; height: 100%; min-height: 350px; object-fit: cover; }
-    .cafe-window figcaption { font-size: 13px; font-weight: 700; }
+    .cafe-window figcaption { padding: 0 4px 4px; color: var(--muted); font-size: 13px; font-weight: 400; text-align: left; }
     .cafe-roles { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
-    .cafe-roles span { padding: 7px 12px; color: white; background: var(--ink); border-radius: 99px; font-size: 12px; font-weight: 700; }
+    .cafe-roles span { padding: 7px 12px; color: var(--ink); border: 1px solid rgba(184,150,39,.45); background: rgba(231,196,58,.3); border-radius: 99px; font-size: 12px; font-weight: 600; }
 
-    .work { color: white; background: var(--green); }
-    .work-grid { display: grid; grid-template-columns: .82fr 1.18fr; gap: 80px; }
-    .work-quote { padding: 32px; color: var(--ink); background: var(--yellow); transform: rotate(-1.5deg); font: 900 clamp(25px,3.5vw,44px)/1.5 var(--serif); }
+    .work { color: white; background: var(--ink); }
+    .work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
+    .work-quote { padding: 28px; color: var(--ink); border-left: 5px solid #b89627; background: var(--yellow); transform: none; font: 700 clamp(24px,3vw,38px)/1.55 var(--serif); }
     .rights { margin-top: 45px; border-top: 1px solid rgba(255,255,255,.3); }
     .right-row { display: grid; grid-template-columns: 40px 1fr; gap: 20px; padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,.3); }
-    .right-row strong { color: var(--yellow); font-size: 24px; }
-    .work-reality { margin: 30px 0 0; padding: 24px; color: var(--ink); background: var(--white); font: 700 17px/1.8 var(--serif); }
+    .right-row strong { color: var(--yellow); font-size: 24px; font-weight: 700; }
+    .work-reality { margin: 30px 0 0; padding: 24px; color: var(--ink); border: 1px solid var(--line); background: var(--white); font: 500 17px/1.8 var(--serif); }
     .work-reality + .work-reality { margin-top: 12px; }
-    .work-reality strong { display: block; margin-bottom: 8px; color: var(--orange); font: 900 13px/1.5 var(--sans); letter-spacing: .08em; }
-    .work-reality cite { display: block; margin-top: 10px; color: rgba(24,44,58,.62); font: 500 12px/1.5 var(--sans); }
+    .work-reality strong { display: block; margin-bottom: 8px; color: #8f710d; font: 600 13px/1.5 var(--sans); letter-spacing: .05em; }
+    .work-reality cite { display: block; margin-top: 10px; color: var(--muted); font: 400 12px/1.5 var(--sans); }
 
     footer { padding: 65px max(6vw,24px); color: rgba(255,255,255,.65); background: #101d25; font-size: 13px; }
     .footer-grid { display: flex; justify-content: space-between; gap: 40px; width: min(1120px,100%); margin: auto; }
     .footer-title { color: white; font: 900 25px var(--serif); }
 
-    .reveal { opacity: 0; transform: translateY(28px); transition: .8s cubic-bezier(.2,.7,.2,1); }
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
     .reveal.visible { opacity: 1; transform: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal, .brain-figure, .object-modal, .object-card__image img { transition: none; }
+    }
 
     @media (max-width: 780px) {
       .nav a:not(.nav__cta), .nav__brand span { display: none; }
@@ -289,6 +320,10 @@
       .news-photo { min-height: 62vh; }
       .care-photo { min-height: 72vh; margin: 0 -24px; }
       .object-strip { grid-template-columns: 1fr; }
+      .object-modal { padding: 12px; }
+      .object-modal__stage { max-height: calc(100vh - 24px); }
+      .object-modal__content { max-height: calc(100vh - 24px); padding: 68px 24px 30px; }
+      .object-modal__body { font-size: 15px; line-height: 1.8; }
       .footer-grid { display: block; }
     }
   </style>
@@ -315,19 +350,6 @@
       <div class="scroll-cue">往下閱讀</div>
     </header>
 
-    <section class="opening-story">
-      <div class="wrap definition-grid">
-        <div class="reveal">
-          <h2>「我還是想要工作」</h2>
-          <blockquote>「但是他們都不希望我去公司上班，擔心我沒辦法勝任。但我也沒辦法拿出證據反駁他們。」</blockquote>
-        </div>
-        <div class="reveal">
-          <p class="lead">41 歲的小華在中風後被診斷為血管性失智症。公司沒有解雇他，而是將他從第一線居服員調整為在家處理排班與行政事務。</p>
-          <p>他仍領有薪資，也維持員工身分，工作方式卻與過去截然不同。大部分時間，他待在家裡看網路小說、滑手機或打電動。「我現在在家裡就是這樣，很擔心、閒得發慌。」對他而言，問題不只有沒有收入，而是能否回到熟悉的生活節奏。</p>
-        </div>
-      </div>
-    </section>
-
     <section class="data">
       <div class="wrap reveal">
         <h2>失智症，不只是<br>老人家的事。</h2>
@@ -335,22 +357,22 @@
         <div class="data-grid">
           <article class="stat">
             <span class="tag">核心數字</span>
-            <strong class="stat__num">1.5<span style="font-size:.35em">萬人</span></strong>
+            <strong class="stat__num"><span class="count-up" data-target="1.5" data-decimals="1">1.5</span><span style="font-size:.35em">萬人</span></strong>
             <p>目前台灣年輕型失智症患者估計人數</p>
           </article>
           <article class="stat">
             <span class="tag">45–64 歲</span>
-            <strong class="stat__num">1.6<span style="font-size:.35em">‰</span></strong>
+            <strong class="stat__num"><span class="count-up" data-target="1.6" data-decimals="1">1.6</span><span style="font-size:.35em">‰</span></strong>
             <p>失智症盛行率；推估 2021 年台灣有 11,324 人</p>
           </article>
           <article class="stat">
             <span class="tag">全台失智人口</span>
-            <strong class="stat__num">31.2<span style="font-size:.35em">萬人</span></strong>
+            <strong class="stat__num"><span class="count-up" data-target="31.2" data-decimals="1">31.2</span><span style="font-size:.35em">萬人</span></strong>
             <p>2021 年底推估共 312,166 人，占全國人口 1.34％</p>
           </article>
           <article class="stat">
             <span class="tag">人口占比</span>
-            <strong class="stat__num">1<span style="font-size:.35em">／74</span></strong>
+            <strong class="stat__num"><span class="count-up" data-target="1" data-decimals="0">1</span><span style="font-size:.35em">／<span class="count-up" data-target="74" data-decimals="0">74</span></span></strong>
             <p>台灣平均每 74 人，就有 1 人是失智者</p>
           </article>
         </div>
@@ -442,6 +464,19 @@
       <figcaption>據點透過手作與團體活動，讓患者維持日常互動與認知刺激。攝影／採訪團隊</figcaption>
     </figure>
 
+    <section class="opening-story">
+      <div class="wrap definition-grid">
+        <div class="reveal">
+          <h2>「我還是想要工作」</h2>
+          <blockquote>「但是他們都不希望我去公司上班，擔心我沒辦法勝任。但我也沒辦法拿出證據反駁他們。」</blockquote>
+        </div>
+        <div class="reveal">
+          <p class="lead">41 歲的小華在中風後被診斷為血管性失智症。公司沒有解雇他，而是將他從第一線居服員調整為在家處理排班與行政事務。</p>
+          <p>他仍領有薪資，也維持員工身分，工作方式卻與過去截然不同。大部分時間，他待在家裡看網路小說、滑手機或打電動。「我現在在家裡就是這樣，很擔心、閒得發慌。」對他而言，問題不只有沒有收入，而是能否回到熟悉的生活節奏。</p>
+        </div>
+      </div>
+    </section>
+
     <section class="stories" id="stories">
       <div class="wrap">
         <div class="stories__intro reveal">
@@ -474,12 +509,60 @@
         <h2>留在身邊的<br>六件日常物品</h2>
         <p class="lead">一件平常的東西，記錄疾病如何進入工作、關係與生活。</p>
         <div class="object-strip" aria-label="六件案例小物件">
-          <article class="object-card"><span class="object-card__number">01</span><h3>喜哥的汽車雜誌</h3><p>當熟悉的工作與閱讀開始變得困難，他發現自己不再能掌握原來的節奏。</p></article>
-          <article class="object-card"><span class="object-card__number">02</span><h3>劉鳳蓮準備的尿布</h3><p>伴侶開始尿失禁後，照顧成為兩人日常裡不能跳過的環節。</p></article>
-          <article class="object-card"><span class="object-card__number">03</span><h3>邱孟暉的藍色 T 恤</h3><p>從衣服上的數字與提示，慢慢找回今天是星期幾，也拼湊出日常的時間感。</p></article>
-          <article class="object-card"><span class="object-card__number">04</span><h3>散步途中遇見的花</h3><p>當工作與原本的生活逐漸離開，外出散步與沿途風景成為新的日常。</p></article>
-          <article class="object-card"><span class="object-card__number">05</span><h3>小華手中的零食</h3><p>看似平常的購物，也可能因記憶與判斷改變，在結帳前便先拆開手中的食品。</p></article>
-          <article class="object-card"><span class="object-card__number">06</span><h3>照顧者的電話</h3><p>一次次拿起電話，向親友與外界解釋患者的狀況，也是照顧日常的一部分。</p></article>
+          <article class="object-card">
+            <button class="object-card__button" type="button" data-object="01" aria-label="閱讀喜哥與汽車雜誌的故事">
+              <span class="object-card__image"><img src="assets/objects/car-magazine.jpg" alt="汽車雜誌" loading="lazy"></span>
+              <span class="object-card__copy"><span class="object-card__number">01</span><span><span class="object-card__title">喜哥的汽車雜誌</span><span>開始無法掌握自己的工作</span><span class="object-card__hint">點開閱讀故事</span></span></span>
+            </button>
+            <div class="object-card__detail"><p>曾擔任汽車銷售員的喜哥回憶，隨著病情逐漸惡化，他開始無法妥善掌握工作的時間安排，也難以應對不同客戶的需求。直到一場突如其來的車禍，讓他確診罹患年輕型失智症，也被迫告別熱愛多年的汽車銷售工作。雖然無法再回到職場，喜哥對汽車的熱情卻從未消失，至今仍會閱讀汽車雜誌、關注最新的汽車資訊。他最懷念的，不僅是汽車銷售工作本身，更是每天奔波拜訪客戶、與不同客戶交流互動的生活節奏。對他而言，那段日子已成為難以重返的回憶。</p></div>
+          </article>
+          <article class="object-card">
+            <button class="object-card__button" type="button" data-object="02" aria-label="閱讀喜哥妻子與電話的故事">
+              <span class="object-card__image"><img src="assets/objects/telephone.jpg" alt="家用電話" loading="lazy"></span>
+              <span class="object-card__copy"><span class="object-card__number">02</span><span><span class="object-card__title">喜哥妻子的電話</span><span>耐心向其他人解釋他的狀況</span><span class="object-card__hint">點開閱讀故事</span></span></span>
+            </button>
+            <div class="object-card__detail"><p>喜哥妻子提及，喜哥曾在觀看電視購物節目時，被節目中的優惠方案吸引，認為「買越多越划算」，便自行撥打購買專線下單。事後，喜哥妻子看見家用電話放在一旁，便詢問喜哥是否有來電；喜哥已全然忘記自己剛才曾訂購商品，告訴她沒有來電，口中卻不斷講述自己購買的方案。喜哥妻子發現事情不對勁後，立即聯繫業者並說明喜哥罹患失智症的情況，所幸對方理解並協助取消訂單。</p></div>
+          </article>
+          <article class="object-card">
+            <button class="object-card__button" type="button" data-object="03" aria-label="閱讀邱孟輝與藍色 T 恤的故事">
+              <span class="object-card__image"><img src="assets/objects/blue-shirt.jpg" alt="摺好的藍色 T 恤" loading="lazy"></span>
+              <span class="object-card__copy"><span class="object-card__number">03</span><span><span class="object-card__title">邱孟輝的藍色 T 恤</span><span>按照台北 101 的顏色順序辨認星期</span><span class="object-card__hint">點開閱讀故事</span></span></span>
+            </button>
+            <div class="object-card__detail"><p>由於失智症會導致短期記憶衰退，邱孟輝也摸索出屬於自己的記憶方式。他參考台北 101 夜間燈光每天不同的顏色，依照「紅、橙、黃、綠、藍、靛、紫」的順序搭配每天穿著的衣服，藉此提醒自己今天是星期幾。他笑著說，這不是什麼特別的創意，只是向台北 101「借來」的小技巧，卻成了自己維持日常生活的重要依靠。邱孟輝的妻子也表示，失智症患者最常見的症狀就是短期記憶受損，同一個問題可能在短短幾分鐘內重複詢問好幾次，因此照顧者更需要以耐心與同理心陪伴，而不是因反覆提問感到不耐。</p></div>
+          </article>
+          <article class="object-card">
+            <button class="object-card__button" type="button" data-object="04" aria-label="閱讀佳祥與花的故事">
+              <span class="object-card__image"><img src="assets/objects/flowers.jpg" alt="散步途中盛開的花" loading="lazy"></span>
+              <span class="object-card__copy"><span class="object-card__number">04</span><span><span class="object-card__title">佳祥散步途中看見的花</span><span>離開工作後，散步成為生活的一部分</span><span class="object-card__hint">點開閱讀故事</span></span></span>
+            </button>
+            <div class="object-card__detail"><p>佳祥曾是一名八方雲集的計時人員，直到因為腦內疾病與小中風接受手術，加上血管狀況不佳，經常出現頭暈症狀，才不得不離開工作崗位。確診之後，他的生活節奏也變得緩慢許多。佳祥平時大多待在家中，喜歡賞花的他偶爾會到住家附近的公園散步。有時在妹妹的邀請下，他也願意一起出門逛街，或到較遠的地方走走。這些看似平凡的日常，如今都成為他珍惜的生活片段。</p></div>
+          </article>
+          <article class="object-card">
+            <button class="object-card__button" type="button" data-object="05" aria-label="閱讀小華與零食的故事">
+              <span class="object-card__image"><img src="assets/objects/snacks.jpg" alt="賣場中的零食貨架" loading="lazy"></span>
+              <span class="object-card__copy"><span class="object-card__number">05</span><span><span class="object-card__title">小華面前的零食</span><span>判斷與行為認知逐漸受到影響</span><span class="object-card__hint">點開閱讀故事</span></span></span>
+            </button>
+            <div class="object-card__detail"><p>小華認為自己的生活與工作能力並未受到太大影響，甚至直言：「只要我自己不說，其他人都看不出來，我有失智症。」然而，疾病帶來的影響並非全然不可見。據志工轉述，小華的妻子曾提及，由於其他健康因素，小華被限制不能吃零食，卻曾在賣場內尚未完成結帳便拆開零食食用。事後面對店員詢問時，他否認自己曾有相關行為。這些情況顯示，失智症可能正逐漸影響小華的判斷能力與對自身行為的認知。</p></div>
+          </article>
+          <article class="object-card">
+            <button class="object-card__button" type="button" data-object="06" aria-label="閱讀劉鳳蓮與尿布的故事">
+              <span class="object-card__image"><img src="assets/objects/diapers.jpg" alt="成人紙尿褲" loading="lazy"></span>
+              <span class="object-card__copy"><span class="object-card__number">06</span><span><span class="object-card__title">劉鳳蓮準備的尿布</span><span>伴侶開始失禁，也難以接受身體的改變</span><span class="object-card__hint">點開閱讀故事</span></span></span>
+            </button>
+            <div class="object-card__detail"><p>劉鳳蓮的丈夫林善仁確診後，家人為了維護他的自尊，總是盡可能讓他保有生活中的角色。例如劉鳳蓮會藉口自己提不動菜，邀請他一同到菜市場買菜，並不斷告訴他「有你真好」。然而，隨著病情惡化，林善仁開始出現失禁症狀。一次返家途中，林善仁突然說想上廁所，卻遲遲沒有邁開腳步，劉鳳蓮這才發現他早已尿濕褲子。即使如此，林善仁依然拒絕穿上尿布生活。劉鳳蓮表示，一位正值壯年的男性，要接受自己逐漸失去對身體的控制，遠比接受疾病本身更加困難。</p></div>
+          </article>
+        </div>
+      </div>
+
+      <div class="object-modal" role="dialog" aria-modal="true" aria-labelledby="object-modal-title" hidden>
+        <button class="object-modal__backdrop" type="button" aria-label="關閉物件故事"></button>
+        <div class="object-modal__stage">
+          <button class="object-modal__close" type="button" aria-label="關閉">×</button>
+          <article class="object-modal__content">
+            <span class="object-modal__back-number"></span>
+            <h3 id="object-modal-title"></h3>
+            <div class="object-modal__body"></div>
+          </article>
         </div>
       </div>
     </section>
@@ -606,6 +689,81 @@
       });
     }, { threshold: .12 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    const countUps = [...document.querySelectorAll('.count-up')];
+    const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    countUps.forEach(number => { number.textContent = '0'; });
+
+    const animateNumber = (number, delay = 0) => {
+      const target = Number(number.dataset.target);
+      const decimals = Number(number.dataset.decimals || 0);
+      if (reduceMotion) {
+        number.textContent = target.toFixed(decimals);
+        return;
+      }
+      setTimeout(() => {
+        const duration = 1600;
+        const start = performance.now();
+        const tick = now => {
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          number.textContent = (target * eased).toFixed(decimals);
+          if (progress < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      }, delay);
+    };
+
+    const dataCounterObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        countUps.forEach((number, index) => animateNumber(number, index * 120));
+        dataCounterObserver.disconnect();
+      });
+    }, { threshold: .35 });
+    dataCounterObserver.observe(document.querySelector('.data-grid'));
+
+    const objectModal = document.querySelector('.object-modal');
+    const objectModalTitle = objectModal.querySelector('.object-modal__content h3');
+    const objectModalNumber = objectModal.querySelector('.object-modal__back-number');
+    const objectModalBody = objectModal.querySelector('.object-modal__body');
+    const objectModalClose = objectModal.querySelector('.object-modal__close');
+    let lastObjectTrigger = null;
+
+    const openObjectModal = card => {
+      const trigger = card.querySelector('.object-card__button');
+      const title = card.querySelector('.object-card__title').textContent;
+      const number = card.querySelector('.object-card__number').textContent;
+      const detail = card.querySelector('.object-card__detail').innerHTML;
+      lastObjectTrigger = trigger;
+      objectModalTitle.textContent = title;
+      objectModalNumber.textContent = number;
+      objectModalBody.innerHTML = detail;
+      objectModal.hidden = false;
+      document.body.style.overflow = 'hidden';
+      requestAnimationFrame(() => {
+        objectModal.classList.add('is-open');
+        objectModalClose.focus();
+      });
+    };
+
+    const closeObjectModal = () => {
+      objectModal.classList.remove('is-open');
+      document.body.style.overflow = '';
+      setTimeout(() => {
+        objectModal.hidden = true;
+        if (lastObjectTrigger) lastObjectTrigger.focus();
+      }, reduceMotion ? 0 : 250);
+    };
+
+    document.querySelectorAll('.object-card').forEach(card => {
+      card.querySelector('.object-card__button').addEventListener('click', () => openObjectModal(card));
+    });
+    objectModal.querySelector('.object-modal__backdrop').addEventListener('click', closeObjectModal);
+    objectModalClose.addEventListener('click', closeObjectModal);
+    addEventListener('keydown', event => {
+      if (event.key === 'Escape' && !objectModal.hidden) closeObjectModal();
+    });
 
     const brainSteps = [...document.querySelectorAll('.brain-step')];
     const brainFigures = [...document.querySelectorAll('.brain-figure')];
