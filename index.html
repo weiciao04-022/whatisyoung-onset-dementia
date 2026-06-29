@@ -173,14 +173,14 @@
     .photo-break--editorial img { position: sticky; top: 0; z-index: 0; height: 100vh; object-position: center; }
     .photo-break--editorial::after { content: none; }
     .photo-break--editorial figcaption { top: calc(100vh - 46px); bottom: auto; }
-    .photo-break--editorial .photo-break__story-card { top: 112vh; left: auto; right: max(8vw, 64px); width: min(640px, 42vw); padding: clamp(24px, 3vw, 38px); background: rgba(0,0,0,.72); border-left: 0; box-shadow: none; transform: none; opacity: 1; backdrop-filter: blur(2px); }
+    .photo-break--editorial .photo-break__story-card { top: 112vh; left: auto; right: max(8vw, 64px); width: min(640px, 42vw); padding: clamp(24px, 3vw, 38px); background: rgba(24, 48, 72, .78); border-left: 0; box-shadow: none; transform: none; opacity: 1; backdrop-filter: blur(2px); }
     .photo-break--editorial .photo-break__story-card.visible { transform: none; }
     .photo-break--editorial .photo-break__story-card p { font: 700 clamp(18px, 1.85vw, 25px)/1.85 var(--sans); letter-spacing: 0; }
-    .photo-break--young { height: 180vh; min-height: 1220px; overflow: visible; }
+    .photo-break--young { height: 220vh; min-height: 1500px; overflow: visible; }
     .photo-break--young img { position: sticky; top: 0; z-index: 0; height: 100vh; }
     .photo-break--young::after { inset: 0; background: linear-gradient(180deg, rgba(7,20,33,.16), rgba(7,20,33,.42) 52%, rgba(7,20,33,.72)); }
     .photo-break--young figcaption { top: calc(100vh - 44px); bottom: auto; }
-    .photo-break__young-note { position: absolute; z-index: 3; top: 112vh; left: max(6vw, 28px); width: min(520px, calc(100% - 56px)); padding: clamp(22px, 2.6vw, 30px); color: rgba(255,255,255,.94); background: rgba(14,37,58,.78); border: 1px solid rgba(255,255,255,.12); box-shadow: 0 16px 44px rgba(0,0,0,.22); backdrop-filter: blur(4px); }
+    .photo-break__young-note { position: absolute; z-index: 3; top: 132vh; left: max(6vw, 28px); width: min(520px, calc(100% - 56px)); padding: clamp(22px, 2.6vw, 30px); color: rgba(255,255,255,.94); background: rgba(14,37,58,.78); border: 1px solid rgba(255,255,255,.12); box-shadow: 0 16px 44px rgba(0,0,0,.22); backdrop-filter: blur(4px); }
     .photo-break__young-note p { margin: 0; font-size: clamp(18px, 1.6vw, 22px); font-weight: 600; line-height: 1.9; }
     .photo-duo { display: grid; grid-template-columns: 1.08fr .92fr; gap: 12px; padding: 12px; background: var(--ink); }
     .news-photo { position: relative; min-height: 520px; margin: 0; overflow: hidden; background: var(--ink); }
@@ -290,26 +290,32 @@
     .story__quote { margin: 22px 0; font: 600 clamp(18px,2vw,25px)/1.65 var(--serif); }
     .story__meta { display: flex; justify-content: space-between; gap: 20px; padding-top: 15px; border-top: 1px solid var(--line); font-size: 12px; }
     .story--video { width: 100%; }
-    .story--video .story__copy { display: grid; grid-template-columns: minmax(520px, 1.35fr) minmax(340px, .85fr); grid-template-areas: "transcript video"; gap: clamp(24px, 4vw, 54px); align-items: stretch; }
+    .story--video .story__copy { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-areas: "transcript video"; gap: clamp(24px, 4vw, 54px); align-items: stretch; }
     .story--video .story-transcript { grid-area: transcript; }
     .story--video .story-video { grid-area: video; }
-    .story--xiaohua .story__copy { grid-template-columns: minmax(340px, .85fr) minmax(520px, 1.35fr); grid-template-areas: "transcript video"; }
-    .story--xige .story__copy { grid-template-columns: minmax(340px, .85fr) minmax(520px, 1.35fr); grid-template-areas: "video transcript"; }
+    .story--xiaohua .story__copy { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-areas: "transcript video"; }
+    .story--xige .story__copy { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-areas: "transcript video"; }
     .story-video { position: relative; min-width: 0; height: 560px; margin: 0; overflow: hidden; background: #0b141a; }
     .story-video video { width: 100%; height: 100%; display: block; object-fit: cover; }
+    .story-video__poster { position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(11,20,26,.18), rgba(11,20,26,.38)); background-size: cover; background-position: center; transition: opacity .28s ease; }
+    .story-video__poster.is-ready { background-color: #0b141a; }
     .story-video__play { position: absolute; z-index: 3; top: 50%; left: 50%; width: clamp(76px, 8vw, 112px); height: clamp(76px, 8vw, 112px); display: grid; place-items: center; border: 1px solid rgba(255,255,255,.28); border-radius: 50%; color: var(--ink); background: rgba(231,196,58,.96); box-shadow: 0 18px 46px rgba(0,0,0,.32); transform: translate(-50%,-50%); cursor: pointer; transition: opacity .22s ease, transform .22s ease, background .22s ease; }
     .story-video__play::before { content: ""; width: 0; height: 0; margin-left: 7px; border-top: 17px solid transparent; border-bottom: 17px solid transparent; border-left: 25px solid currentColor; }
     .story-video__play:hover,
     .story-video__play:focus-visible { background: #f0d24a; transform: translate(-50%,-50%) scale(1.06); }
     .story-video__play:focus-visible { outline: 3px solid var(--white); outline-offset: 5px; }
     .story-video.is-playing .story-video__play { opacity: 0; pointer-events: none; transform: translate(-50%,-50%) scale(.92); }
+    .story-video.has-started .story-video__poster { opacity: 0; pointer-events: none; }
     .story-transcript { min-width: 0; height: 560px; display: flex; flex-direction: column; padding: clamp(28px, 3.4vw, 42px); overflow: hidden; color: var(--white); background: rgba(9,14,18,.92); }
     .story-transcript .tag { color: var(--yellow); border-color: rgba(231,196,58,.55); }
-    .story-transcript h3 { margin: 18px 0 20px; color: var(--white); font-size: clamp(28px,3.2vw,40px); }
+    .story-transcript h3 { margin: 0 0 20px; color: var(--white); font-size: clamp(28px,3.2vw,40px); }
     .story-transcript__note { margin: 18px 0 0; padding-left: 16px; color: rgba(255,255,255,.66); border-left: 3px solid var(--yellow); font-size: 13px; line-height: 1.8; }
     .story-transcript__lines { flex: 1; margin: 4px 0 0; padding: clamp(22px, 3vw, 36px); overflow: hidden; border: 1px solid rgba(255,255,255,.12); background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(0,0,0,.2)); }
     .story-transcript__lines span { --fill: 0%; display: block; margin-bottom: .62em; color: transparent; background: linear-gradient(90deg, rgba(255,255,255,.96) 0 var(--fill), rgba(255,255,255,.24) var(--fill) 100%); -webkit-background-clip: text; background-clip: text; font-size: clamp(18px,1.8vw,24px); font-weight: 800; line-height: 1.8; }
     .story-transcript__lines span:last-child { margin-bottom: 0; }
+    .story--xige .story-transcript { position: relative; }
+    .story--xige .story-transcript__lines { flex: 0 0 430px; }
+    .story--xige .story-transcript__note { position: absolute; right: clamp(28px, 3.4vw, 42px); bottom: clamp(26px, 3.2vw, 38px); left: clamp(28px, 3.4vw, 42px); margin: 0; background: rgba(9,14,18,.92); }
 
     .treatment { padding-top: 90px; padding-bottom: 92px; background: var(--paper); }
     .treatment-grid { display: grid; grid-template-columns: minmax(280px, .78fr) minmax(420px, 1fr); gap: clamp(48px, 7vw, 96px); align-items: start; }
@@ -324,9 +330,14 @@
     .objects__heading h2 { margin-bottom: 0; }
     .objects__instruction { flex: none; margin-bottom: 8px; padding-left: 18px; border-left: 3px solid var(--yellow); color: var(--muted); font-size: 14px; font-weight: 500; }
     .object-strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 45px; }
-    .object-card { min-width: 0; border: 1px solid var(--line); background: var(--paper); }
-    .object-card__button { display: grid; grid-template-rows: auto 178px; width: 100%; height: 100%; padding: 0; border: 0; color: var(--ink); background: transparent; text-align: left; cursor: pointer; }
+    .object-card { position: relative; min-width: 0; min-height: 540px; perspective: 1400px; }
+    .object-card__button { display: block; position: relative; width: 100%; height: 100%; min-height: 540px; padding: 0; border: 0; color: var(--ink); background: transparent; text-align: left; cursor: pointer; }
     .object-card__button:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
+    .object-card__inner { display: block; position: relative; width: 100%; height: 100%; min-height: 540px; transition: transform .72s cubic-bezier(.2,.7,.2,1); transform-style: preserve-3d; }
+    .object-card.is-flipped .object-card__inner { transform: rotateY(180deg); }
+    .object-card__face { display: block; position: absolute; inset: 0; width: 100%; height: 100%; overflow: hidden; border: 1px solid var(--line); background: var(--paper); backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+    .object-card__face--front { display: grid; grid-template-rows: auto 1fr; }
+    .object-card__face--back { display: flex; flex-direction: column; justify-content: flex-start; padding: 22px; background: linear-gradient(180deg, #fbfaf6 0%, #f3efe6 100%); transform: rotateY(180deg); }
     .object-card__image { display: block; width: 100%; aspect-ratio: 4/3; overflow: hidden; background: #ddd8ce; }
     .object-card__image img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: center top; transition: transform .35s ease; }
     .object-card__button:hover .object-card__image img { transform: scale(1.025); }
@@ -334,19 +345,13 @@
     .object-card__number { color: #8f710d; font: 700 26px/1 var(--serif); }
     .object-card__title { display: block; margin: 0 0 8px; font: 700 21px/1.4 var(--serif); }
     .object-card p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.7; }
-    .object-card__detail { display: none; }
-
-    .object-modal[hidden] { display: none; }
-    .object-modal { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: 20px; opacity: 0; transition: opacity .25s ease; }
-    .object-modal.is-open { opacity: 1; }
-    .object-modal__backdrop { position: absolute; inset: 0; border: 0; background: rgba(10,22,31,.78); cursor: pointer; }
-    .object-modal__stage { position: relative; width: min(820px, 100%); max-height: calc(100vh - 40px); }
-    .object-modal__close { position: absolute; z-index: 4; top: 14px; right: 14px; width: 42px; height: 42px; border: 1px solid var(--line); border-radius: 50%; color: var(--ink); background: var(--white); font-size: 24px; line-height: 1; cursor: pointer; }
-    .object-modal__content { max-height: calc(100vh - 40px); padding: clamp(42px,6vw,72px); overflow-y: auto; border: 1px solid var(--line); background: var(--white); }
-    .object-modal__back-number { color: #8f710d; font: 700 34px/1 var(--serif); }
-    .object-modal__content h3 { margin: 18px 55px 24px 0; font-size: clamp(30px,4vw,46px); }
-    .object-modal__body { max-width: 720px; font-size: 17px; line-height: 1.9; }
-    .object-modal__body p { margin: 0; }
+    .object-card__back-head { display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: start; margin-bottom: 14px; }
+    .object-card__back-head .object-card__number { font-size: 24px; }
+    .object-card__back-title { margin: 0; color: var(--ink); font: 700 20px/1.45 var(--serif); }
+    .object-card__detail { display: block; color: #4e5964; font-size: 14px; line-height: 1.85; }
+    .object-card__detail p { color: #4e5964; }
+    .object-card__hint { display: inline-flex; align-items: center; gap: 8px; margin-top: auto; padding-top: 16px; color: #6f7c87; font-size: 12px; font-weight: 700; letter-spacing: .04em; }
+    .object-card__hint::before { content: "↺"; font-size: 14px; }
 
     .problem {
       min-height: 100vh;
@@ -399,16 +404,16 @@
     .cdr__range:focus-visible + .cdr__track .cdr__thumb { box-shadow: 0 0 0 8px rgba(89,65,127,.2), 0 10px 20px rgba(23,43,58,.18); }
     .cdr__track { position: absolute; top: var(--cdr-slider-inset); bottom: var(--cdr-slider-inset); left: 17px; width: 3px; border-radius: 99px; background: rgba(110,87,156,.18); }
     .cdr__track-fill { position: absolute; top: 0; left: 0; width: 100%; height: var(--cdr-progress); border-radius: inherit; background: #59417f; }
-    .cdr__thumb { position: absolute; z-index: 3; top: var(--cdr-progress); left: 50%; width: 26px; height: 26px; border: 5px solid #fbf8f1; border-radius: 50%; background: #59417f; box-shadow: 0 0 0 7px rgba(89,65,127,.14), 0 10px 20px rgba(23,43,58,.18); transform: translate(-50%,-50%); cursor: grab; }
+    .cdr__thumb { position: absolute; z-index: 3; top: var(--cdr-progress); left: 50%; width: 26px; height: 26px; border: 5px solid #fbf8f1; border-radius: 50%; background: #59417f; box-shadow: 0 0 0 7px rgba(89,65,127,.14), 0 10px 20px rgba(23,43,58,.18); transform: translate(-50%,-50%); cursor: grab; transition: transform .24s ease, box-shadow .24s ease, background .24s ease; }
     .cdr__slider.is-dragging .cdr__thumb { cursor: grabbing; transform: translate(-50%,-50%) scale(1.08); }
     .cdr__ticks { position: absolute; z-index: 2; top: var(--cdr-slider-inset); bottom: var(--cdr-slider-inset); left: 0; width: 100%; pointer-events: none; }
-    .cdr__tick { position: absolute; left: 0; width: 100%; display: grid; grid-template-columns: 42px 1fr; gap: 8px; align-items: center; color: rgba(23,43,58,.46); font-family: var(--sans); transform: translateY(-50%); }
+    .cdr__tick { position: absolute; left: 0; width: 100%; display: grid; grid-template-columns: 42px 1fr; gap: 8px; align-items: center; color: rgba(23,43,58,.46); font-family: var(--sans); transform: translateY(-50%); transition: color .22s ease, transform .22s ease; }
     .cdr__tick[data-cdr-level="0"] { top: 0%; }
     .cdr__tick[data-cdr-level="0.5"] { top: 25%; }
     .cdr__tick[data-cdr-level="1"] { top: 50%; }
     .cdr__tick[data-cdr-level="2"] { top: 75%; }
     .cdr__tick[data-cdr-level="3"] { top: 100%; }
-    .cdr__tick::before { content: ""; width: 15px; height: 15px; margin-left: 10px; border: 2px solid #8b7ca9; border-radius: 50%; background: #fbf8f1; }
+    .cdr__tick::before { content: ""; width: 15px; height: 15px; margin-left: 10px; border: 2px solid #8b7ca9; border-radius: 50%; background: #fbf8f1; transition: border-color .22s ease, background .22s ease, transform .22s ease, box-shadow .22s ease; }
     .cdr__tick strong { display: block; color: inherit; font-size: 19px; font-weight: 900; line-height: 1; }
     .cdr__tick small { display: block; margin-top: 4px; color: rgba(23,43,58,.46); font-size: 10.5px; font-weight: 700; line-height: 1.35; }
     .cdr__tick.is-active { color: #59417f; }
@@ -425,15 +430,18 @@
     .cdr__center { fill: #4f3b73; font-family: var(--sans); text-anchor: middle; dominant-baseline: middle; }
     .cdr__center-level { font-size: 14px; font-weight: 900; }
     .cdr__center-label { font-size: 11px; font-weight: 800; }
-    .cdr__aspect { min-height: 112px; padding: 15px 16px; border: 1px solid rgba(110,87,156,.13); border-radius: 18px; background: rgba(255,255,255,.62); transition: border-color .2s ease, background .2s ease; }
+    .cdr__aspect { min-height: 112px; padding: 15px 16px; border: 1px solid rgba(110,87,156,.13); border-radius: 18px; background: rgba(255,255,255,.62); text-align: center; transition: border-color .24s ease, background .24s ease, transform .24s ease, box-shadow .24s ease; }
     .cdr__aspect h3 { margin: 0 0 7px; color: #4f3b73; font: 800 15px/1.4 var(--sans); }
     .cdr__aspect p { margin: 0; color: #41484e; font-size: 13.5px; line-height: 1.65; }
-    .cdr__aspect--memory { grid-area: memory; text-align: center; }
+    .cdr__slider:hover .cdr__thumb { box-shadow: 0 0 0 9px rgba(89,65,127,.18), 0 14px 24px rgba(23,43,58,.2); }
+    .cdr__slider:hover .cdr__tick.is-active::before { transform: scale(1.08); box-shadow: 0 0 0 5px rgba(89,65,127,.1); }
+    .cdr__aspect:hover { border-color: rgba(110,87,156,.28); background: rgba(255,255,255,.88); transform: translateY(-2px); box-shadow: 0 10px 22px rgba(23,43,58,.08); }
+    .cdr__aspect--memory { grid-area: memory; }
     .cdr__aspect--orientation { grid-area: orientation; }
     .cdr__aspect--judgment { grid-area: judgment; }
-    .cdr__aspect--community { grid-area: community; text-align: center; }
-    .cdr__aspect--home { grid-area: home; text-align: right; }
-    .cdr__aspect--care { grid-area: care; text-align: right; }
+    .cdr__aspect--community { grid-area: community; }
+    .cdr__aspect--home { grid-area: home; }
+    .cdr__aspect--care { grid-area: care; }
     .cdr__footer { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 30px; padding-top: 24px; border-top: 1px solid rgba(23,43,58,.16); }
     .cdr__footer p { margin: 0; color: rgba(23,43,58,.66); font-size: 12px; line-height: 1.8; }
     .cdr__footer strong { color: var(--ink); }
@@ -458,7 +466,7 @@
     .work { color: white; background: var(--ink); }
     .work-grid { display: grid; grid-template-columns: minmax(0, 960px); justify-content: center; gap: 28px; }
     .work-grid > .reveal:first-child { width: 100%; }
-    .work-grid > .article-copy { width: 100%; }
+    .work-grid > .article-copy { width: min(760px, 100%); justify-self: start; }
     .work-quote { width: min(620px, 100%); margin-top: 28px; padding: 28px; color: var(--ink); border-left: 5px solid #b89627; background: var(--yellow); transform: none; font: 700 clamp(24px,3vw,38px)/1.55 var(--serif); }
     .rights { margin-top: 45px; border-top: 1px solid rgba(255,255,255,.3); }
     .right-row { display: grid; grid-template-columns: 40px 1fr; gap: 20px; padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,.3); }
@@ -467,6 +475,53 @@
     .work-reality + .work-reality { margin-top: 12px; }
     .work-reality strong { display: block; margin-bottom: 8px; color: #8f710d; font: 600 13px/1.5 var(--sans); letter-spacing: .05em; }
     .work-reality cite { display: block; margin-top: 10px; color: var(--muted); font: 400 12px/1.5 var(--sans); }
+
+    .japan-support { background: linear-gradient(180deg, #f8f5ee 0%, #fbfaf7 100%); }
+    .japan-support__intro { width: min(860px, 100%); margin-bottom: 34px; }
+    .japan-support__eyebrow { display: inline-block; margin-bottom: 12px; color: #6d7c88; font-size: 13px; font-weight: 700; letter-spacing: .08em; }
+    .japan-support__intro p { margin: 0; color: #4a5560; font-size: 17px; line-height: 1.95; }
+    .japan-support__flow { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 18px; align-items: stretch; margin-top: 30px; }
+    .support-step { position: relative; padding: 24px 22px; border: 1px solid rgba(23,43,58,.1); border-radius: 24px; background: rgba(255,255,255,.88); box-shadow: 0 12px 30px rgba(18,34,48,.06); opacity: 0; transform: translateY(20px) scale(.96); transition: opacity .6s ease, transform .6s ease, box-shadow .6s ease; }
+    .support-step.is-visible { opacity: 1; transform: translateY(0) scale(1); }
+    .support-step:hover { box-shadow: 0 18px 38px rgba(18,34,48,.09); }
+    .support-step::after { content: ""; position: absolute; top: 50%; right: -19px; width: 20px; height: 1px; background: rgba(57,88,108,.32); transform: translateY(-50%); }
+    .support-step::before { content: ""; position: absolute; top: calc(50% - 4px); right: -19px; width: 8px; height: 8px; border-top: 1px solid rgba(57,88,108,.32); border-right: 1px solid rgba(57,88,108,.32); transform: rotate(45deg); }
+    .support-step:last-child::before,
+    .support-step:last-child::after { display: none; }
+    .support-step__num { display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; margin-bottom: 16px; color: var(--ink); border-radius: 50%; background: rgba(208,221,232,.72); font-size: 18px; font-weight: 800; }
+    .support-step h3 { margin: 0 0 10px; color: var(--ink); font-size: 22px; line-height: 1.4; }
+    .support-step p { margin: 0; color: #5b6670; font-size: 15px; line-height: 1.8; }
+
+    .support-panels { width: min(960px, 100%); display: grid; grid-template-columns: 1fr; gap: 34px; margin-top: 34px; }
+    .support-panel { padding: 0; border: 0; background: transparent; box-shadow: none; }
+    .support-panel--job,
+    .support-panel--life,
+    .support-panel--family { background: transparent; }
+    .support-panel__title { display: block; margin: 0 0 10px; color: var(--ink); font-size: 28px; font-weight: 800; line-height: 1.3; }
+    .support-panel__desc { margin: 0 0 18px; color: #6a7680; font-size: 14px; line-height: 1.75; }
+    .support-panel__group + .support-panel__group { margin-top: 16px; }
+    .support-panel__group strong { display: block; margin-bottom: 6px; color: var(--ink); font-size: 16px; line-height: 1.6; }
+    .support-panel__group p,
+    .support-panel__group li { margin: 0; color: #55616c; font-size: 14px; line-height: 1.8; }
+    .support-panel__group ul { margin: 0; padding-left: 18px; }
+    .japan-employment-copy { width: min(960px, 100%); margin-top: 34px; padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; }
+    .japan-employment-copy h3 { margin: 0 0 14px; color: var(--ink); font-size: clamp(26px, 2.6vw, 34px); line-height: 1.35; }
+    .japan-employment-copy p { margin: 0; color: #53606b; font-size: 16px; line-height: 1.95; }
+    .japan-employment-copy p + p { margin-top: 14px; }
+    .japan-case { width: min(960px, 100%); margin-top: 22px; padding: 22px 24px; border-left: 4px solid rgba(83,130,176,.52); background: rgba(233,240,246,.72); }
+    .japan-case h4 { margin: 0 0 10px; color: var(--ink); font-size: 20px; line-height: 1.4; }
+    .japan-case p { margin: 0; color: #53606b; font-size: 15px; line-height: 1.9; }
+    .japan-video { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr); gap: 28px; align-items: stretch; margin-top: 36px; }
+    .japan-video__placeholder { position: relative; aspect-ratio: 16 / 9; display: grid; place-items: center; overflow: hidden; border: 1px solid rgba(23,43,58,.08); border-radius: 26px; background: linear-gradient(135deg, #dbe4eb, #edf3f7); box-shadow: 0 16px 34px rgba(18,34,48,.06); }
+    .japan-video__placeholder::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,22,31,.06), rgba(10,22,31,.18)); }
+    .japan-video__play { position: absolute; top: 50%; left: 50%; width: 92px; height: 92px; border-radius: 50%; background: rgba(23,43,58,.88); transform: translate(-50%, -50%); }
+    .japan-video__play::before { content: ""; position: absolute; top: 50%; left: 50%; width: 0; height: 0; margin-left: 5px; border-top: 16px solid transparent; border-bottom: 16px solid transparent; border-left: 24px solid #fff; transform: translate(-50%, -50%); }
+    .japan-video__label { position: relative; z-index: 1; margin-top: 112px; color: #fff; font-size: 16px; font-weight: 700; letter-spacing: .03em; }
+    .japan-video__copy { padding: 28px; border: 1px solid rgba(23,43,58,.08); border-radius: 26px; background: rgba(255,255,255,.9); box-shadow: 0 16px 34px rgba(18,34,48,.06); }
+    .japan-video__copy h3 { margin: 0 0 10px; color: var(--ink); font-size: clamp(28px, 3vw, 38px); line-height: 1.35; }
+    .japan-video__copy p { margin: 0; color: #53606b; font-size: 16px; line-height: 1.95; }
+    .japan-video__copy p + p { margin-top: 14px; }
+    .japan-support__source { margin-top: 22px; color: #71808b; font-size: 12px; line-height: 1.8; }
 
     footer { padding: 65px max(6vw,24px); color: rgba(255,255,255,.65); background: #101d25; font-size: 13px; }
     .footer-grid { display: flex; justify-content: space-between; gap: 40px; width: min(1120px,100%); margin: auto; }
@@ -477,7 +532,9 @@
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
-      .reveal, .brain-figure, .object-modal, .object-card__image img { transition: none; }
+      .reveal, .brain-figure, .object-card__image img, .object-card__inner { transition: none; }
+      .support-step { opacity: 1; transform: none; transition: none; }
+      .support-panel__body { transition: none; }
     }
 
     @media (max-width: 780px) {
@@ -489,6 +546,14 @@
       .pov-video__copy { padding-left: 16px; font-size: 16px; line-height: 1.8; }
       .pov-video__frame::before { top: 10px; left: 10px; }
       .data-grid, .definition-grid, .treatment-grid, .problem-grid, .upward-grid, .young-layout, .work-grid { grid-template-columns: 1fr; gap: 35px; }
+      .japan-support__flow,
+      .support-panels,
+      .japan-video { grid-template-columns: 1fr; }
+      .japan-support__flow { gap: 14px; }
+      .support-step { min-height: 0; }
+      .support-step::after { top: auto; right: auto; bottom: -15px; left: 50%; width: 1px; height: 16px; transform: translateX(-50%); }
+      .support-step::before { top: auto; right: auto; bottom: -15px; left: calc(50% - 4px); transform: rotate(135deg); }
+      .japan-video__copy { padding: 24px; }
       .definition { padding-top: 72px; padding-bottom: 36px; }
       .definition h2, .brain-story__intro h2 { font-size: 34px; line-height: 1.35; }
       .definition .article-copy p { font-size: 16px; line-height: 1.85; }
@@ -512,7 +577,7 @@
       .cdr__slider-note { margin-top: 10px; text-align: center; }
       .cdr__stage { min-height: 0; display: grid; grid-template-columns: 1fr; grid-template-areas: "chart" "memory" "orientation" "judgment" "community" "home" "care"; gap: 12px; }
       .cdr__chart { width: min(330px,86vw); margin: 0 auto 18px; }
-      .cdr__aspect { min-height: 0; padding: 16px 0; border: 0; border-top: 1px solid rgba(23,43,58,.13); border-radius: 0; background: transparent; text-align: left; }
+      .cdr__aspect { min-height: 0; padding: 16px 0; border: 0; border-top: 1px solid rgba(23,43,58,.13); border-radius: 0; background: transparent; text-align: center; }
       .cdr__aspect p { font-size: 14px; }
       .cdr__footer { grid-template-columns: 1fr; gap: 12px; margin-top: 32px; }
       .journey { height: 320vh; }
@@ -549,8 +614,8 @@
       .photo-break--editorial .photo-break__story-card { top: 96vh; right: 24px; bottom: auto; left: 24px; width: auto; padding: 22px 24px; transform: none; }
       .photo-break--editorial .photo-break__story-card.visible { transform: none; }
       .photo-break--editorial .photo-break__story-card p { font-size: 18px; line-height: 1.75; }
-      .photo-break--young { height: 150vh; min-height: 920px; }
-      .photo-break--young .photo-break__young-note { top: 88vh; right: 24px; left: 24px; width: auto; padding: 18px 20px; }
+      .photo-break--young { height: 185vh; min-height: 1100px; }
+      .photo-break--young .photo-break__young-note { top: 108vh; right: 24px; left: 24px; width: auto; padding: 18px 20px; }
       .photo-break--young .photo-break__young-note p { font-size: 16px; line-height: 1.8; }
       .photo-duo { grid-template-columns: 1fr; }
       .news-photo { min-height: 62vh; }
@@ -558,26 +623,18 @@
       .objects__heading { display: block; }
       .objects__instruction { display: inline-block; margin: 16px 0 0; }
       .object-strip { grid-template-columns: 1fr; }
-      .object-card__button { grid-template-rows: auto 190px; }
-      .object-modal { padding: 12px; }
-      .object-modal__stage { max-height: calc(100vh - 24px); }
-      .object-modal__content { max-height: calc(100vh - 24px); padding: 68px 24px 30px; }
-      .object-modal__body { font-size: 15px; line-height: 1.8; }
+      .object-card,
+      .object-card__button,
+      .object-card__inner { min-height: 500px; height: auto; }
+      .object-card__face--back { padding: 20px; }
+      .object-card__detail,
+      .object-card__detail p { font-size: 14px; line-height: 1.8; }
       .footer-grid { display: block; }
     }
   </style>
 </head>
 <body>
   <div class="progress" aria-hidden="true"></div>
-  <nav class="nav" aria-label="主要導覽">
-    <a class="nav__brand" href="#top">年輕型失智症</a>
-    <a href="#about">認識疾病</a>
-    <a href="#stories">人物故事</a>
-    <a href="#support">照顧現場</a>
-    <a href="#young">YOUNG</a>
-    <a class="nav__cta" href="#work">工作權</a>
-  </nav>
-
   <main>
     <header class="hero" id="top">
       <div class="hero__content">
@@ -770,10 +827,9 @@
           <p class="stories__privacy">為了保護當事人，我們將名字抽換使用化名，有些也採用變聲處理。</p>
         </div>
         <div class="story-list">
-          <article class="story story--video story--xiaohua reveal">
+          <article class="story story--video story--xige reveal">
             <div class="story__copy">
               <div class="story-transcript">
-                <span class="tag">血管性失智症</span>
                 <h3>沒有病識感：小華</h3>
                 <p class="story-transcript__lines" aria-label="小華訪談逐字稿">
                   <span style="--i:0">我叫小華（化名），今年42歲。</span>
@@ -786,19 +842,15 @@
                 </p>
               </div>
               <figure class="story-video">
+                <span class="story-video__poster" aria-hidden="true"></span>
                 <video src="assets/videos/zhengyu.mp4" controls preload="metadata" playsinline></video>
                 <button class="story-video__play" type="button" aria-label="播放小華影片"></button>
               </figure>
             </div>
           </article>
-          <article class="story story--video story--xige reveal">
+          <article class="story story--video story--xiaohua reveal">
             <div class="story__copy">
-              <figure class="story-video">
-                <video src="assets/videos/xige.mp4" controls preload="metadata" playsinline></video>
-                <button class="story-video__play" type="button" aria-label="播放喜哥影片"></button>
-              </figure>
               <div class="story-transcript">
-                <span class="tag">語言能力逐漸退化</span>
                 <h3>喪失語言能力：喜哥</h3>
                 <p class="story-transcript__lines" data-first-cue-duration="3" aria-label="喜哥訪談逐字稿">
                   <span style="--i:0">我是喜哥（化名），年齡61歲。</span>
@@ -808,14 +860,18 @@
                 </p>
                 <p class="story-transcript__note">附註：患者無法用正常語言表達自己所想，有時會以不雅字眼、敲打桌面和哭來表達情緒。</p>
               </div>
+              <figure class="story-video">
+                <span class="story-video__poster" aria-hidden="true"></span>
+                <video src="assets/videos/xige.mp4" controls preload="metadata" playsinline></video>
+                <button class="story-video__play" type="button" aria-label="播放喜哥影片"></button>
+              </figure>
             </div>
           </article>
           <article class="story story--video story--xiaohua reveal">
             <div class="story__copy">
               <div class="story-transcript">
-                <span class="tag">離開原有工作</span>
-                <h3>被鄰居與工作排除：佳祥</h3>
-                <p class="story-transcript__lines" aria-label="佳祥訪談逐字稿">
+                <h3>被鄰居排擠：小威</h3>
+                <p class="story-transcript__lines" aria-label="小威訪談逐字稿">
                   <span style="--i:0">我叫小威（化名），68年次，是 47 歲嗎？</span>
                   <span style="--i:1">（鄰居），有些人（對我）不太好，</span>
                   <span style="--i:2">不好只是，他們比較不會理我。</span>
@@ -823,8 +879,9 @@
                 </p>
               </div>
               <figure class="story-video">
+                <span class="story-video__poster" aria-hidden="true"></span>
                 <video src="assets/videos/jiaxiang-2.mp4" controls preload="metadata" playsinline></video>
-                <button class="story-video__play" type="button" aria-label="播放佳祥影片"></button>
+                <button class="story-video__play" type="button" aria-label="播放小威影片"></button>
               </figure>
             </div>
           </article>
@@ -835,7 +892,6 @@
     <section class="treatment" aria-label="目前年輕型失智症的治療與支持方式">
       <div class="wrap treatment-grid">
         <div class="reveal">
-          <span class="treatment__tag">目前尚無治癒方式</span>
           <h2>治療不是治癒，<br>而是讓生活繼續</h2>
         </div>
         <div class="treatment__copy reveal">
@@ -855,57 +911,93 @@
         <div class="object-strip" aria-label="六件案例小物件">
           <article class="object-card">
             <button class="object-card__button" type="button" data-object="01" aria-label="閱讀喜哥與汽車雜誌的故事">
-              <span class="object-card__image"><img src="assets/objects/car-magazine.jpg" alt="汽車雜誌" loading="lazy"></span>
-              <span class="object-card__copy"><span class="object-card__number">01</span><span><span class="object-card__title">喜哥的汽車雜誌</span><span>開始無法掌握自己的工作</span></span></span>
+              <span class="object-card__inner">
+                <span class="object-card__face object-card__face--front">
+                  <span class="object-card__image"><img src="assets/objects/car-magazine.jpg" alt="汽車雜誌" loading="lazy"></span>
+                  <span class="object-card__copy"><span class="object-card__number">01</span><span><span class="object-card__title">喜哥的汽車雜誌</span><span>開始無法掌握自己的工作</span></span></span>
+                </span>
+                <span class="object-card__face object-card__face--back">
+                  <span class="object-card__back-head"><span class="object-card__number">01</span><span class="object-card__back-title">喜哥的汽車雜誌</span></span>
+                  <span class="object-card__detail"><p>曾擔任汽車銷售員的喜哥回憶，隨著病情逐漸惡化，他開始無法妥善掌握工作的時間安排，也難以應對不同客戶的需求。直到一場突如其來的車禍，讓他確診罹患年輕型失智症，也被迫告別熱愛多年的汽車銷售工作。雖然無法再回到職場，喜哥對汽車的熱情卻從未消失，至今仍會閱讀汽車雜誌、關注最新的汽車資訊。他最懷念的，不僅是汽車銷售工作本身，更是每天奔波拜訪客戶、與不同客戶交流互動的生活節奏。對他而言，那段日子已成為難以重返的回憶。</p></span>
+                  <span class="object-card__hint">點一下翻回照片</span>
+                </span>
+              </span>
             </button>
-            <div class="object-card__detail"><p>曾擔任汽車銷售員的喜哥回憶，隨著病情逐漸惡化，他開始無法妥善掌握工作的時間安排，也難以應對不同客戶的需求。直到一場突如其來的車禍，讓他確診罹患年輕型失智症，也被迫告別熱愛多年的汽車銷售工作。雖然無法再回到職場，喜哥對汽車的熱情卻從未消失，至今仍會閱讀汽車雜誌、關注最新的汽車資訊。他最懷念的，不僅是汽車銷售工作本身，更是每天奔波拜訪客戶、與不同客戶交流互動的生活節奏。對他而言，那段日子已成為難以重返的回憶。</p></div>
           </article>
           <article class="object-card">
             <button class="object-card__button" type="button" data-object="02" aria-label="閱讀喜哥妻子與電話的故事">
-              <span class="object-card__image"><img src="assets/objects/telephone.jpg" alt="家用電話" loading="lazy"></span>
-              <span class="object-card__copy"><span class="object-card__number">02</span><span><span class="object-card__title">喜哥妻子的電話</span><span>耐心向其他人解釋他的狀況</span></span></span>
+              <span class="object-card__inner">
+                <span class="object-card__face object-card__face--front">
+                  <span class="object-card__image"><img src="assets/objects/telephone.jpg" alt="家用電話" loading="lazy"></span>
+                  <span class="object-card__copy"><span class="object-card__number">02</span><span><span class="object-card__title">喜哥妻子的電話</span><span>耐心向其他人解釋他的狀況</span></span></span>
+                </span>
+                <span class="object-card__face object-card__face--back">
+                  <span class="object-card__back-head"><span class="object-card__number">02</span><span class="object-card__back-title">喜哥妻子的電話</span></span>
+                  <span class="object-card__detail"><p>喜哥妻子提及，喜哥曾在觀看電視購物節目時，被節目中的優惠方案吸引，認為「買越多越划算」，便自行撥打購買專線下單。事後，喜哥妻子看見家用電話放在一旁，便詢問喜哥是否有來電；喜哥已全然忘記自己剛才曾訂購商品，告訴她沒有來電，口中卻不斷講述自己購買的方案。喜哥妻子發現事情不對勁後，立即聯繫業者並說明喜哥罹患失智症的情況，所幸對方理解並協助取消訂單。</p></span>
+                  <span class="object-card__hint">點一下翻回照片</span>
+                </span>
+              </span>
             </button>
-            <div class="object-card__detail"><p>喜哥妻子提及，喜哥曾在觀看電視購物節目時，被節目中的優惠方案吸引，認為「買越多越划算」，便自行撥打購買專線下單。事後，喜哥妻子看見家用電話放在一旁，便詢問喜哥是否有來電；喜哥已全然忘記自己剛才曾訂購商品，告訴她沒有來電，口中卻不斷講述自己購買的方案。喜哥妻子發現事情不對勁後，立即聯繫業者並說明喜哥罹患失智症的情況，所幸對方理解並協助取消訂單。</p></div>
           </article>
           <article class="object-card">
             <button class="object-card__button" type="button" data-object="03" aria-label="閱讀邱孟輝與藍色 T 恤的故事">
-              <span class="object-card__image"><img src="assets/objects/blue-shirt.jpg" alt="摺好的藍色 T 恤" loading="lazy"></span>
-              <span class="object-card__copy"><span class="object-card__number">03</span><span><span class="object-card__title">邱孟輝的藍色 T 恤</span><span>按照台北 101 的顏色順序辨認星期</span></span></span>
+              <span class="object-card__inner">
+                <span class="object-card__face object-card__face--front">
+                  <span class="object-card__image"><img src="assets/objects/blue-shirt.jpg" alt="摺好的藍色 T 恤" loading="lazy"></span>
+                  <span class="object-card__copy"><span class="object-card__number">03</span><span><span class="object-card__title">邱孟輝的藍色 T 恤</span><span>按照台北 101 的顏色順序辨認星期</span></span></span>
+                </span>
+                <span class="object-card__face object-card__face--back">
+                  <span class="object-card__back-head"><span class="object-card__number">03</span><span class="object-card__back-title">邱孟輝的藍色 T 恤</span></span>
+                  <span class="object-card__detail"><p>由於失智症會導致短期記憶衰退，邱孟輝也摸索出屬於自己的記憶方式。他參考台北 101 夜間燈光每天不同的顏色，依照「紅、橙、黃、綠、藍、靛、紫」的順序搭配每天穿著的衣服，藉此提醒自己今天是星期幾。他笑著說，這不是什麼特別的創意，只是向台北 101「借來」的小技巧，卻成了自己維持日常生活的重要依靠。邱孟輝的妻子也表示，失智症患者最常見的症狀就是短期記憶受損，同一個問題可能在短短幾分鐘內重複詢問好幾次，因此照顧者更需要以耐心與同理心陪伴，而不是因反覆提問感到不耐。</p></span>
+                  <span class="object-card__hint">點一下翻回照片</span>
+                </span>
+              </span>
             </button>
-            <div class="object-card__detail"><p>由於失智症會導致短期記憶衰退，邱孟輝也摸索出屬於自己的記憶方式。他參考台北 101 夜間燈光每天不同的顏色，依照「紅、橙、黃、綠、藍、靛、紫」的順序搭配每天穿著的衣服，藉此提醒自己今天是星期幾。他笑著說，這不是什麼特別的創意，只是向台北 101「借來」的小技巧，卻成了自己維持日常生活的重要依靠。邱孟輝的妻子也表示，失智症患者最常見的症狀就是短期記憶受損，同一個問題可能在短短幾分鐘內重複詢問好幾次，因此照顧者更需要以耐心與同理心陪伴，而不是因反覆提問感到不耐。</p></div>
           </article>
           <article class="object-card">
             <button class="object-card__button" type="button" data-object="04" aria-label="閱讀佳祥與花的故事">
-              <span class="object-card__image"><img src="assets/objects/flowers.jpg" alt="散步途中盛開的花" loading="lazy"></span>
-              <span class="object-card__copy"><span class="object-card__number">04</span><span><span class="object-card__title">佳祥散步途中看見的花</span><span>離開工作後，散步成為生活的一部分</span></span></span>
+              <span class="object-card__inner">
+                <span class="object-card__face object-card__face--front">
+                  <span class="object-card__image"><img src="assets/objects/flowers.jpg" alt="散步途中盛開的花" loading="lazy"></span>
+                  <span class="object-card__copy"><span class="object-card__number">04</span><span><span class="object-card__title">佳祥散步途中看見的花</span><span>離開工作後，散步成為生活的一部分</span></span></span>
+                </span>
+                <span class="object-card__face object-card__face--back">
+                  <span class="object-card__back-head"><span class="object-card__number">04</span><span class="object-card__back-title">佳祥散步途中看見的花</span></span>
+                  <span class="object-card__detail"><p>佳祥曾是一名八方雲集的計時人員，直到因為腦內疾病與小中風接受手術，加上血管狀況不佳，經常出現頭暈症狀，才不得不離開工作崗位。確診之後，他的生活節奏也變得緩慢許多。佳祥平時大多待在家中，喜歡賞花的他偶爾會到住家附近的公園散步。有時在妹妹的邀請下，他也願意一起出門逛街，或到較遠的地方走走。這些看似平凡的日常，如今都成為他珍惜的生活片段。</p></span>
+                  <span class="object-card__hint">點一下翻回照片</span>
+                </span>
+              </span>
             </button>
-            <div class="object-card__detail"><p>佳祥曾是一名八方雲集的計時人員，直到因為腦內疾病與小中風接受手術，加上血管狀況不佳，經常出現頭暈症狀，才不得不離開工作崗位。確診之後，他的生活節奏也變得緩慢許多。佳祥平時大多待在家中，喜歡賞花的他偶爾會到住家附近的公園散步。有時在妹妹的邀請下，他也願意一起出門逛街，或到較遠的地方走走。這些看似平凡的日常，如今都成為他珍惜的生活片段。</p></div>
           </article>
           <article class="object-card">
             <button class="object-card__button" type="button" data-object="05" aria-label="閱讀小華與零食的故事">
-              <span class="object-card__image"><img src="assets/objects/snacks.jpg" alt="賣場中的零食貨架" loading="lazy"></span>
-              <span class="object-card__copy"><span class="object-card__number">05</span><span><span class="object-card__title">小華面前的零食</span><span>判斷與行為認知逐漸受到影響</span></span></span>
+              <span class="object-card__inner">
+                <span class="object-card__face object-card__face--front">
+                  <span class="object-card__image"><img src="assets/objects/snacks.jpg" alt="賣場中的零食貨架" loading="lazy"></span>
+                  <span class="object-card__copy"><span class="object-card__number">05</span><span><span class="object-card__title">小華面前的零食</span><span>判斷與行為認知逐漸受到影響</span></span></span>
+                </span>
+                <span class="object-card__face object-card__face--back">
+                  <span class="object-card__back-head"><span class="object-card__number">05</span><span class="object-card__back-title">小華面前的零食</span></span>
+                  <span class="object-card__detail"><p>小華認為自己的生活與工作能力並未受到太大影響，甚至直言：「只要我自己不說，其他人都看不出來，我有失智症。」然而，疾病帶來的影響並非全然不可見。據志工轉述，小華的妻子曾提及，由於其他健康因素，小華被限制不能吃零食，卻曾在賣場內尚未完成結帳便拆開零食食用。事後面對店員詢問時，他否認自己曾有相關行為。這些情況顯示，失智症可能正逐漸影響小華的判斷能力與對自身行為的認知。</p></span>
+                  <span class="object-card__hint">點一下翻回照片</span>
+                </span>
+              </span>
             </button>
-            <div class="object-card__detail"><p>小華認為自己的生活與工作能力並未受到太大影響，甚至直言：「只要我自己不說，其他人都看不出來，我有失智症。」然而，疾病帶來的影響並非全然不可見。據志工轉述，小華的妻子曾提及，由於其他健康因素，小華被限制不能吃零食，卻曾在賣場內尚未完成結帳便拆開零食食用。事後面對店員詢問時，他否認自己曾有相關行為。這些情況顯示，失智症可能正逐漸影響小華的判斷能力與對自身行為的認知。</p></div>
           </article>
           <article class="object-card">
             <button class="object-card__button" type="button" data-object="06" aria-label="閱讀劉鳳蓮與尿布的故事">
-              <span class="object-card__image"><img src="assets/objects/diapers.jpg" alt="成人紙尿褲" loading="lazy"></span>
-              <span class="object-card__copy"><span class="object-card__number">06</span><span><span class="object-card__title">劉鳳蓮準備的尿布</span><span>伴侶開始失禁，也難以接受身體的改變</span></span></span>
+              <span class="object-card__inner">
+                <span class="object-card__face object-card__face--front">
+                  <span class="object-card__image"><img src="assets/objects/diapers.jpg" alt="成人紙尿褲" loading="lazy"></span>
+                  <span class="object-card__copy"><span class="object-card__number">06</span><span><span class="object-card__title">劉鳳蓮準備的尿布</span><span>伴侶開始失禁，也難以接受身體的改變</span></span></span>
+                </span>
+                <span class="object-card__face object-card__face--back">
+                  <span class="object-card__back-head"><span class="object-card__number">06</span><span class="object-card__back-title">劉鳳蓮準備的尿布</span></span>
+                  <span class="object-card__detail"><p>劉鳳蓮的丈夫林善仁確診後，家人為了維護他的自尊，總是盡可能讓他保有生活中的角色。例如劉鳳蓮會藉口自己提不動菜，邀請他一同到菜市場買菜，並不斷告訴他「有你真好」。然而，隨著病情惡化，林善仁開始出現失禁症狀。一次返家途中，林善仁突然說想上廁所，卻遲遲沒有邁開腳步，劉鳳蓮這才發現他早已尿濕褲子。即使如此，林善仁依然拒絕穿上尿布生活。劉鳳蓮表示，一位正值壯年的男性，要接受自己逐漸失去對身體的控制，遠比接受疾病本身更加困難。</p></span>
+                  <span class="object-card__hint">點一下翻回照片</span>
+                </span>
+              </span>
             </button>
-            <div class="object-card__detail"><p>劉鳳蓮的丈夫林善仁確診後，家人為了維護他的自尊，總是盡可能讓他保有生活中的角色。例如劉鳳蓮會藉口自己提不動菜，邀請他一同到菜市場買菜，並不斷告訴他「有你真好」。然而，隨著病情惡化，林善仁開始出現失禁症狀。一次返家途中，林善仁突然說想上廁所，卻遲遲沒有邁開腳步，劉鳳蓮這才發現他早已尿濕褲子。即使如此，林善仁依然拒絕穿上尿布生活。劉鳳蓮表示，一位正值壯年的男性，要接受自己逐漸失去對身體的控制，遠比接受疾病本身更加困難。</p></div>
-          </article>
-        </div>
-      </div>
-
-      <div class="object-modal" role="dialog" aria-modal="true" aria-labelledby="object-modal-title" hidden>
-        <button class="object-modal__backdrop" type="button" aria-label="關閉物件故事"></button>
-        <div class="object-modal__stage">
-          <button class="object-modal__close" type="button" aria-label="關閉">×</button>
-          <article class="object-modal__content">
-            <span class="object-modal__back-number"></span>
-            <h3 id="object-modal-title"></h3>
-            <div class="object-modal__body"></div>
           </article>
         </div>
       </div>
@@ -929,7 +1021,7 @@
     <section class="cdr" aria-labelledby="cdr-title">
       <div class="wrap reveal">
         <div class="cdr__intro">
-          <h2 id="cdr-title">CDR 量表：醫師如何看見失智程度？</h2>
+          <h2 id="cdr-title">CDR 量表：如何量化失智程度？</h2>
           <p>CDR（Clinical Dementia Rating，臨床失智評估量表）是臨床上用來評估失智程度的工具。它不是只看記憶力，而是從記憶、定向感、問題解決與判斷、社會事務處理、居家生活與愛好、自我照料能力六個面向，觀察一個人的認知與生活功能是否受到影響。</p>
           <p class="cdr__notice">這個互動區塊僅用來協助理解 CDR 量表的觀察面向，不能作為自我診斷或自行評分依據。正式 CDR 分級需由專業人員依臨床訪談與評估規則判斷。</p>
         </div>
@@ -1047,6 +1139,90 @@
         </div>
       </div>
     </section>
+
+    <section class="japan-support" id="japan-support">
+      <div class="wrap">
+        <div class="japan-support__intro reveal">
+          <span class="japan-support__eyebrow">日本年輕型失智症支援</span>
+          <h2>確診之後，支援如何一步步接上？</h2>
+          <p>以下內容根據日本厚生勞動省公開資料整理，將原始支援架構轉譯為「確診後的支援流程」與「三大支援面向」，重點不在單一角色，而在患者確診後如何進入多元支援、並隨生活情況持續調整。</p>
+        </div>
+
+        <div class="japan-support__flow" data-support-flow>
+          <article class="support-step">
+            <span class="support-step__num">1</span>
+            <h3>確診</h3>
+            <p>醫療院所診斷為年輕型失智症。</p>
+          </article>
+          <article class="support-step">
+            <span class="support-step__num">2</span>
+            <h3>初步評估</h3>
+            <p>評估患者的症狀、工作狀態、家庭經濟與生活需求。</p>
+          </article>
+          <article class="support-step">
+            <span class="support-step__num">3</span>
+            <h3>制定支援方向</h3>
+            <p>依照個別狀況，判斷優先處理工作、生活或家屬支持。</p>
+          </article>
+          <article class="support-step">
+            <span class="support-step__num">4</span>
+            <h3>進入支援服務</h3>
+            <p>連結就業支援、生活支援、家屬支援等資源。</p>
+          </article>
+          <article class="support-step">
+            <span class="support-step__num">5</span>
+            <h3>持續追蹤與調整</h3>
+            <p>隨病程與生活狀況變化，重新調整支援內容。</p>
+          </article>
+        </div>
+
+        <div class="support-panels">
+          <article class="support-panel support-panel--job reveal">
+            <h3 class="support-panel__title">就業支援</h3>
+            <p class="support-panel__desc">從留任、轉職到福祉性就業。</p>
+            <div class="support-panel__group">
+              <strong>原職場留任</strong>
+              <p>調整工作內容、工時與環境。</p>
+            </div>
+            <div class="support-panel__group">
+              <strong>轉職／再就業</strong>
+              <p>連結就業服務與訓練資源。</p>
+            </div>
+            <div class="support-panel__group">
+              <strong>福祉性就業</strong>
+              <p>一般職場困難時，轉向 A 型或 B 型支持。</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="japan-employment-copy reveal">
+          <h3>日本的支援怎麼接住年輕失智症患者？</h3>
+          <p>日本在支援的方向會分成就業支援、生活支援和家屬支援。就業支援將評估患者適合留在原職場、轉職或是進入福祉性就業；生活支援則是提供社區活動、日間照護和生活服務等；而家屬支援則會提供家屬諮商、心理支持和福利與經濟支援。然而台灣目前只停留在生活和家庭支援方面，就業支援部分仍還在規劃中。</p>
+          <p>日本的年輕型失智症就業支援，重點不是讓患者確診後立刻離開職場，而是先評估他還能做什麼。若患者仍有工作能力，會優先協助留在原職場，例如調整工作內容、減少工時、改變職務分配，或讓同事與主管了解如何配合。若原本的工作已經太困難，則會轉向公共就業服務、職業訓練或障礙者就業，協助患者找到比較符合目前能力的工作。</p>
+          <p>當患者難以進入一般職場時，日本還有福祉性就業制度，常見的是 A 型與 B 型。A 型適合仍具備一定工作能力、能在支持下穩定上下班的人，通常會簽訂雇用契約，收入也較接近正式工作。B 型則適合暫時無法簽雇用契約、需要更彈性節奏的人，工作內容通常較簡單，收入多為工賃，重點不只是賺錢，而是維持生活節奏、社會參與與自我角色。</p>
+          <p>A 型與 B 型的差別，並不是按照患者是哪一種失智症來分，而是按照他目前的功能狀態判斷。評估時會看患者的認知能力、體力、生活自理能力、能否固定出勤、是否能理解工作流程、是否需要高度協助等。簡單來說，若患者還能穩定工作，就可能進入 A 型；若需要更彈性、支持密度更高的安排，就比較適合 B 型。這套制度的核心，是讓年輕型失智症患者在能力逐漸變化的過程中，仍能保有工作、生活節奏與社會連結。</p>
+        </div>
+
+        <div class="japan-case reveal">
+          <h4>日本案例：Kizunaya 年輕型失智症農場</h4>
+          <p>奈良地區的 Kizunaya 農場結合日照與輕度農務，讓年輕型失智者在可負擔的工作節奏中重新參與生活。現場觀察中，有患者一開始只想休息，等精神恢復後才加入活動，還在同伴鼓勵下唱起演歌、一起野餐。這樣的安排重點不只是完成工作，而是讓人在被尊重的節奏裡，慢慢找回自尊與參與感。</p>
+        </div>
+
+        <div class="japan-video reveal">
+          <div class="japan-video__placeholder" aria-hidden="true">
+            <span class="japan-video__play"></span>
+            <span class="japan-video__label">影片即將放置</span>
+          </div>
+          <div class="japan-video__copy">
+            <h3>日本京都的工作支持現場，與台灣的對照</h3>
+            <p>此處將放置日本京都關於年輕型失智症工作支持的影片，並與台灣現行支持方式進行比較。</p>
+            <p>日本的年輕型失智症支援較強調患者確診後仍能保有工作與社會角色，透過職場調整、福祉性就業與社區參與，讓患者在能力變化中持續被看見。台灣目前的支持多集中於醫療診斷與長照資源，對於仍在工作年齡、尚未完全失能的患者，職場轉銜與工作支持仍有補強空間。</p>
+          </div>
+        </div>
+
+        <p class="japan-support__source">資料來源：日本厚生勞動省《若年性認知症支援コーディネーターのためのサポートブック》及相關公開資料整理。</p>
+      </div>
+    </section>
   </main>
 
   <footer>
@@ -1071,6 +1247,26 @@
       });
     }, { threshold: .12 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    const prefersReducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    document.querySelectorAll('[data-support-flow]').forEach(flow => {
+      const steps = [...flow.querySelectorAll('.support-step')];
+      if (!steps.length) return;
+      if (prefersReducedMotion) {
+        steps.forEach(step => step.classList.add('is-visible'));
+        return;
+      }
+      const flowObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          steps.forEach((step, index) => {
+            setTimeout(() => step.classList.add('is-visible'), index * 180);
+          });
+          flowObserver.unobserve(entry.target);
+        });
+      }, { threshold: .22 });
+      flowObserver.observe(flow);
+    });
 
     document.querySelectorAll('.pov-video__frame iframe[data-src]').forEach(iframe => {
       const frame = iframe.closest('.pov-video__frame');
@@ -1322,6 +1518,7 @@
     document.querySelectorAll('.story--video').forEach(story => {
       const video = story.querySelector('video');
       const videoFrame = story.querySelector('.story-video');
+      const poster = story.querySelector('.story-video__poster');
       const playButton = story.querySelector('.story-video__play');
       const transcript = story.querySelector('.story-transcript__lines');
       const lines = transcript ? [...transcript.querySelectorAll('span')] : [];
@@ -1360,6 +1557,20 @@
 
       let cues = buildCues();
       let transcriptFrame = null;
+      const buildPoster = () => {
+        if (!poster || !video.videoWidth || !video.videoHeight) return;
+        try {
+          const canvas = document.createElement('canvas');
+          canvas.width = video.videoWidth;
+          canvas.height = video.videoHeight;
+          const context = canvas.getContext('2d');
+          context.drawImage(video, 0, 0, canvas.width, canvas.height);
+          poster.style.backgroundImage = `linear-gradient(180deg, rgba(11,20,26,.18), rgba(11,20,26,.38)), url(${canvas.toDataURL('image/jpeg', .86)})`;
+          poster.classList.add('is-ready');
+        } catch (error) {
+          poster.classList.add('is-ready');
+        }
+      };
       const updateTranscript = () => {
         const time = video.currentTime || 0;
         cues.forEach(({ line, start, end }) => {
@@ -1379,6 +1590,7 @@
       };
       const syncPlayButton = () => {
         videoFrame?.classList.toggle('is-playing', !video.paused && !video.ended);
+        videoFrame?.classList.toggle('has-started', video.currentTime > .05 || !video.paused);
       };
 
       playButton?.addEventListener('click', () => {
@@ -1392,6 +1604,7 @@
         cues = buildCues();
         updateTranscript();
       });
+      video.addEventListener('loadeddata', buildPoster, { once: true });
       video.addEventListener('timeupdate', updateTranscript);
       video.addEventListener('seeked', updateTranscript);
       video.addEventListener('play', () => {
@@ -1445,46 +1658,13 @@
     }, { threshold: .35 });
     dataCounterObserver.observe(document.querySelector('.data-grid'));
 
-    const objectModal = document.querySelector('.object-modal');
-    const objectModalTitle = objectModal.querySelector('.object-modal__content h3');
-    const objectModalNumber = objectModal.querySelector('.object-modal__back-number');
-    const objectModalBody = objectModal.querySelector('.object-modal__body');
-    const objectModalClose = objectModal.querySelector('.object-modal__close');
-    let lastObjectTrigger = null;
-
-    const openObjectModal = card => {
-      const trigger = card.querySelector('.object-card__button');
-      const title = card.querySelector('.object-card__title').textContent;
-      const number = card.querySelector('.object-card__number').textContent;
-      const detail = card.querySelector('.object-card__detail').innerHTML;
-      lastObjectTrigger = trigger;
-      objectModalTitle.textContent = title;
-      objectModalNumber.textContent = number;
-      objectModalBody.innerHTML = detail;
-      objectModal.hidden = false;
-      document.body.style.overflow = 'hidden';
-      requestAnimationFrame(() => {
-        objectModal.classList.add('is-open');
-        objectModalClose.focus();
-      });
-    };
-
-    const closeObjectModal = () => {
-      objectModal.classList.remove('is-open');
-      document.body.style.overflow = '';
-      setTimeout(() => {
-        objectModal.hidden = true;
-        if (lastObjectTrigger) lastObjectTrigger.focus();
-      }, reduceMotion ? 0 : 250);
-    };
-
     document.querySelectorAll('.object-card').forEach(card => {
-      card.querySelector('.object-card__button').addEventListener('click', () => openObjectModal(card));
-    });
-    objectModal.querySelector('.object-modal__backdrop').addEventListener('click', closeObjectModal);
-    objectModalClose.addEventListener('click', closeObjectModal);
-    addEventListener('keydown', event => {
-      if (event.key === 'Escape' && !objectModal.hidden) closeObjectModal();
+      const button = card.querySelector('.object-card__button');
+      button.setAttribute('aria-pressed', 'false');
+      button.addEventListener('click', () => {
+        const isFlipped = card.classList.toggle('is-flipped');
+        button.setAttribute('aria-pressed', String(isFlipped));
+      });
     });
 
     const brainSteps = [...document.querySelectorAll('.brain-step')];
