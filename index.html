@@ -165,7 +165,7 @@
     .photo-break { position: relative; height: min(72vw, 820px); margin: 0; overflow: hidden; background: var(--ink); }
     .photo-break img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .photo-break::after { content: ""; position: absolute; inset: 55% 0 0; background: linear-gradient(transparent, rgba(10,20,27,.72)); pointer-events: none; }
-    .photo-break figcaption, .news-photo figcaption { position: absolute; z-index: 2; right: max(4vw,24px); bottom: 20px; left: max(4vw,24px); color: rgba(255,255,255,.88); font-size: 13px; font-weight: 400; text-align: left; text-shadow: 0 1px 5px rgba(0,0,0,.5); }
+    .photo-break figcaption { position: absolute; z-index: 2; right: max(4vw,24px); bottom: 20px; left: max(4vw,24px); color: rgba(255,255,255,.88); font-size: 13px; font-weight: 400; text-align: left; text-shadow: 0 1px 5px rgba(0,0,0,.5); }
     .photo-break .photo-break__story-card { position: absolute; z-index: 3; top: 50%; left: max(6vw, 28px); width: min(620px, calc(100% - 56px)); padding: clamp(28px,4vw,52px); color: var(--white); background: rgba(18,43,58,.84); border-left: 5px solid var(--yellow); transform: translateY(50px); opacity: 0; backdrop-filter: blur(5px); transition: opacity .9s ease, transform .9s ease; }
     .photo-break .photo-break__story-card.visible { transform: translateY(-50%); opacity: 1; }
     .photo-break__story-card p { margin: 0; font: 600 clamp(22px,3vw,36px)/1.65 var(--serif); letter-spacing: -.015em; }
@@ -182,11 +182,12 @@
     .photo-break--young figcaption { top: calc(100vh - 44px); bottom: auto; }
     .photo-break__young-note { position: absolute; z-index: 3; top: 132vh; left: max(6vw, 28px); width: min(520px, calc(100% - 56px)); padding: clamp(22px, 2.6vw, 30px); color: rgba(255,255,255,.94); background: rgba(14,37,58,.78); border: 1px solid rgba(255,255,255,.12); box-shadow: 0 16px 44px rgba(0,0,0,.22); backdrop-filter: blur(4px); }
     .photo-break__young-note p { margin: 0; font-size: clamp(18px, 1.6vw, 22px); font-weight: 600; line-height: 1.9; }
-    .photo-duo { display: grid; grid-template-columns: 1.08fr .92fr; gap: 12px; padding: 12px; background: var(--ink); }
-    .news-photo { position: relative; min-height: 520px; margin: 0; overflow: hidden; background: var(--ink); }
-    .news-photo img { width: 100%; height: 100%; display: block; object-fit: cover; }
-    .news-photo::after { content: ""; position: absolute; inset: 58% 0 0; background: linear-gradient(transparent, rgba(10,20,27,.68)); }
-
+    .photo-break--quote { height: 100vh; min-height: 720px; }
+    .photo-break--quote::after { inset: 0; background: linear-gradient(90deg, rgba(10,22,31,.16), rgba(10,22,31,.02) 58%), linear-gradient(180deg, rgba(10,22,31,.08), rgba(10,22,31,.28)); }
+    .photo-break--quote img { object-position: center; }
+    .photo-break--caregiver img { object-position: 58% center; }
+    .photo-break__quote-card { position: absolute; z-index: 3; left: max(6vw, 28px); bottom: max(8vh, 48px); width: min(720px, calc(100% - 56px)); padding: clamp(28px,4vw,52px); color: var(--white); background: rgba(14,37,58,.78); border-left: 5px solid var(--yellow); box-shadow: 0 18px 48px rgba(0,0,0,.25); backdrop-filter: blur(4px); }
+    .photo-break__quote-card p { margin: 0; font: 800 clamp(24px,3vw,42px)/1.65 var(--serif); letter-spacing: 0; }
     .data { color: white; background: var(--ink); }
     .data__lead { max-width: 780px; color: rgba(255,255,255,.76); font-size: clamp(20px, 2vw, 23px); }
     .data__lead p { margin: 0 0 .9em; line-height: 1.9; }
@@ -272,6 +273,7 @@
     .stories__intro { width: min(760px, 100%); margin-bottom: 52px; }
     .stories__intro .lead { margin: 0; font-size: clamp(20px, 2vw, 23px); line-height: 1.9; }
     .stories__privacy { margin: 14px 0 0; color: rgba(23,43,58,.56); font-size: 13px; line-height: 1.8; }
+    .caregiver-testimony { padding: 92px 0 110px; background: var(--paper); }
     .story-list { display: grid; gap: 82px; }
     .story { width: min(680px, 100%); margin: auto; padding-top: 42px; border-top: 1px solid var(--line); }
     .story:nth-child(even) { width: min(680px, 100%); }
@@ -289,12 +291,15 @@
     .story__copy p { margin: 0 0 1.35em; color: #2f3133; font-size: 20px; font-weight: 400; line-height: 2; }
     .story__quote { margin: 22px 0; font: 600 clamp(18px,2vw,25px)/1.65 var(--serif); }
     .story__meta { display: flex; justify-content: space-between; gap: 20px; padding-top: 15px; border-top: 1px solid var(--line); font-size: 12px; }
-    .story--video { width: 100%; }
+    .story--video, .story--video:nth-child(even) { width: 100%; }
     .story--video .story__copy { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-areas: "transcript video"; gap: clamp(24px, 4vw, 54px); align-items: stretch; }
-    .story--video .story-transcript { grid-area: transcript; }
+    .story--video .story-transcript,
+    .story-transcript-shell { grid-area: transcript; }
+    .story-transcript-shell { min-width: 0; }
     .story--video .story-video { grid-area: video; }
     .story--xiaohua .story__copy { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-areas: "transcript video"; }
     .story--xige .story__copy { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-areas: "transcript video"; }
+    .story--xiaowei .story__copy { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-areas: "transcript video"; }
     .story-video { position: relative; min-width: 0; height: 560px; margin: 0; overflow: hidden; background: #0b141a; }
     .story-video video { width: 100%; height: 100%; display: block; object-fit: cover; }
     .story-video__poster { position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(11,20,26,.18), rgba(11,20,26,.38)); background-size: cover; background-position: center; transition: opacity .28s ease; }
@@ -309,9 +314,10 @@
     .story-transcript { min-width: 0; height: 560px; display: flex; flex-direction: column; padding: clamp(28px, 3.4vw, 42px); overflow: hidden; color: var(--white); background: rgba(9,14,18,.92); }
     .story-transcript .tag { color: var(--yellow); border-color: rgba(231,196,58,.55); }
     .story-transcript h3 { margin: 0 0 20px; color: var(--white); font-size: clamp(28px,3.2vw,40px); }
-    .story-transcript__note { margin: 18px 0 0; padding-left: 16px; color: rgba(255,255,255,.66); border-left: 3px solid var(--yellow); font-size: 13px; line-height: 1.8; }
+    .story-transcript__note { margin: 14px 0 0; padding-left: 16px; color: rgba(23,43,58,.62); border-left: 3px solid var(--yellow); font-size: 13px; line-height: 1.8; }
     .story-transcript__lines { flex: 1; margin: 4px 0 0; padding: clamp(22px, 3vw, 36px); overflow: hidden auto; border: 1px solid rgba(255,255,255,.12); background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(0,0,0,.2)); scrollbar-width: thin; scrollbar-color: rgba(231,196,58,.45) rgba(255,255,255,.08); }
-    .story-transcript__lines span { --fill: 0%; display: block; margin-bottom: .62em; color: transparent; background: linear-gradient(90deg, rgba(255,255,255,.96) 0 var(--fill), rgba(255,255,255,.24) var(--fill) 100%); -webkit-background-clip: text; background-clip: text; font-size: clamp(18px,1.8vw,24px); font-weight: 800; line-height: 1.8; }
+    .story-transcript__lines span { --fill: 0%; display: block; margin-bottom: .62em; color: transparent; opacity: .58; background: linear-gradient(90deg, rgba(255,255,255,.98) 0 var(--fill), rgba(255,255,255,.24) var(--fill) 100%); -webkit-background-clip: text; background-clip: text; font-size: clamp(18px,1.8vw,24px); font-weight: 800; line-height: 1.8; transform: translateX(0); filter: none; transition: opacity .34s ease, transform .34s ease, filter .34s ease; }
+    .story-transcript__lines span.is-active { opacity: 1; transform: translateX(5px); filter: drop-shadow(0 6px 18px rgba(255,255,255,.12)); }
     .story-transcript__lines span:last-child { margin-bottom: 0; }
 
     .treatment { padding-top: 90px; padding-bottom: 92px; background: var(--paper); }
@@ -370,7 +376,6 @@
     .problem-grid { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(280px, .75fr) minmax(420px, 1fr); gap: clamp(48px, 7vw, 110px); align-items: center; }
     .problem__intro h2 { color: var(--white); }
     .problem__intro .lead { color: rgba(255,255,255,.86); line-height: 1.9; }
-    .problem__tag { display: inline-block; margin-bottom: 24px; padding: 6px 14px; color: var(--ink); background: var(--yellow); border-radius: 99px; font-size: 12px; font-weight: 700; letter-spacing: .08em; }
     .problem__copy { width: min(680px, 100%); color: rgba(255,255,255,.9); }
     .problem__copy p { margin: 0 0 1.35em; color: rgba(255,255,255,.88); font-size: 20px; font-weight: 400; line-height: 1.95; }
     .problems { counter-reset: item; }
@@ -438,9 +443,11 @@
     .cdr__aspect--community { grid-area: community; }
     .cdr__aspect--home { grid-area: home; }
     .cdr__aspect--care { grid-area: care; }
-    .cdr__footer { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 30px; padding-top: 24px; border-top: 1px solid rgba(23,43,58,.16); }
-    .cdr__footer p { margin: 0; color: rgba(23,43,58,.66); font-size: 12px; line-height: 1.8; }
-    .cdr__footer strong { color: var(--ink); }
+    .cdr__explain { grid-column: 1 / -1; margin: 6px 0 0; padding-top: 24px; border-top: 1px solid rgba(23,43,58,.14); color: #3f4b55; font-size: 20px; line-height: 1.95; }
+    .cdr__explain strong { color: var(--ink); }
+    .cdr__footer { margin-top: 16px; }
+    .cdr__footer p { margin: 0; color: rgba(23,43,58,.55); font-size: 12px; line-height: 1.8; }
+    .cdr__footer strong { color: rgba(23,43,58,.72); }
 
     .upward { background: var(--paper); }
     .upward-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
@@ -504,9 +511,12 @@
     .japan-employment-copy h3 { margin: 0 0 14px; color: var(--ink); font-size: clamp(26px, 2.6vw, 34px); line-height: 1.35; }
     .japan-employment-copy p { margin: 0; color: #53606b; font-size: 20px; line-height: 2; }
     .japan-employment-copy p + p { margin-top: 14px; }
-    .japan-case { width: min(760px, 100%); margin-top: 22px; padding: 22px 24px; border-left: 4px solid rgba(83,130,176,.52); background: rgba(233,240,246,.72); }
-    .japan-case h4 { margin: 0 0 10px; color: var(--ink); font-size: 20px; line-height: 1.4; }
-    .japan-case p { margin: 0; color: #53606b; font-size: 19px; line-height: 1.95; }
+    .japan-case { position: relative; width: 100vw; min-height: 100vh; display: grid; align-items: center; margin: 54px 0 0 calc(50% - 50vw); padding: clamp(60px, 9vw, 110px) max(6vw, 28px); overflow: hidden; background: var(--ink); }
+    .japan-case img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; object-fit: cover; }
+    .japan-case::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,22,31,.45), rgba(10,22,31,.1) 62%), linear-gradient(180deg, rgba(10,22,31,.12), rgba(10,22,31,.34)); pointer-events: none; }
+    .japan-case__card { position: relative; z-index: 2; width: min(980px, 100%); padding: clamp(30px, 4.4vw, 58px); color: var(--ink); border-left: 5px solid rgba(83,130,176,.8); background: rgba(239,247,250,.84); box-shadow: 0 24px 70px rgba(0,0,0,.24); backdrop-filter: blur(4px); }
+    .japan-case h4 { margin: 0 0 20px; color: var(--ink); font-size: clamp(28px, 3.6vw, 42px); line-height: 1.35; }
+    .japan-case p { margin: 0; color: #53606b; font-size: clamp(22px, 2.35vw, 32px); font-weight: 700; line-height: 1.9; }
     .kyoto-scroll-video { width: 100vw; height: 330vh; margin: 46px calc(50% - 50vw) 0; color: var(--white); background: var(--ink); }
     .kyoto-scroll-video__sticky { position: sticky; top: 0; height: 100vh; min-height: 680px; overflow: hidden; background: #0b141a; }
     .kyoto-scroll-video__media { position: absolute; inset: 0; width: 100%; height: 100%; display: block; object-fit: cover; }
@@ -551,6 +561,10 @@
       .support-step { min-height: 0; }
       .support-step::after { top: auto; right: auto; bottom: -15px; left: 50%; width: 1px; height: 16px; transform: translateX(-50%); }
       .support-step::before { top: auto; right: auto; bottom: -15px; left: calc(50% - 4px); transform: rotate(135deg); }
+      .japan-case { min-height: 78vh; margin-top: 38px; padding: 42px 24px; }
+      .japan-case__card { padding: 24px; }
+      .japan-case h4 { font-size: 26px; }
+      .japan-case p { font-size: 19px; line-height: 1.85; }
       .kyoto-scroll-video { height: 300vh; margin-top: 34px; }
       .kyoto-scroll-video__sticky { min-height: 100svh; }
       .kyoto-scroll-video__content { width: min(100% - 36px, 680px); padding-top: 82px; padding-bottom: 32px; gap: 26px; }
@@ -582,7 +596,8 @@
       .cdr__chart { width: min(330px,86vw); margin: 0 auto 18px; }
       .cdr__aspect { min-height: 0; padding: 16px 0; border: 0; border-top: 1px solid rgba(23,43,58,.13); border-radius: 0; background: transparent; text-align: center; }
       .cdr__aspect p { font-size: 16px; }
-      .cdr__footer { grid-template-columns: 1fr; gap: 12px; margin-top: 32px; }
+      .cdr__explain { margin-top: 18px; padding-top: 20px; font-size: 18px; line-height: 1.9; }
+      .cdr__footer { margin-top: 14px; }
       .journey { height: 320vh; }
       .stat + .stat { border-left: 0; }
       .brain-scroll { display: block; }
@@ -604,6 +619,7 @@
       .cube-drawing__grid { grid-template-columns: 1fr; gap: 22px; }
       .cube-results__images { grid-template-columns: 1fr; }
       .support-metrics { grid-template-columns: 1fr; }
+      .caregiver-testimony { padding: 62px 0 78px; }
       .story, .story:nth-child(even) { width: 100%; }
       .story__copy, .story:nth-child(even) .story__copy { margin: 0; padding: 0; }
       .story--video .story__copy { grid-template-columns: 1fr; gap: 0; }
@@ -620,8 +636,9 @@
       .photo-break--young { height: 185vh; min-height: 1100px; }
       .photo-break--young .photo-break__young-note { top: 108vh; right: 24px; left: 24px; width: auto; padding: 18px 20px; }
       .photo-break--young .photo-break__young-note p { font-size: 18px; line-height: 1.85; }
-      .photo-duo { grid-template-columns: 1fr; }
-      .news-photo { min-height: 62vh; }
+      .photo-break--quote { height: 82vh; min-height: 560px; }
+      .photo-break__quote-card { right: 24px; bottom: 28px; left: 24px; width: auto; padding: 22px 24px; }
+      .photo-break__quote-card p { font-size: 22px; line-height: 1.65; }
       .care-photo { min-height: 72vh; margin: 0 -24px; }
       .objects__heading { display: block; }
       .objects__instruction { display: inline-block; margin: 16px 0 0; }
@@ -681,7 +698,7 @@
         </div>
         <div class="data-grid">
           <article class="stat">
-            <strong class="stat__num"><span class="count-up" data-target="1.5" data-decimals="1">1.5</span><span style="font-size:.35em">萬人</span></strong>
+            <strong class="stat__num"><span class="count-up" data-target="1.2" data-decimals="1">1.2</span><span style="font-size:.35em">萬人</span></strong>
             <p>目前台灣年輕型失智症患者估計人數</p>
           </article>
           <article class="stat">
@@ -846,31 +863,33 @@
               </div>
               <figure class="story-video">
                 <span class="story-video__poster" aria-hidden="true"></span>
-                <video src="assets/videos/zhengyu.mp4" controls loop preload="metadata" playsinline></video>
+                <video src="assets/videos/zhengyu.mp4" controls preload="metadata" playsinline></video>
                 <button class="story-video__play" type="button" aria-label="播放小華影片"></button>
               </figure>
             </div>
           </article>
           <article class="story story--video story--xige reveal">
             <div class="story__copy">
-              <div class="story-transcript">
-                <h3>喪失語言能力：喜哥</h3>
-                <p class="story-transcript__lines" data-first-cue-duration="3" aria-label="喜哥訪談逐字稿">
-                  <span style="--i:0">我是喜哥（化名），年齡61歲。</span>
-                  <span style="--i:1">XXXXXX</span>
-                  <span style="--i:2">（敲敲敲敲敲敲）</span>
-                  <span style="--i:3">（哭）</span>
-                </p>
+              <div class="story-transcript-shell">
+                <div class="story-transcript">
+                  <h3>喪失語言能力：喜哥</h3>
+                  <p class="story-transcript__lines" data-first-cue-duration="3" aria-label="喜哥訪談逐字稿">
+                    <span style="--i:0">我是喜哥（化名），年齡61歲。</span>
+                    <span style="--i:1">XXXXXX</span>
+                    <span style="--i:2">（敲敲敲敲敲敲）</span>
+                    <span style="--i:3">（哭）</span>
+                  </p>
+                </div>
                 <p class="story-transcript__note">附註：患者無法用正常語言表達自己所想，有時會以不雅字眼、敲打桌面和哭來表達情緒。</p>
               </div>
               <figure class="story-video">
                 <span class="story-video__poster" aria-hidden="true"></span>
-                <video src="assets/videos/xige.mp4" controls loop preload="metadata" playsinline></video>
+                <video src="assets/videos/xige.mp4" controls preload="metadata" playsinline></video>
                 <button class="story-video__play" type="button" aria-label="播放喜哥影片"></button>
               </figure>
             </div>
           </article>
-          <article class="story story--video story--xiaohua reveal">
+          <article class="story story--video story--xiaowei reveal">
             <div class="story__copy">
               <div class="story-transcript">
                 <h3>被鄰居排擠：小威</h3>
@@ -883,7 +902,7 @@
               </div>
               <figure class="story-video">
                 <span class="story-video__poster" aria-hidden="true"></span>
-                <video src="assets/videos/jiaxiang-2.mp4" controls loop preload="metadata" playsinline></video>
+                <video src="assets/videos/jiaxiang-2.mp4" controls preload="metadata" playsinline></video>
                 <button class="story-video__play" type="button" aria-label="播放小威影片"></button>
               </figure>
             </div>
@@ -1002,18 +1021,44 @@
               </span>
             </button>
           </article>
-        </div>
-      </div>
-    </section>
+	        </div>
+	      </div>
+	    </section>
 
-    <section class="problem" id="support">
+	    <figure class="photo-break photo-break--quote photo-break--caregiver">
+	      <img src="assets/photos/caregiver-emotion.jpg" alt="照顧者在據點活動中拭淚" loading="lazy">
+	      <div class="photo-break__quote-card">
+	        <p>年輕型失智症照顧者劉鳳蓮表示，原本先生承諾要照顧他一輩子，確診後換成他來照顧先生。</p>
+	      </div>
+	    </figure>
+
+	    <section class="caregiver-testimony" aria-label="照顧者訪談影片">
+	      <div class="wrap">
+	        <article class="story story--video story--caregiver reveal">
+	          <div class="story__copy">
+	            <div class="story-transcript">
+	              <h3>照顧者的日常：喜嫂</h3>
+	              <p class="story-transcript__lines" data-advance-from="所以，" data-advance-seconds="1.6" aria-label="喜嫂訪談逐字稿">
+	                <span>我是喜哥（化名）的妻子，我叫喜嫂（化名）56歲。說白了就是很困難，因爲每個人都會看著他，因爲他會唱XXX（髒話）的歌。他會把他（歌）改編。對，所以，然後他的聲音又很大聲，所以每個人都會看著他。衣服還好，可能就前後穿錯，要不然就是褲子，他可能會穿錯邊、或者是拉不好、隨便拉一下。有時候會有點像那種喝醉酒的，就會穿著褲子、沒有穿衣服、衣服脫掉然後在那個家裡走來走去。我說，你幹嘛，他也答不出來。你看有時候這樣很好玩，但有時候又很生氣，你會覺得，你的生活怎麽變成這樣。</span>
+	              </p>
+	            </div>
+	            <figure class="story-video">
+	              <span class="story-video__poster" aria-hidden="true"></span>
+	              <video src="assets/videos/xige-wife-2.mp4" controls preload="metadata" playsinline></video>
+	              <button class="story-video__play" type="button" aria-label="播放喜嫂影片"></button>
+	            </figure>
+	          </div>
+	        </article>
+	      </div>
+	    </section>
+
+	    <section class="problem" id="support">
       <div class="wrap problem-grid">
         <div class="problem__intro reveal">
-          <span class="problem__tag">照顧資源</span>
           <h2>照顧資源有限，<br>收案也有門檻</h2>
         </div>
         <div class="problem__copy reveal">
-          <p>目前全台專門提供年輕型失智症服務的據點相當有限，主要僅有台北 Young 記憶會館與台中向上清活小屋兩處。據點透過分享對話、繪畫拼貼、觀影、瑜珈、音樂等課程，提供患者交流與維持認知功能的機會，也協助建立規律生活與人際互動。</p>
+	          <p>照顧者平時花了許多心力在年輕型失智症患者身上，因此也會想要求助於專門照顧年輕型失智症患者的機構來分散負擔。然而，目前全台專門提供年輕型失智症服務的據點相當有限，主要僅有台北 Young 記憶會館與台中向上清活小屋兩處。據點透過分享對話、繪畫拼貼、觀影、瑜珈、音樂等課程，提供患者交流與維持認知功能的機會，也協助建立規律生活與人際互動。</p>
           <blockquote class="support-quote">「現在 CDR 一定要是 0.5 到 1 分才能收，如果是 2 分就不能收；另外，如果長照等級超過 3（包含 3），我們也沒辦法服務、不能收案。」<cite>王姿瓔說。</cite></blockquote>
           <p>然而，年輕型失智症患者的需求，與高齡失智者並不相同。相較於高齡患者多以生活照顧為主，年輕患者通常仍具備一定生活自理能力，更需要的是維持社交參與、建立生活重心，以及延緩功能退化，因此據點設計的服務內容也有所不同。</p>
           <p>除了據點數量有限，收案資格也成為患者取得服務的一大門檻。向上基金會長者服務督導王姿瓔表示，目前患者臨床失智症評估量表（Clinical Dementia Rating, CDR）須介於 0.5 至 1 分才能收案；若評估為 2 分以上，或長照等級達 3 級（含）以上，便無法接受服務。</p>
@@ -1042,8 +1087,8 @@
               <span class="cdr__tick" data-cdr-level="3"><strong>3</strong><small>建議專業照護</small></span>
             </div>
           </div>
-          <div class="cdr__stage" aria-live="polite">
-            <div class="cdr__chart" aria-label="CDR 六面向能力受影響程度雷達圖">
+	          <div class="cdr__stage" aria-live="polite">
+	            <div class="cdr__chart" aria-label="CDR 六面向能力受影響程度雷達圖">
               <p class="cdr__slider-note">上下拖曳紫色圓點切換失智等級</p>
               <svg viewBox="0 0 260 260" role="img" aria-labelledby="cdr-chart-title">
                 <title id="cdr-chart-title">CDR 六邊形能力圖</title>
@@ -1061,44 +1106,35 @@
             <div class="cdr__aspect cdr__aspect--orientation" data-cdr-key="orientation"><h3>定向感</h3><p></p></div>
             <div class="cdr__aspect cdr__aspect--judgment" data-cdr-key="judgment"><h3>問題解決與判斷</h3><p></p></div>
             <div class="cdr__aspect cdr__aspect--community" data-cdr-key="community"><h3>社會事務處理</h3><p></p></div>
-            <div class="cdr__aspect cdr__aspect--home" data-cdr-key="home"><h3>居家生活與愛好</h3><p></p></div>
-            <div class="cdr__aspect cdr__aspect--care" data-cdr-key="care"><h3>自我照料能力</h3><p></p></div>
-          </div>
-        </div>
-        <div class="cdr__footer">
-          <p><strong>說明：</strong>CDR 從 0（無失智）到 3（嚴重）共五個等級。數值越高，代表在該能力面向受到的影響越明顯，日常生活需要的協助也越多。</p>
-          <p><strong>資料來源：</strong>整理自高雄榮總《臨床失智評估量表分期定義》與 CDR 臨床評估概念。</p>
-        </div>
+	            <div class="cdr__aspect cdr__aspect--home" data-cdr-key="home"><h3>居家生活與愛好</h3><p></p></div>
+	            <div class="cdr__aspect cdr__aspect--care" data-cdr-key="care"><h3>自我照料能力</h3><p></p></div>
+	          </div>
+	          <p class="cdr__explain"><strong>說明：</strong>CDR 從 0（無失智）到 3（嚴重）共五個等級。數值越高，代表在該能力面向受到的影響越明顯，日常生活需要的協助也越多。</p>
+	        </div>
+	        <div class="cdr__footer">
+	          <p><strong>資料來源：</strong>整理自高雄榮總《臨床失智評估量表分期定義》與 CDR 臨床評估概念。</p>
+	        </div>
       </div>
     </section>
 
-    <div class="photo-duo" aria-label="據點生活紀實">
-      <figure class="news-photo reveal">
-        <img src="assets/photos/member-closeup.jpg" alt="失智症患者在據點課程中表達情緒" loading="lazy">
-        <figcaption>語言與情緒的改變，常使患者在日常互動中被誤解。攝影／採訪團隊</figcaption>
-      </figure>
-      <figure class="news-photo reveal">
-        <img src="assets/photos/caregiver-emotion.jpg" alt="一名女性在據點活動中拭淚" loading="lazy">
-        <figcaption>疾病不只改變患者，也讓家屬長期承受照顧壓力。攝影／採訪團隊</figcaption>
-      </figure>
-    </div>
-
-    <figure class="photo-break reveal">
-      <img src="assets/photos/group-activity.jpg" alt="患者與工作人員在桌邊進行摺紙活動" loading="lazy">
-      <figcaption>分享、對話與手作課程，提供患者交流並維持認知功能的機會。攝影／採訪團隊</figcaption>
-    </figure>
-
-    <section class="upward">
-      <div class="wrap upward-grid">
-        <figure class="care-photo reveal">
+	    <section class="upward">
+	      <div class="wrap upward-grid">
+	        <figure class="care-photo reveal">
           <img src="assets/photos/xige-wife.png" alt="喜哥與妻子在據點活動中互動" loading="lazy">
           <blockquote>「在接受這個事情的過程中，心裡非常掙扎與疲憊，情緒也近乎崩潰。」<br><small>—— 喜哥妻子</small></blockquote>
         </figure>
         <div class="reveal"><h2>向上清活小屋的<br>課程與陪伴</h2><div class="article-copy"><p>向上清活小屋的課程涵蓋分享與對話、繪畫與拼貼等手作活動、觀影、瑜珈與音樂課，透過多元體驗豐富患者的生活。據點也將做飯融入課程，讓失智症患者在實作中動手、動腦。即使過程中出現失誤、料理煎焦，課程更重視參與當下的投入與互動，讓患者從過程中獲得成就感與快樂。</p><p>向上清活小屋曾帶患者到高雄出遊。王姿穎提及：「那一次活動結束後，非常多的家屬告訴我們，那是他們生病後，第一次離開台中。」多數家屬不敢輕易帶患者外出，因為患者在行動與語言上較難自我控制，外出時常面臨他人異樣的眼光；加上照顧者多為配偶，若在公共空間找不到無障礙或身心障礙廁所，兩人甚至必須分開如廁，也增加患者走失的風險。</p><p>對照顧者而言，這類活動讓他們得以在長期高壓且循環的照顧日常中稍作喘息；對失智者而言，則是走出原有生活範圍、重新與社會互動的機會，也有助於延緩身心與認知功能的退化。</p></div></div>
-      </div>
-    </section>
+	      </div>
+	    </section>
 
-    <section class="journey" data-scroll-video aria-label="地圖滾動影片過場">
+	    <figure class="photo-break photo-break--quote">
+	      <img src="assets/photos/group-activity.jpg" alt="患者與家屬在照護據點交流互動" loading="lazy">
+	      <div class="photo-break__quote-card">
+	        <p>年輕失智症照護據點，給予患者與其家屬互相支持的場所。</p>
+	      </div>
+	    </figure>
+
+	    <section class="journey" data-scroll-video aria-label="地圖滾動影片過場">
       <div class="journey__sticky">
         <video class="journey__video" src="assets/videos/taichung-taipei.mp4" muted playsinline preload="auto"></video>
       </div>
@@ -1186,10 +1222,13 @@
           <p>A 型與 B 型的差別，並不是按照患者是哪一種失智症來分，而是按照他目前的功能狀態判斷。評估時會看患者的認知能力、體力、生活自理能力、能否固定出勤、是否能理解工作流程、是否需要高度協助等。簡單來說，若患者還能穩定工作，就可能進入 A 型；若需要更彈性、支持密度更高的安排，就比較適合 B 型。這套制度的核心，是讓年輕型失智症患者在能力逐漸變化的過程中，仍能保有工作、生活節奏與社會連結。</p>
         </div>
 
-        <div class="japan-case reveal">
-          <h4>日本案例：Kizunaya 年輕型失智症農場</h4>
-          <p>奈良地區的 Kizunaya 農場結合日照與輕度農務，讓年輕型失智者在可負擔的工作節奏中重新參與生活。現場觀察中，有患者一開始只想休息，等精神恢復後才加入活動，還在同伴鼓勵下唱起演歌、一起野餐。這樣的安排重點不只是完成工作，而是讓人在被尊重的節奏裡，慢慢找回自尊與參與感。</p>
-        </div>
+        <figure class="japan-case reveal">
+          <img src="assets/photos/kizunaya-farm.jpg" alt="農場中兩名工作者在田間照看作物" loading="lazy">
+          <div class="japan-case__card">
+            <h4>日本案例：Kizunaya 年輕型失智症農場</h4>
+            <p>奈良地區的 Kizunaya 農場結合日照與輕度農務，讓年輕型失智者在可負擔的工作節奏中重新參與生活。現場觀察中，有患者一開始只想休息，等精神恢復後才加入活動，還在同伴鼓勵下唱起演歌、一起野餐。這樣的安排重點不只是完成工作，而是讓人在被尊重的節奏裡，慢慢找回自尊與參與感。</p>
+          </div>
+        </figure>
 
         <div class="kyoto-scroll-video" data-scroll-video aria-label="京都與台灣年輕型失智症支持據點對照影片">
           <div class="kyoto-scroll-video__sticky">
@@ -1209,7 +1248,7 @@
                 </div>
               </div>
               <div class="kyoto-scroll-video__copy">
-                <p>僅用京都府數據與全台對比，日本的年輕型失智症支援較強調患者確診後仍能保有工作與社會角色；台灣目前的支持多集中於醫療診斷與長照資源，職場轉銜與工作支持仍有補強空間。</p>
+                <p>僅用京都府數據與全台對比，日本的年輕型失智症支援較強調患者確診後仍能保有工作與社會角色；台灣目前的支持多集中於醫療診斷與長照資源，職場轉銜與工作支持仍有補強空間。全台目前只有兩個年輕型失智症照護據點，面對目前推估的 1.2 萬名患者，人力完全無法負荷。</p>
               </div>
             </div>
           </div>
@@ -1545,8 +1584,28 @@
       if (transcript) splitTranscriptLines(transcript);
       const lines = transcript ? [...transcript.querySelectorAll('span')] : [];
       if (!video || !lines.length) return;
-      video.loop = true;
+      video.loop = false;
 
+      const adjustCueTiming = (cueList, duration) => {
+        const advanceFrom = transcript?.dataset.advanceFrom;
+        const advanceSeconds = Number(transcript?.dataset.advanceSeconds);
+        if (!advanceFrom || !Number.isFinite(advanceSeconds) || advanceSeconds <= 0) return cueList;
+        const fromIndex = cueList.findIndex(({ line }) => line.textContent.trim().startsWith(advanceFrom));
+        if (fromIndex < 0) return cueList;
+        const shifted = cueList.map(cue => ({ ...cue }));
+        const previousStart = shifted[fromIndex - 1]?.start ?? 0;
+        const newStart = Math.max(previousStart + .12, shifted[fromIndex].start - advanceSeconds);
+        const actualAdvance = shifted[fromIndex].start - newStart;
+        if (actualAdvance <= 0) return cueList;
+        if (shifted[fromIndex - 1]) shifted[fromIndex - 1].end = newStart;
+        for (let index = fromIndex; index < shifted.length; index += 1) {
+          shifted[index].start = Math.max(0, shifted[index].start - actualAdvance);
+          shifted[index].end = index === shifted.length - 1
+            ? duration
+            : Math.max(shifted[index].start + .12, shifted[index].end - actualAdvance);
+        }
+        return shifted;
+      };
       const buildCues = () => {
         const duration = Number.isFinite(video.duration) && video.duration > 0 ? video.duration : lines.length * 3;
         const firstCueDuration = Number(transcript?.dataset.firstCueDuration);
@@ -1556,7 +1615,7 @@
           const remainingDuration = Math.max(duration - firstEnd, .1);
           const remainingWeight = remainingLines.reduce((sum, line) => sum + Math.max(line.textContent.trim().length, 8), 0);
           let cursor = firstEnd;
-          return [
+          return adjustCueTiming([
             { line: lines[0], start: 0, end: firstEnd },
             ...remainingLines.map(line => {
               const weight = Math.max(line.textContent.trim().length, 8) / remainingWeight;
@@ -1565,21 +1624,22 @@
               cursor = end;
               return { line, start, end };
             })
-          ];
+          ], duration);
         }
         const totalWeight = lines.reduce((sum, line) => sum + Math.max(line.textContent.trim().length, 8), 0);
         let cursor = 0;
-        return lines.map(line => {
+        return adjustCueTiming(lines.map(line => {
           const weight = Math.max(line.textContent.trim().length, 8) / totalWeight;
           const start = cursor;
           const end = Math.min(duration, cursor + duration * weight);
           cursor = end;
           return { line, start, end };
-        });
+        }), duration);
       };
 
       let cues = buildCues();
       let transcriptFrame = null;
+      let activeCueIndex = -1;
       const buildPoster = () => {
         if (!poster || !video.videoWidth || !video.videoHeight) return;
         try {
@@ -1594,21 +1654,42 @@
           poster.classList.add('is-ready');
         }
       };
+      const resetTranscript = () => {
+        activeCueIndex = -1;
+        transcript.scrollTop = 0;
+        cues.forEach(({ line }) => {
+          line.style.setProperty('--fill', '0%');
+          line.classList.remove('is-active');
+        });
+      };
+      const scrollToCue = line => {
+        const transcriptRect = transcript.getBoundingClientRect();
+        const lineRect = line.getBoundingClientRect();
+        const targetTop = transcript.scrollTop + lineRect.top - transcriptRect.top - 24;
+        transcript.scrollTop = Math.max(0, targetTop);
+      };
       const updateTranscript = () => {
         const time = video.currentTime || 0;
-        let activeLine = null;
-        cues.forEach(({ line, start, end }) => {
+        if (time < .2) {
+          resetTranscript();
+        }
+        const currentIndex = Math.max(0, cues.findIndex(({ start, end }, index) => (
+          time >= start && (time < end || index === cues.length - 1)
+        )));
+        let activeLine = cues[currentIndex]?.line || cues[0]?.line;
+        cues.forEach(({ line, start, end }, index) => {
           const progress = Math.max(0, Math.min(1, (time - start) / Math.max(end - start, .1)));
           line.style.setProperty('--fill', `${(progress * 100).toFixed(2)}%`);
-          if (time >= start && time <= end) activeLine = line;
+          line.classList.toggle('is-active', index === currentIndex);
         });
         if (activeLine) {
-          const lineTop = activeLine.offsetTop;
-          const lineBottom = lineTop + activeLine.offsetHeight;
-          const viewTop = transcript.scrollTop;
-          const viewBottom = viewTop + transcript.clientHeight;
-          if (lineTop < viewTop || lineBottom > viewBottom) {
-            transcript.scrollTo({ top: Math.max(0, lineTop - 24), behavior: 'smooth' });
+          if (time < .2) {
+            activeCueIndex = currentIndex;
+            return;
+          }
+          if (currentIndex !== activeCueIndex) {
+            activeCueIndex = currentIndex;
+            scrollToCue(activeLine);
           }
         }
       };
@@ -1628,6 +1709,10 @@
       };
 
       playButton?.addEventListener('click', () => {
+        if (video.ended) {
+          video.currentTime = 0;
+          resetTranscript();
+        }
         const playPromise = video.play();
         if (playPromise && typeof playPromise.catch === 'function') {
           playPromise.catch(() => {});
@@ -1636,14 +1721,22 @@
 
       video.addEventListener('loadedmetadata', () => {
         cues = buildCues();
+        resetTranscript();
         updateTranscript();
       });
       video.addEventListener('loadeddata', buildPoster, { once: true });
       video.addEventListener('timeupdate', updateTranscript);
       video.addEventListener('seeked', updateTranscript);
       video.addEventListener('play', () => {
+        if (video.currentTime < .2) {
+          resetTranscript();
+        }
         syncPlayButton();
         startTranscriptSync();
+      });
+      video.addEventListener('seeking', () => {
+        activeCueIndex = -1;
+        updateTranscript();
       });
       video.addEventListener('pause', () => {
         syncPlayButton();
@@ -1652,9 +1745,15 @@
         updateTranscript();
       });
       video.addEventListener('ended', () => {
+        if (transcriptFrame) cancelAnimationFrame(transcriptFrame);
+        transcriptFrame = null;
         syncPlayButton();
         updateTranscript();
       });
+      video.addEventListener('emptied', () => {
+        resetTranscript();
+      });
+      resetTranscript();
       updateTranscript();
       syncPlayButton();
     });
