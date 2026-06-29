@@ -145,6 +145,7 @@
     .pov-video__button { display: inline-block; padding: 10px 18px; color: var(--ink); background: var(--yellow); border-radius: 99px; font-size: 13px; font-weight: 800; text-decoration: none; }
     .pov-video__frame.is-file-fallback iframe { display: none; }
     .pov-video__frame.is-file-fallback .pov-video__blocked { display: grid; }
+    .pov-video__source { width: min(1120px,100%); margin: 14px auto 0; color: rgba(255,255,255,.55); font-size: 12px; line-height: 1.7; }
     .pov-video__fallback { display: block; width: min(1120px,100%); margin: 14px auto 0; color: rgba(255,255,255,.68); font-size: 13px; text-align: right; text-underline-offset: 3px; }
 
     section { position: relative; padding: 110px max(6vw, 24px); }
@@ -168,7 +169,11 @@
     .photo-break .photo-break__story-card { position: absolute; z-index: 3; top: 50%; left: max(6vw, 28px); width: min(620px, calc(100% - 56px)); padding: clamp(28px,4vw,52px); color: var(--white); background: rgba(18,43,58,.84); border-left: 5px solid var(--yellow); transform: translateY(50px); opacity: 0; backdrop-filter: blur(5px); transition: opacity .9s ease, transform .9s ease; }
     .photo-break .photo-break__story-card.visible { transform: translateY(-50%); opacity: 1; }
     .photo-break__story-card p { margin: 0; font: 600 clamp(22px,3vw,36px)/1.65 var(--serif); letter-spacing: -.015em; }
-    .photo-break--editorial .photo-break__story-card { left: auto; right: max(7vw, 54px); width: min(640px, 42vw); padding: clamp(24px, 3vw, 38px); background: rgba(4,7,9,.72); border-left: 0; box-shadow: none; backdrop-filter: blur(2px); }
+    .photo-break--editorial { height: 155vh; min-height: 1180px; }
+    .photo-break--editorial img { height: 100%; object-position: center; }
+    .photo-break--editorial::after { inset: 0; background: linear-gradient(90deg, rgba(4,8,12,.4), rgba(4,8,12,.1) 46%, rgba(4,8,12,.58)), linear-gradient(180deg, rgba(4,8,12,.08), rgba(4,8,12,.5)); }
+    .photo-break--editorial .photo-break__story-card { top: 76vh; left: auto; right: max(8vw, 64px); width: min(640px, 42vw); padding: clamp(24px, 3vw, 38px); background: rgba(4,7,9,.72); border-left: 0; box-shadow: none; transform: none; opacity: 1; backdrop-filter: blur(2px); }
+    .photo-break--editorial .photo-break__story-card.visible { transform: none; }
     .photo-break--editorial .photo-break__story-card p { font: 700 clamp(18px, 1.85vw, 25px)/1.85 var(--sans); letter-spacing: 0; }
     .photo-duo { display: grid; grid-template-columns: 1.08fr .92fr; gap: 12px; padding: 12px; background: var(--ink); }
     .news-photo { position: relative; min-height: 520px; margin: 0; overflow: hidden; background: var(--ink); }
@@ -177,6 +182,8 @@
 
     .data { color: white; background: var(--ink); }
     .data__lead { max-width: 780px; color: rgba(255,255,255,.76); font-size: clamp(16px, 1.8vw, 20px); }
+    .data__lead p { margin: 0 0 .9em; line-height: 1.9; }
+    .data__lead p:last-child { margin-bottom: 0; }
     .data-grid { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 50px; }
     .stat { min-height: 230px; padding: 30px; border-top: 1px solid var(--line-light); border-bottom: 1px solid var(--line-light); background: var(--ink); }
     .stat + .stat { border-left: 1px solid var(--line-light); }
@@ -426,7 +433,8 @@
       .story-transcript__lines span { font-size: 18px; line-height: 1.7; }
       .story-list { gap: 55px; }
       .photo-break { height: 72vh; min-height: 520px; }
-      .photo-break--editorial .photo-break__story-card { top: auto; right: 24px; bottom: 76px; left: 24px; width: auto; padding: 22px 24px; transform: translateY(22px); }
+      .photo-break--editorial { height: 138vh; min-height: 900px; }
+      .photo-break--editorial .photo-break__story-card { top: 68vh; right: 24px; bottom: auto; left: 24px; width: auto; padding: 22px 24px; transform: none; }
       .photo-break--editorial .photo-break__story-card.visible { transform: none; }
       .photo-break--editorial .photo-break__story-card p { font-size: 18px; line-height: 1.75; }
       .photo-duo { grid-template-columns: 1fr; }
@@ -468,10 +476,10 @@
     <section class="pov-video" aria-label="年輕型失智症 POV 影片">
       <div class="pov-video__intro reveal">
         <div>
-          <p class="pov-video__kicker">進入他的視角</p>
-          <h2>如果記憶，<br>開始不聽使喚</h2>
+          <p class="pov-video__kicker">第一視角體驗</p>
+          <h2>嘗試進入患者的日常</h2>
         </div>
-        <p class="pov-video__copy"><strong>先不要急著旁觀。</strong>接下來這支 POV 影片，試著把你放進年輕型失智症患者的日常：熟悉的路變得陌生、剛說出口的話被時間擦掉，連「我還可以」這件事，都需要重新確認。</p>
+        <p class="pov-video__copy"><strong>讓我們嘗試進入年輕型失智症患者的第一視角。</strong>接下來這支 POV 影片，會帶你看見他們在日常裡可能遇到的混亂：熟悉的地方突然變得陌生、剛說過的話需要重新確認，原本簡單的事情也變得不再直覺。</p>
       </div>
       <div class="pov-video__frame reveal">
         <iframe data-src="https://www.youtube.com/embed/ot18xa2B1X4?rel=0&modestbranding=1" title="年輕型失智症 POV 影片" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="origin-when-cross-origin" allowfullscreen></iframe>
@@ -483,13 +491,18 @@
           </div>
         </div>
       </div>
+      <p class="pov-video__source">以上行為參考採訪年輕型失智症患者的照顧人員所述患者行為。</p>
       <a class="pov-video__fallback" href="https://www.youtube.com/watch?v=ot18xa2B1X4" target="_blank" rel="noreferrer">若影片無法播放，前往 YouTube 觀看</a>
     </section>
 
-    <section class="data">
+    <section class="data" id="about">
       <div class="wrap reveal">
-        <h2>失智症，不只是<br>老人家的事。</h2>
-        <p class="data__lead">65 歲以前發病的「年輕型失智症」案例逐年受到關注。患者多處於中壯年階段，往往同時肩負工作、家庭照顧與經濟責任；一旦失能，影響的不只是個人，也牽動整個家庭、勞動力與社會支持體系。</p>
+        <h2>失智症，<br>不只是老人的疾病</h2>
+        <div class="data__lead">
+          <p>只要在65歲以前發病，就屬於年輕型失智症（Young-onset dementia）。</p>
+          <p>它不是一種新的疾病，而是依發病年齡分類，包含阿茲海默症、額顳葉型失智症、血管型失智症及部分可逆性失智症。</p>
+          <p>不同病因影響的大腦區域不同，因此症狀、病程與照顧方式也不相同。</p>
+        </div>
         <div class="data-grid">
           <article class="stat">
             <strong class="stat__num"><span class="count-up" data-target="1.5" data-decimals="1">1.5</span><span style="font-size:.35em">萬人</span></strong>
@@ -512,19 +525,6 @@
           </article>
         </div>
         <p class="note" style="color:rgba(255,255,255,.55)">＊ 資料來源：國際失智症協會；內政部 2021 年 12 月底人口統計；挪威 2019 年研究之 45–64 歲失智症盛行率推估。</p>
-      </div>
-    </section>
-
-    <section class="definition" id="about">
-      <div class="wrap definition-grid">
-        <div class="reveal">
-          <h2>失智症，<br>不只是老人的疾病</h2>
-        </div>
-        <div class="article-copy reveal">
-          <p>只要在65歲以前發病，就屬於年輕型失智症（Young-onset dementia）。</p>
-          <p>它不是一種新的疾病，而是依發病年齡分類，包含阿茲海默症、額顳葉型失智症、血管型失智症及部分可逆性失智症。</p>
-          <p>不同病因影響的大腦區域不同，因此症狀、病程與照顧方式也不相同。</p>
-        </div>
       </div>
     </section>
 
@@ -596,7 +596,7 @@
 
     <figure class="photo-break photo-break--editorial">
       <img src="assets/photos/story-transition.jpg" alt="一位年輕型失智症患者交握的雙手" loading="lazy">
-      <div class="photo-break__story-card reveal">
+      <div class="photo-break__story-card">
         <p>同樣是年輕型失智症。<br>有人忘了回家的路，有人失去說話能力，也有人直到被迫離開工作，才發現疾病早已改變人生。</p>
       </div>
       <figcaption>患者雙手交握。攝影／採訪團隊</figcaption>
