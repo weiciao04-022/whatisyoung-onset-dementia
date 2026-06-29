@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="年輕型失智症患者期待重返工作，卻在制度、企業與社會認知之間找不到位置。">
-  <title>年輕就失智，生活卻還得繼續｜年輕型失智症專題</title>
+  <title>年輕失智也失去生活：未能實現的工作權｜年輕型失智症專題</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@600;900&display=swap');
 
@@ -124,7 +124,6 @@
       opacity: .5;
     }
     .hero__lead { max-width: 580px; color: rgba(255,255,255,.76); font-size: clamp(17px,2vw,22px); }
-    .hero__credit { position: absolute; left: 6vw; bottom: 22px; z-index: 2; color: rgba(255,255,255,.72); font-size: 11px; letter-spacing: .04em; }
     .scroll-cue { position: absolute; right: 7vw; bottom: 45px; font-size: 12px; letter-spacing: .2em; writing-mode: vertical-rl; }
     .scroll-cue::after { content: ""; display: inline-block; width: 1px; height: 60px; margin-top: 12px; background: var(--yellow); animation: pulse 1.7s infinite; }
     @keyframes pulse { 50% { transform: scaleY(.45); transform-origin: top; } }
@@ -165,21 +164,18 @@
     .photo-break { position: relative; height: min(72vw, 820px); margin: 0; overflow: hidden; background: var(--ink); }
     .photo-break img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .photo-break::after { content: ""; position: absolute; inset: 55% 0 0; background: linear-gradient(transparent, rgba(10,20,27,.72)); pointer-events: none; }
-    .photo-break figcaption { position: absolute; z-index: 2; right: max(4vw,24px); bottom: 20px; left: max(4vw,24px); color: rgba(255,255,255,.88); font-size: 13px; font-weight: 400; text-align: left; text-shadow: 0 1px 5px rgba(0,0,0,.5); }
     .photo-break .photo-break__story-card { position: absolute; z-index: 3; top: 50%; left: max(6vw, 28px); width: min(620px, calc(100% - 56px)); padding: clamp(28px,4vw,52px); color: var(--white); background: rgba(18,43,58,.84); border-left: 5px solid var(--yellow); transform: translateY(50px); opacity: 0; backdrop-filter: blur(5px); transition: opacity .9s ease, transform .9s ease; }
     .photo-break .photo-break__story-card.visible { transform: translateY(-50%); opacity: 1; }
     .photo-break__story-card p { margin: 0; font: 600 clamp(22px,3vw,36px)/1.65 var(--serif); letter-spacing: -.015em; }
     .photo-break--editorial { height: 185vh; min-height: 1280px; overflow: visible; }
     .photo-break--editorial img { position: sticky; top: 0; z-index: 0; height: 100vh; object-position: center; }
     .photo-break--editorial::after { content: none; }
-    .photo-break--editorial figcaption { top: calc(100vh - 46px); bottom: auto; }
     .photo-break--editorial .photo-break__story-card { top: 112vh; left: auto; right: max(8vw, 64px); width: min(640px, 42vw); padding: clamp(24px, 3vw, 38px); background: rgba(24, 48, 72, .78); border-left: 0; box-shadow: none; transform: none; opacity: 1; backdrop-filter: blur(2px); }
     .photo-break--editorial .photo-break__story-card.visible { transform: none; }
     .photo-break--editorial .photo-break__story-card p { font: 700 clamp(18px, 1.85vw, 25px)/1.85 var(--sans); letter-spacing: 0; }
     .photo-break--young { height: 220vh; min-height: 1500px; overflow: visible; }
     .photo-break--young img { position: sticky; top: 0; z-index: 0; height: 100vh; }
     .photo-break--young::after { inset: 0; background: linear-gradient(180deg, rgba(7,20,33,.16), rgba(7,20,33,.42) 52%, rgba(7,20,33,.72)); }
-    .photo-break--young figcaption { top: calc(100vh - 44px); bottom: auto; }
     .photo-break__young-note { position: absolute; z-index: 3; top: 132vh; left: max(6vw, 28px); width: min(520px, calc(100% - 56px)); padding: clamp(22px, 2.6vw, 30px); color: rgba(255,255,255,.94); background: rgba(14,37,58,.78); border: 1px solid rgba(255,255,255,.12); box-shadow: 0 16px 44px rgba(0,0,0,.22); backdrop-filter: blur(4px); }
     .photo-break__young-note p { margin: 0; font-size: clamp(18px, 1.6vw, 22px); font-weight: 600; line-height: 1.9; }
     .photo-break--quote { height: 100vh; min-height: 720px; }
@@ -217,7 +213,6 @@
     .brain-figure { position: absolute; inset: 0; margin: 0; opacity: 0; transition: opacity .55s ease; pointer-events: none; }
     .brain-figure.is-active { opacity: 1; }
     .brain-figure img { position: absolute; inset: 8% 0 8%; width: 100%; height: 84%; object-fit: contain; }
-    .brain-caption { position: absolute; left: 2%; bottom: 3%; margin: 0; color: rgba(24,44,58,.55); font-size: 12px; letter-spacing: .08em; }
     .brain-label { position: absolute; z-index: 2; width: 150px; padding-top: 8px; border-top: 2px solid var(--yellow); font-size: 13px; font-weight: 600; line-height: 1.45; }
     .brain-label::after { content: ""; position: absolute; top: -2px; width: 85px; border-top: 2px solid var(--yellow); transform-origin: left; }
     .brain-label small { display: block; color: var(--muted); font-size: 11px; font-weight: 400; }
@@ -267,7 +262,6 @@
     .cube-results__images { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
     .cube-results figure { margin: 0; border: 1px solid var(--line); background: #f7f2e8; }
     .cube-results img { width: 100%; aspect-ratio: 1; display: block; object-fit: cover; }
-    .cube-results figcaption { padding: 10px 12px; color: rgba(23,43,58,.62); font-size: 12px; line-height: 1.5; }
 
     .stories { padding-bottom: 130px; background: var(--paper); }
     .stories__intro { width: min(760px, 100%); margin-bottom: 52px; }
@@ -464,18 +458,16 @@
     .young-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; margin-top: 0; }
     .cafe-window { min-height: 410px; display: flex; flex-direction: column; gap: 14px; align-items: stretch; justify-content: center; margin: 0; padding: 10px; border: 1px solid var(--line); background: var(--white); box-shadow: none; text-align: left; }
     .cafe-window img { width: 100%; height: 100%; min-height: 350px; object-fit: cover; }
-    .cafe-window figcaption { padding: 0 4px 4px; color: var(--muted); font-size: 13px; font-weight: 400; text-align: left; }
     .cafe-roles { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
     .cafe-roles span { padding: 7px 12px; color: var(--ink); border: 1px solid rgba(184,150,39,.45); background: rgba(231,196,58,.3); border-radius: 99px; font-size: 12px; font-weight: 600; }
 
-    .xiaohua-work-photo { position: relative; width: 100vw; min-height: 265vh; margin: 0 calc(50% - 50vw); background: var(--ink); }
-    .xiaohua-work-photo__sticky { position: sticky; top: 0; height: 100vh; overflow: hidden; }
-    .xiaohua-work-photo__sticky img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: center; }
-    .xiaohua-work-photo__sticky::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(7,20,33,.56), rgba(7,20,33,.2) 52%, rgba(7,20,33,.36)), linear-gradient(180deg, rgba(7,20,33,.1), rgba(7,20,33,.44)); pointer-events: none; }
-    .xiaohua-work-photo__cards { position: relative; z-index: 2; width: min(760px, calc(100% - 56px)); margin: -88vh 0 0 max(6vw, 28px); padding-bottom: 16vh; display: grid; gap: clamp(22px, 4vw, 38px); }
-    .xiaohua-work-photo__card { padding: clamp(24px, 3.2vw, 42px); color: rgba(255,255,255,.94); background: rgba(14,37,58,.78); border-left: 5px solid var(--yellow); box-shadow: 0 18px 48px rgba(0,0,0,.25); backdrop-filter: blur(5px); }
-    .xiaohua-work-photo__card p { margin: 0; font-size: clamp(20px, 1.9vw, 25px); font-weight: 700; line-height: 1.9; }
-    .xiaohua-work-photo__card strong { color: var(--yellow); font-weight: 900; }
+    .xiaohua-work-photo { position: relative; width: 100vw; min-height: 100vh; margin: 72px calc(50% - 50vw) 0; padding: clamp(72px, 10vh, 120px) max(6vw, 28px); display: grid; align-items: center; justify-items: end; overflow: hidden; background: var(--ink); }
+    .xiaohua-work-photo__backdrop { position: absolute; inset: 0; }
+    .xiaohua-work-photo__backdrop img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: center; }
+    .xiaohua-work-photo__backdrop::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(8,22,34,.42), rgba(8,22,34,.2) 48%, rgba(248,245,238,.18)), linear-gradient(180deg, rgba(8,22,34,.16), rgba(8,22,34,.42)); pointer-events: none; }
+    .xiaohua-work-photo__panel { position: relative; z-index: 2; width: min(560px, 100%); max-height: min(72vh, 720px); overflow-y: auto; padding: clamp(30px, 3.5vw, 46px); color: var(--ink); background: rgba(255,253,248,.86); backdrop-filter: blur(5px); scrollbar-width: thin; }
+    .xiaohua-work-photo__panel p { margin: 0; color: #384650; font-size: 20px; font-weight: 600; line-height: 2; }
+    .xiaohua-work-photo__panel p + p { margin-top: 1.35em; }
 
     .work { color: white; background: var(--ink); }
     .work-grid { display: grid; grid-template-columns: minmax(0, 960px); justify-content: center; gap: 28px; }
@@ -576,12 +568,10 @@
       .japan-case__card { padding: 24px; }
       .japan-case h4 { font-size: 22px; }
       .japan-case p { font-size: 17px; line-height: 1.8; }
-      .xiaohua-work-photo { min-height: auto; }
-      .xiaohua-work-photo__sticky { height: 100svh; }
-      .xiaohua-work-photo__sticky img { object-position: 58% center; }
-      .xiaohua-work-photo__cards { width: calc(100% - 48px); margin: -82svh 24px 0; padding-bottom: 12vh; gap: 20px; }
-      .xiaohua-work-photo__card { padding: 22px 24px; }
-      .xiaohua-work-photo__card p { font-size: 18px; line-height: 1.85; }
+      .xiaohua-work-photo { min-height: 100svh; margin-top: 48px; padding: 48px 24px; align-items: end; }
+      .xiaohua-work-photo__backdrop img { object-position: 58% center; }
+      .xiaohua-work-photo__panel { width: 100%; max-height: 70svh; padding: 22px 24px; }
+      .xiaohua-work-photo__panel p { font-size: 18px; line-height: 1.9; }
       .kyoto-scroll-video { height: 300vh; margin-top: 34px; }
       .kyoto-scroll-video__sticky { min-height: 100svh; }
       .kyoto-scroll-video__content { width: min(100% - 36px, 680px); padding-top: 82px; padding-bottom: 32px; gap: 26px; }
@@ -628,7 +618,6 @@
       .brain-label small { font-size: 9px; }
       .label-left { left: 4%; }
       .label-right { right: 4%; }
-      .brain-caption { left: 6%; bottom: 2%; }
       .brain-steps { position: relative; z-index: 3; padding-bottom: 8vh; }
       .brain-step { min-height: 72vh; justify-content: flex-end; padding: 45vh 0 35px; opacity: 1; }
       .brain-step > * { padding-right: 18px; padding-left: 18px; }
@@ -684,10 +673,8 @@
     <header class="hero" id="top">
       <div class="hero__content">
         <p class="eyebrow">記者陳少凡、陳雙、顏貝恩、黃暐喬報導</p>
-        <h1>年輕就失智，<br>生活卻還得<em>繼續</em></h1>
-        <p class="hero__lead">多數年輕型失智症患者仍處於工作與承擔家庭責任的階段。疾病改變了他們的能力，社會與職場卻往往在理解之前，先把他們排除在外。</p>
+        <h1>年輕失智也失去生活：<br><em>未能實現的工作權</em></h1>
       </div>
-      <p class="hero__credit">Young 記憶會館現場｜攝影／採訪團隊</p>
       <div class="scroll-cue">往下閱讀</div>
     </header>
 
@@ -718,8 +705,7 @@
         <h2>失智症，<br>不只是老人的疾病</h2>
         <div class="data__lead">
           <p>只要在65歲以前發病，就屬於年輕型失智症（Young-onset dementia）。</p>
-          <p>它不是一種新的疾病，而是依發病年齡分類，包含阿茲海默症、額顳葉型失智症、血管型失智症及部分可逆性失智症。</p>
-          <p>不同病因影響的大腦區域不同，因此症狀、病程與照顧方式也不相同。</p>
+          <p>常見疾病種類包含阿茲海默症、額顳葉型失智症、血管型失智症及部分可逆性失智症。</p>
         </div>
         <div class="data-grid">
           <article class="stat">
@@ -757,25 +743,21 @@
               <img src="assets/brains/alzheimer.png" alt="阿茲海默症腦部萎縮示意圖">
               <div class="brain-label label-left label-bottom">海馬迴、內嗅皮質<small>形成新記憶的重要區域</small></div>
               <div class="brain-label label-right label-top">大腦皮質<small>後期影響語言、推理與社會行為</small></div>
-              <figcaption class="brain-caption">阿茲海默症｜腦部萎縮示意</figcaption>
             </figure>
             <figure class="brain-figure" data-brain="vascular">
               <img src="assets/brains/vascular.png" alt="血管性失智症腦血管損傷示意圖">
               <div class="brain-label label-left label-top">腦血管損傷<small>血流受阻使腦組織缺氧</small></div>
               <div class="brain-label label-right label-bottom">損傷位置不固定<small>症狀依位置與範圍而異</small></div>
-              <figcaption class="brain-caption">血管性失智症｜多處血管損傷示意</figcaption>
             </figure>
             <figure class="brain-figure" data-brain="frontotemporal">
               <img src="assets/brains/frontotemporal.png" alt="額顳葉型失智症受影響腦區示意圖">
               <div class="brain-label label-left label-top">額葉<small>判斷、計畫、抑制與社會行為</small></div>
               <div class="brain-label label-right label-bottom">顳葉<small>語言、語意、記憶與情緒</small></div>
-              <figcaption class="brain-caption">額顳葉型失智症｜額葉與顳葉示意</figcaption>
             </figure>
             <figure class="brain-figure" data-brain="reversible">
               <img src="assets/brains/reversible.png" alt="正常壓力水腦症腦室系統示意圖">
               <div class="brain-label label-left label-top">腦室系統<small>腦脊髓液在此循環</small></div>
               <div class="brain-label label-right label-bottom">腦室擴大<small>可能壓迫周邊腦組織</small></div>
-              <figcaption class="brain-caption">可治療原因示例｜正常壓力水腦症</figcaption>
             </figure>
           </div>
 
@@ -845,11 +827,9 @@
             <div class="cube-results__images">
               <figure>
                 <img src="assets/photos/cube-patient-01.png" alt="年輕型失智症患者畫出的透視方塊之一" loading="lazy">
-                <figcaption>患者作品一</figcaption>
               </figure>
               <figure>
                 <img src="assets/photos/cube-patient-02.png" alt="年輕型失智症患者畫出的透視方塊之二" loading="lazy">
-                <figcaption>患者作品二</figcaption>
               </figure>
             </div>
           </div>
@@ -862,7 +842,6 @@
       <div class="photo-break__story-card">
         <p>同樣是年輕型失智症。<br>有人忘了回家的路，有人失去說話能力，也有人直到被迫離開工作，才發現疾病早已改變人生。</p>
       </div>
-      <figcaption>患者雙手交握。攝影／採訪團隊</figcaption>
     </figure>
 
     <section class="stories" id="stories">
@@ -944,8 +923,8 @@
         <div class="treatment__copy reveal">
           <p>目前，年輕型失智症並沒有單一的治療方式。它不是一種疾病，而是指65歲以前發病的失智症，因此治療必須回到個別病因與疾病類型。</p>
           <p>若屬阿茲海默症型失智症，醫師可能使用膽鹼酯酶抑制劑或 NMDA 受體拮抗劑，協助改善或延緩認知功能退化；若是血管型失智症，治療重點則在控制血壓、血糖、血脂，降低再次中風與血管傷害的風險；若為額顳葉型失智症，目前藥物對病程的效果有限，照護上更仰賴行為支持、情緒穩定與生活安排。</p>
-          <p>除了藥物，非藥物治療也是失智症照護的重要一環。認知刺激、職能治療、運動、音樂、團體活動與生活訓練，目的不是讓患者「恢復原狀」，而是盡可能維持生活功能、延緩退化，並讓他們仍能與他人互動、參與日常。</p>
-          <p>但治療之外，年輕型失智症患者仍需要一種能繼續生活的方式。有人透過汽車雜誌延續對工作的熱情，有人用衣服顏色記住星期幾，也有人在散步與賞花之間，重新建立自己的日常。</p>
+	          <p>除了藥物，非藥物治療也是失智症照護的重要一環。認知刺激、職能治療、運動、音樂、團體活動與生活訓練，目的不是讓患者恢復原狀，而是盡可能維持生活功能、延緩退化，並讓他們仍能與他人互動、參與日常。</p>
+	          <p>但治療之外，年輕型失智症患者仍需要一種能繼續生活的方式。有人透過汽車雜誌延續對工作的熱情，有人用衣服顏色記住星期幾，也有人喜歡散步看看自己最愛的花。</p>
           <small class="treatment__source">資料來源：Alzheimer’s Society、NICE dementia guideline、衛福部失智症診療手冊、台大醫網</small>
         </div>
       </div>
@@ -1173,7 +1152,6 @@
       <div class="photo-break__young-note">
         <p>Young Coffee為臺灣唯一提供年輕型失智症患者工作的場所，為了減少患者的負擔，每次排班4小時，只在週六營業。</p>
       </div>
-      <figcaption>台北 Young 咖啡坊是目前少數專門提供年輕型失智症支持的據點。攝影／採訪團隊</figcaption>
     </figure>
 
 	    <section class="young" id="young">
@@ -1188,35 +1166,8 @@
           </div>
           <figure class="cafe-window reveal">
             <img src="assets/photos/cafe-menu-task.jpg" alt="患者在 Young 咖啡坊依照圖像菜單進行服務工作" loading="lazy">
-            <figcaption>圖像化的菜單與工作流程，協助患者完成服務任務。攝影／採訪團隊</figcaption>
           </figure>
         </div>
-	      </div>
-	    </section>
-
-	    <section class="xiaohua-work-photo" aria-label="小華工作意願與職場困境">
-	      <div class="xiaohua-work-photo__sticky" aria-hidden="true">
-	        <img src="assets/photos/xiaohua-phone.png" alt="">
-	      </div>
-	      <div class="xiaohua-work-photo__cards">
-	        <article class="xiaohua-work-photo__card reveal">
-	          <p>談及工作意願，小華說道：「我喜歡工作，因為沒有工作的話，我每天都待在家裡。」</p>
-	        </article>
-	        <article class="xiaohua-work-photo__card reveal">
-	          <p>在向上輕活小屋中，正宇總是特立獨行的在滑手機。「我在裡面是最正常的。」正宇常常提及他在小屋裡的狀況，認為自己和小屋裡的其他人不一樣，因此也積極的尋找工作的機會。</p>
-	        </article>
-	        <article class="xiaohua-work-photo__card reveal">
-	          <p>41歲的他，正值體力仍充沛、還具有生產力的年紀，卻因失智症被迫離開原本的工作崗位，生活節奏瞬間被打亂。他外表與常人無異，甚至直言：「只要我自己不說，其他人都看不出來，我有失智症。」</p>
-	        </article>
-	        <article class="xiaohua-work-photo__card reveal">
-	          <p>然而，疾病帶來的影響並非全然不可見。據志工轉述，家屬曾觀察到他出現偷竊後圓謊、遭詐騙、手機使用過度等情況，甚至曾在賣場內出現偷吃未購買物品等異常行為。</p>
-	        </article>
-	        <article class="xiaohua-work-photo__card reveal">
-	          <p>在中風導致失智後，原任居服員的他，遭主管以安全疑慮為由調整為居家辦公。對此，小華難以認同，他認為自身能力並未喪失，仍具備回到第一線工作的條件，「醫生都說我沒問題，然後神經內科、外科都說我沒有傷害到腦袋。」因此，他持續投遞履歷、參與面試，也配合職業評估流程，試圖重新接軌職場，但多數機會最終仍無下文。</p>
-	        </article>
-	        <article class="xiaohua-work-photo__card reveal">
-	          <p>在現行制度下，患者往往在「能工作」與「被允許工作」之間出現落差。對小華而言，他所等待的，不只是一次面試機會，更是一個重新證明自己、被社會接納的位置。</p>
-	        </article>
 	      </div>
 	    </section>
 
@@ -1306,15 +1257,29 @@
               </div>
             </div>
           </div>
-        </div>
+	        </div>
 
-        <p class="japan-support__source">資料來源：日本厚生勞動省《若年性認知症支援コーディネーターのためのサポートブック》及相關公開資料整理。</p>
-      </div>
-    </section>
+	        <p class="japan-support__source">資料來源：日本厚生勞動省《若年性認知症支援コーディネーターのためのサポートブック》及相關公開資料整理。</p>
+
+	        <section class="xiaohua-work-photo" aria-label="小華工作意願與職場困境">
+	          <div class="xiaohua-work-photo__backdrop" aria-hidden="true">
+	            <img src="assets/photos/xiaohua-phone.png" alt="">
+	          </div>
+	          <div class="xiaohua-work-photo__panel reveal" tabindex="0">
+	            <p>談及工作意願，小華說道：「我喜歡工作，因為沒有工作的話，我每天都待在家裡。」</p>
+	            <p>在向上輕活小屋中，正宇總是特立獨行的在滑手機。「我在裡面是最正常的。」正宇常常提及他在小屋裡的狀況，認為自己和小屋裡的其他人不一樣，因此也積極的尋找工作的機會。</p>
+	            <p>41歲的他，正值體力仍充沛、還具有生產力的年紀，卻因失智症被迫離開原本的工作崗位，生活節奏瞬間被打亂。他外表與常人無異，甚至直言：「只要我自己不說，其他人都看不出來，我有失智症。」</p>
+	            <p>然而，疾病帶來的影響並非全然不可見。據志工轉述，家屬曾觀察到他出現偷竊後圓謊、遭詐騙、手機使用過度等情況，甚至曾在賣場內出現偷吃未購買物品等異常行為。</p>
+	            <p>在中風導致失智後，原任居服員的他，遭主管以安全疑慮為由調整為居家辦公。對此，小華難以認同，他認為自身能力並未喪失，仍具備回到第一線工作的條件，「醫生都說我沒問題，然後神經內科、外科都說我沒有傷害到腦袋。」因此，他持續投遞履歷、參與面試，也配合職業評估流程，試圖重新接軌職場，但多數機會最終仍無下文。</p>
+	            <p>在現行制度下，患者往往在「能工作」與「被允許工作」之間出現落差。對小華而言，他所等待的，不只是一次面試機會，更是一個重新證明自己、被社會接納的位置。</p>
+	          </div>
+	        </section>
+	      </div>
+	    </section>
   </main>
 
   <footer>
-    <div class="footer-grid"><div><div class="footer-title">年輕就失智，生活卻還得繼續</div><p>年輕型失智症專題</p></div><p>記者｜陳少凡、陳雙、顏貝恩、黃暐喬</p></div>
+    <div class="footer-grid"><div><div class="footer-title">年輕失智也失去生活：未能實現的工作權</div><p>年輕型失智症專題</p></div><p>記者｜陳少凡、陳雙、顏貝恩、黃暐喬</p></div>
   </footer>
 
   <script>
