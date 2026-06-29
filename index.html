@@ -758,11 +758,6 @@
     <section class="journey" aria-label="從台中前往台北的服務距離">
       <div class="journey__sticky">
         <video class="journey__video" src="assets/videos/taichung-taipei.mp4" muted playsinline preload="auto"></video>
-        <div class="journey__content">
-          <p class="journey__eyebrow">服務距離</p>
-          <div class="journey__route"><span class="journey__city">台中</span><span class="journey__line" aria-hidden="true"></span><span class="journey__city">台北</span></div>
-          <p>當專門服務年輕型失智症的據點有限，跨縣市移動也成為家屬與患者取得支持時必須面對的距離。</p>
-        </div>
       </div>
     </section>
 
@@ -842,7 +837,6 @@
         const scrollable = section.offsetHeight - innerHeight;
         const rect = section.getBoundingClientRect();
         const progressValue = scrollable > 0 ? Math.max(0, Math.min(1, -rect.top / scrollable)) : 0;
-        section.style.setProperty('--journey-progress', progressValue.toFixed(4));
         if (Number.isFinite(video.duration) && video.duration > 0) {
           video.currentTime = video.duration * progressValue;
         }
