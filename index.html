@@ -346,15 +346,10 @@
     .care-photo { position: relative; min-height: 620px; margin: 0; overflow: hidden; }
     .care-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
     .care-photo blockquote { position: absolute; right: 24px; bottom: 24px; left: 24px; margin: 0; padding: 22px; color: var(--ink); border-left: 5px solid var(--yellow); background: rgba(255,253,248,.94); font: 600 20px/1.7 var(--serif); }
-    .journey { padding: 76px max(6vw,24px); color: var(--white); background: var(--ink); }
-    .journey__route { display: grid; grid-template-columns: auto 1fr auto; gap: 28px; align-items: center; width: min(1120px,100%); margin: auto; }
-    .journey__city { font: 700 clamp(28px,4vw,48px)/1 var(--serif); }
-    .journey__line { position: relative; height: 2px; background: rgba(255,255,255,.25); }
-    .journey__line::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 0; background: var(--yellow); animation: route-progress 5s ease-in-out infinite; }
-    .journey__line::after { content: ""; position: absolute; top: 50%; left: 0; width: 14px; height: 14px; border-radius: 50%; background: var(--yellow); transform: translate(-50%,-50%); animation: route-dot 5s ease-in-out infinite; }
-    .journey p { width: min(760px,100%); margin: 26px auto 0; color: rgba(255,255,255,.72); text-align: center; }
-    @keyframes route-progress { 0% { width:0 } 70%,100% { width:100% } }
-    @keyframes route-dot { 0% { left:0 } 70%,100% { left:100% } }
+    .journey { height: 260vh; padding: 0; color: var(--white); background: var(--ink); }
+    .journey__sticky { position: sticky; top: 0; height: 100vh; display: grid; place-items: center; overflow: hidden; }
+    .journey__sticky::after { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(10,22,31,.12), rgba(10,22,31,.28)); pointer-events: none; }
+    .journey__video { position: absolute; inset: 0; width: 100%; height: 100%; display: block; object-fit: cover; }
     .young { padding-top: 110px; background: var(--paper); }
     .young-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; margin-top: 0; }
     .cafe-window { min-height: 410px; display: flex; flex-direction: column; gap: 14px; align-items: stretch; justify-content: center; margin: 0; padding: 10px; border: 1px solid var(--line); background: var(--white); box-shadow: none; text-align: left; }
@@ -384,9 +379,6 @@
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       .reveal, .brain-figure, .object-modal, .object-card__image img { transition: none; }
-      .journey__line::before, .journey__line::after { animation: none; }
-      .journey__line::before { width: 100%; }
-      .journey__line::after { left: 100%; }
     }
 
     @media (max-width: 780px) {
@@ -406,6 +398,7 @@
       .problem { min-height: 100vh; padding-top: 120px; padding-bottom: 120px; background-attachment: scroll; }
       .problem__copy p { font-size: 16px; line-height: 1.85; }
       .support-quote { padding: 20px 22px; font-size: 18px; }
+      .journey { height: 230vh; }
       .stat + .stat { border-left: 0; }
       .brain-scroll { display: block; }
       .brain-stage { top: 82px; z-index: 2; height: 52vh; min-height: 360px; margin: 0 -24px; background: rgba(243,239,230,.94); backdrop-filter: blur(8px); }
@@ -755,7 +748,7 @@
     <section class="upward">
       <div class="wrap upward-grid">
         <figure class="care-photo reveal">
-          <img src="assets/photos/caregiver-meal.jpg" alt="家屬在用餐時陪伴失智症患者" loading="lazy">
+          <img src="assets/photos/xige-wife.png" alt="喜哥與妻子在據點活動中互動" loading="lazy">
           <blockquote>「在接受這個事情的過程中，心裡非常掙扎與疲憊，情緒也近乎崩潰。」<br><small>—— 喜哥妻子</small></blockquote>
         </figure>
         <div class="reveal"><h2>向上清活小屋的<br>課程與陪伴</h2><div class="article-copy"><p>向上清活小屋的課程涵蓋分享與對話、繪畫與拼貼等手作活動、觀影、瑜珈與音樂課，透過多元體驗豐富患者的生活。據點也將做飯融入課程，讓失智症患者在實作中動手、動腦。即使過程中出現失誤、料理煎焦，課程更重視參與當下的投入與互動，讓患者從過程中獲得成就感與快樂。</p><p>向上清活小屋曾帶患者到高雄出遊。王姿穎提及：「那一次活動結束後，非常多的家屬告訴我們，那是他們生病後，第一次離開台中。」多數家屬不敢輕易帶患者外出，因為患者在行動與語言上較難自我控制，外出時常面臨他人異樣的眼光；加上照顧者多為配偶，若在公共空間找不到無障礙或身心障礙廁所，兩人甚至必須分開如廁，也增加患者走失的風險。</p><p>對照顧者而言，這類活動讓他們得以在長期高壓且循環的照顧日常中稍作喘息；對失智者而言，則是走出原有生活範圍、重新與社會互動的機會，也有助於延緩身心與認知功能的退化。</p></div></div>
@@ -763,7 +756,14 @@
     </section>
 
     <section class="journey" aria-label="從台中前往台北的服務距離">
-      <div class="journey__route"><span class="journey__city">台中</span><span class="journey__line" aria-hidden="true"></span><span class="journey__city">台北</span></div>
+      <div class="journey__sticky">
+        <video class="journey__video" src="assets/videos/taichung-taipei.mp4" muted playsinline preload="auto"></video>
+        <div class="journey__content">
+          <p class="journey__eyebrow">服務距離</p>
+          <div class="journey__route"><span class="journey__city">台中</span><span class="journey__line" aria-hidden="true"></span><span class="journey__city">台北</span></div>
+          <p>當專門服務年輕型失智症的據點有限，跨縣市移動也成為家屬與患者取得支持時必須面對的距離。</p>
+        </div>
+      </div>
     </section>
 
     <figure class="photo-break reveal">
@@ -833,6 +833,30 @@
         iframe.src = iframe.dataset.src;
       }
     });
+
+    const scrollVideos = [...document.querySelectorAll('.journey')];
+    const syncScrollVideos = () => {
+      scrollVideos.forEach(section => {
+        const video = section.querySelector('video');
+        if (!video) return;
+        const scrollable = section.offsetHeight - innerHeight;
+        const rect = section.getBoundingClientRect();
+        const progressValue = scrollable > 0 ? Math.max(0, Math.min(1, -rect.top / scrollable)) : 0;
+        section.style.setProperty('--journey-progress', progressValue.toFixed(4));
+        if (Number.isFinite(video.duration) && video.duration > 0) {
+          video.currentTime = video.duration * progressValue;
+        }
+      });
+    };
+    scrollVideos.forEach(section => {
+      const video = section.querySelector('video');
+      if (!video) return;
+      video.pause();
+      video.addEventListener('loadedmetadata', syncScrollVideos);
+    });
+    addEventListener('scroll', syncScrollVideos, { passive: true });
+    addEventListener('resize', syncScrollVideos);
+    syncScrollVideos();
 
     document.querySelectorAll('.story--video').forEach(story => {
       const video = story.querySelector('video');
