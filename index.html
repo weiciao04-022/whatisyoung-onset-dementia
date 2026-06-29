@@ -169,12 +169,19 @@
     .photo-break .photo-break__story-card { position: absolute; z-index: 3; top: 50%; left: max(6vw, 28px); width: min(620px, calc(100% - 56px)); padding: clamp(28px,4vw,52px); color: var(--white); background: rgba(18,43,58,.84); border-left: 5px solid var(--yellow); transform: translateY(50px); opacity: 0; backdrop-filter: blur(5px); transition: opacity .9s ease, transform .9s ease; }
     .photo-break .photo-break__story-card.visible { transform: translateY(-50%); opacity: 1; }
     .photo-break__story-card p { margin: 0; font: 600 clamp(22px,3vw,36px)/1.65 var(--serif); letter-spacing: -.015em; }
-    .photo-break--editorial { height: 155vh; min-height: 1180px; }
-    .photo-break--editorial img { height: 100%; object-position: center; }
-    .photo-break--editorial::after { inset: 0; background: linear-gradient(90deg, rgba(4,8,12,.4), rgba(4,8,12,.1) 46%, rgba(4,8,12,.58)), linear-gradient(180deg, rgba(4,8,12,.08), rgba(4,8,12,.5)); }
-    .photo-break--editorial .photo-break__story-card { top: 76vh; left: auto; right: max(8vw, 64px); width: min(640px, 42vw); padding: clamp(24px, 3vw, 38px); background: rgba(4,7,9,.72); border-left: 0; box-shadow: none; transform: none; opacity: 1; backdrop-filter: blur(2px); }
+    .photo-break--editorial { height: 185vh; min-height: 1280px; overflow: visible; }
+    .photo-break--editorial img { position: sticky; top: 0; z-index: 0; height: 100vh; object-position: center; }
+    .photo-break--editorial::after { content: none; }
+    .photo-break--editorial figcaption { top: calc(100vh - 46px); bottom: auto; }
+    .photo-break--editorial .photo-break__story-card { top: 112vh; left: auto; right: max(8vw, 64px); width: min(640px, 42vw); padding: clamp(24px, 3vw, 38px); background: rgba(0,0,0,.72); border-left: 0; box-shadow: none; transform: none; opacity: 1; backdrop-filter: blur(2px); }
     .photo-break--editorial .photo-break__story-card.visible { transform: none; }
     .photo-break--editorial .photo-break__story-card p { font: 700 clamp(18px, 1.85vw, 25px)/1.85 var(--sans); letter-spacing: 0; }
+    .photo-break--young { height: 180vh; min-height: 1220px; overflow: visible; }
+    .photo-break--young img { position: sticky; top: 0; z-index: 0; height: 100vh; }
+    .photo-break--young::after { inset: 0; background: linear-gradient(180deg, rgba(7,20,33,.16), rgba(7,20,33,.42) 52%, rgba(7,20,33,.72)); }
+    .photo-break--young figcaption { top: calc(100vh - 44px); bottom: auto; }
+    .photo-break__young-note { position: absolute; z-index: 3; top: 112vh; left: max(6vw, 28px); width: min(520px, calc(100% - 56px)); padding: clamp(22px, 2.6vw, 30px); color: rgba(255,255,255,.94); background: rgba(14,37,58,.78); border: 1px solid rgba(255,255,255,.12); box-shadow: 0 16px 44px rgba(0,0,0,.22); backdrop-filter: blur(4px); }
+    .photo-break__young-note p { margin: 0; font-size: clamp(18px, 1.6vw, 22px); font-weight: 600; line-height: 1.9; }
     .photo-duo { display: grid; grid-template-columns: 1.08fr .92fr; gap: 12px; padding: 12px; background: var(--ink); }
     .news-photo { position: relative; min-height: 520px; margin: 0; overflow: hidden; background: var(--ink); }
     .news-photo img { width: 100%; height: 100%; display: block; object-fit: cover; }
@@ -233,6 +240,34 @@
     .brain-sources { padding-top: 25px; border-top: 1px solid var(--line); color: rgba(24,44,58,.62); font-size: 12px; }
     .brain-sources a { text-underline-offset: 3px; }
 
+    .cube-drawing { background: var(--paper); }
+    .cube-drawing__intro { width: min(820px, 100%); margin: 0 auto 34px; text-align: center; }
+    .cube-drawing__intro h2 { margin-bottom: 18px; font-size: clamp(34px, 4.4vw, 56px); }
+    .cube-drawing__intro p { margin: 0; color: #3b444c; font-size: 17px; line-height: 1.9; }
+    .cube-drawing__grid { display: grid; grid-template-columns: minmax(0, min(680px, 100%)); justify-content: center; gap: clamp(18px,3vw,34px); align-items: start; }
+    .cube-pad { width: min(680px, 100%); margin: 0 auto; padding: clamp(20px,3vw,32px); border: 1px solid var(--line); background: rgba(255,255,255,.72); }
+    .cube-pad__number { display: block; margin-bottom: 10px; color: #9a7707; font: 800 12px/1 var(--sans); }
+    .cube-pad__prompt { margin: 0 0 16px; color: var(--ink); font-weight: 700; line-height: 1.7; }
+    .cube-pad__reference { display: flex; align-items: center; justify-content: center; min-height: 150px; margin: 0 0 16px; padding: 12px; border: 1px solid rgba(23,43,58,.14); background: #f3efe6; }
+    .cube-pad__reference img { width: min(250px, 82%); max-height: 140px; display: block; object-fit: contain; mix-blend-mode: multiply; }
+    .cube-canvas-wrap { position: relative; width: min(520px, 100%); margin: 0 auto; aspect-ratio: 1; border: 1px solid rgba(23,43,58,.18); background: #fffdf8; touch-action: none; }
+    .cube-canvas { width: 100%; height: 100%; display: block; cursor: crosshair; }
+    .cube-pad__actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+    .cube-drawing__actions { display: flex; justify-content: center; margin: 22px 0 34px; }
+    .cube-button { padding: 9px 15px; border: 1px solid rgba(23,43,58,.22); border-radius: 99px; color: var(--ink); background: transparent; font: 800 13px/1 var(--sans); cursor: pointer; }
+    .cube-button--primary { color: var(--white); border-color: var(--ink); background: var(--ink); }
+    .cube-results { padding: clamp(24px,3.5vw,38px); border: 1px solid var(--line); background: var(--white); }
+    .cube-results[hidden] { display: none; }
+    .cube-results__eyebrow { margin: 0 0 10px; color: #8f710d; font-size: 12px; font-weight: 800; letter-spacing: .12em; }
+    .cube-results h3 { margin-bottom: 14px; font-size: clamp(25px,3vw,34px); }
+    .cube-results p { margin: 0 0 18px; color: #3b444c; line-height: 1.9; }
+    .cube-results__group + .cube-results__group { margin-top: 28px; padding-top: 28px; border-top: 1px solid var(--line); }
+    .cube-results__group h4 { margin: 0 0 12px; color: var(--ink); font-size: 18px; }
+    .cube-results__images { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .cube-results figure { margin: 0; border: 1px solid var(--line); background: #f7f2e8; }
+    .cube-results img { width: 100%; aspect-ratio: 1; display: block; object-fit: cover; }
+    .cube-results figcaption { padding: 10px 12px; color: rgba(23,43,58,.62); font-size: 12px; line-height: 1.5; }
+
     .stories { padding-bottom: 130px; background: var(--paper); }
     .stories__intro { width: min(760px, 100%); margin-bottom: 52px; }
     .stories__intro .lead { margin: 0; font-size: clamp(18px, 2vw, 23px); line-height: 1.9; }
@@ -255,13 +290,23 @@
     .story__quote { margin: 22px 0; font: 600 clamp(18px,2vw,25px)/1.65 var(--serif); }
     .story__meta { display: flex; justify-content: space-between; gap: 20px; padding-top: 15px; border-top: 1px solid var(--line); font-size: 12px; }
     .story--video { width: 100%; }
-    .story--video .story__copy { display: grid; grid-template-columns: minmax(320px, .95fr) minmax(380px, 1.05fr); gap: clamp(28px, 4.8vw, 70px); align-items: stretch; }
-    .story-video { min-width: 0; margin: 0; background: #0b141a; }
-    .story-video video { width: 100%; height: 100%; min-height: 520px; display: block; object-fit: cover; }
-    .story-transcript { min-width: 0; min-height: 520px; display: flex; flex-direction: column; padding: clamp(28px, 4vw, 48px); color: var(--white); background: rgba(9,14,18,.92); }
+    .story--video .story__copy { display: grid; grid-template-columns: minmax(520px, 1.35fr) minmax(340px, .85fr); grid-template-areas: "transcript video"; gap: clamp(24px, 4vw, 54px); align-items: stretch; }
+    .story--video .story-transcript { grid-area: transcript; }
+    .story--video .story-video { grid-area: video; }
+    .story--xiaohua .story__copy { grid-template-columns: minmax(340px, .85fr) minmax(520px, 1.35fr); grid-template-areas: "transcript video"; }
+    .story--xige .story__copy { grid-template-columns: minmax(340px, .85fr) minmax(520px, 1.35fr); grid-template-areas: "video transcript"; }
+    .story-video { position: relative; min-width: 0; height: 560px; margin: 0; overflow: hidden; background: #0b141a; }
+    .story-video video { width: 100%; height: 100%; display: block; object-fit: cover; }
+    .story-video__play { position: absolute; z-index: 3; top: 50%; left: 50%; width: clamp(76px, 8vw, 112px); height: clamp(76px, 8vw, 112px); display: grid; place-items: center; border: 1px solid rgba(255,255,255,.28); border-radius: 50%; color: var(--ink); background: rgba(231,196,58,.96); box-shadow: 0 18px 46px rgba(0,0,0,.32); transform: translate(-50%,-50%); cursor: pointer; transition: opacity .22s ease, transform .22s ease, background .22s ease; }
+    .story-video__play::before { content: ""; width: 0; height: 0; margin-left: 7px; border-top: 17px solid transparent; border-bottom: 17px solid transparent; border-left: 25px solid currentColor; }
+    .story-video__play:hover,
+    .story-video__play:focus-visible { background: #f0d24a; transform: translate(-50%,-50%) scale(1.06); }
+    .story-video__play:focus-visible { outline: 3px solid var(--white); outline-offset: 5px; }
+    .story-video.is-playing .story-video__play { opacity: 0; pointer-events: none; transform: translate(-50%,-50%) scale(.92); }
+    .story-transcript { min-width: 0; height: 560px; display: flex; flex-direction: column; padding: clamp(28px, 3.4vw, 42px); overflow: hidden; color: var(--white); background: rgba(9,14,18,.92); }
     .story-transcript .tag { color: var(--yellow); border-color: rgba(231,196,58,.55); }
     .story-transcript h3 { margin: 18px 0 20px; color: var(--white); font-size: clamp(28px,3.2vw,40px); }
-    .story-transcript__note { margin: 0 0 26px; padding-left: 16px; color: rgba(255,255,255,.66); border-left: 3px solid var(--yellow); font-size: 13px; line-height: 1.8; }
+    .story-transcript__note { margin: 18px 0 0; padding-left: 16px; color: rgba(255,255,255,.66); border-left: 3px solid var(--yellow); font-size: 13px; line-height: 1.8; }
     .story-transcript__lines { flex: 1; margin: 4px 0 0; padding: clamp(22px, 3vw, 36px); overflow: hidden; border: 1px solid rgba(255,255,255,.12); background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(0,0,0,.2)); }
     .story-transcript__lines span { --fill: 0%; display: block; margin-bottom: .62em; color: transparent; background: linear-gradient(90deg, rgba(255,255,255,.96) 0 var(--fill), rgba(255,255,255,.24) var(--fill) 100%); -webkit-background-clip: text; background-clip: text; font-size: clamp(18px,1.8vw,24px); font-weight: 800; line-height: 1.8; }
     .story-transcript__lines span:last-child { margin-bottom: 0; }
@@ -280,12 +325,12 @@
     .objects__instruction { flex: none; margin-bottom: 8px; padding-left: 18px; border-left: 3px solid var(--yellow); color: var(--muted); font-size: 14px; font-weight: 500; }
     .object-strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 45px; }
     .object-card { min-width: 0; border: 1px solid var(--line); background: var(--paper); }
-    .object-card__button { width: 100%; height: 100%; padding: 0; border: 0; color: var(--ink); background: transparent; text-align: left; cursor: pointer; }
+    .object-card__button { display: grid; grid-template-rows: auto 178px; width: 100%; height: 100%; padding: 0; border: 0; color: var(--ink); background: transparent; text-align: left; cursor: pointer; }
     .object-card__button:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
     .object-card__image { display: block; width: 100%; aspect-ratio: 4/3; overflow: hidden; background: #ddd8ce; }
-    .object-card__image img { width: 100%; height: 100%; display: block; object-fit: cover; transition: transform .35s ease; }
+    .object-card__image img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: center top; transition: transform .35s ease; }
     .object-card__button:hover .object-card__image img { transform: scale(1.025); }
-    .object-card__copy { display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: start; padding: 22px; }
+    .object-card__copy { display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: start; min-height: 0; padding: 22px; overflow: hidden; }
     .object-card__number { color: #8f710d; font: 700 26px/1 var(--serif); }
     .object-card__title { display: block; margin: 0 0 8px; font: 700 21px/1.4 var(--serif); }
     .object-card p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.7; }
@@ -341,12 +386,64 @@
     .support-quote { width: min(640px, 100%); margin: 20px 0 1.35em; padding: 22px 26px; color: var(--ink); border-left: 5px solid var(--yellow); border-radius: 0 8px 8px 0; background: rgba(255,253,248,.96); box-shadow: 0 12px 30px rgba(5,14,20,.18); font: 600 clamp(18px,1.7vw,21px)/1.75 var(--serif); }
     .support-quote cite { display: block; margin-top: 10px; color: rgba(23,43,58,.72); font: 500 12px/1.5 var(--sans); letter-spacing: .04em; }
 
+    .cdr { overflow: hidden; background: #fbf8f1; }
+    .cdr__intro { width: min(900px,100%); margin-bottom: 34px; }
+    .cdr__intro h2 { margin-bottom: 20px; }
+    .cdr__intro > p { margin: 0; color: #3c4650; font-size: 17px; line-height: 1.9; }
+    .cdr__notice { margin-top: 20px!important; padding-left: 16px; border-left: 3px solid #6e579c; color: rgba(23,43,58,.62)!important; font-size: 13px!important; line-height: 1.8!important; }
+    .cdr__interactive { display: grid; grid-template-columns: 150px minmax(0,1fr); gap: clamp(24px,3vw,38px); align-items: stretch; padding: clamp(24px,4vw,42px); border: 1px solid rgba(23,43,58,.12); border-radius: 28px; background: rgba(255,253,248,.74); box-shadow: 0 24px 60px rgba(23,43,58,.08); }
+    .cdr__slider { --cdr-progress: 25%; --cdr-slider-inset: 40px; position: relative; min-height: 520px; padding: var(--cdr-slider-inset) 0 0; outline: none; user-select: none; touch-action: none; }
+    .cdr__slider:focus-visible { outline: 2px solid #59417f; outline-offset: 8px; border-radius: 18px; }
+    .cdr__range { position: absolute; z-index: 5; top: var(--cdr-slider-inset); bottom: var(--cdr-slider-inset); left: -16px; width: 68px; height: calc(100% - (var(--cdr-slider-inset) * 2)); margin: 0; opacity: 0; cursor: grab; writing-mode: vertical-lr; direction: ltr; -webkit-appearance: slider-vertical; appearance: slider-vertical; }
+    .cdr__range:active { cursor: grabbing; }
+    .cdr__range:focus-visible + .cdr__track .cdr__thumb { box-shadow: 0 0 0 8px rgba(89,65,127,.2), 0 10px 20px rgba(23,43,58,.18); }
+    .cdr__track { position: absolute; top: var(--cdr-slider-inset); bottom: var(--cdr-slider-inset); left: 17px; width: 3px; border-radius: 99px; background: rgba(110,87,156,.18); }
+    .cdr__track-fill { position: absolute; top: 0; left: 0; width: 100%; height: var(--cdr-progress); border-radius: inherit; background: #59417f; }
+    .cdr__thumb { position: absolute; z-index: 3; top: var(--cdr-progress); left: 50%; width: 26px; height: 26px; border: 5px solid #fbf8f1; border-radius: 50%; background: #59417f; box-shadow: 0 0 0 7px rgba(89,65,127,.14), 0 10px 20px rgba(23,43,58,.18); transform: translate(-50%,-50%); cursor: grab; }
+    .cdr__slider.is-dragging .cdr__thumb { cursor: grabbing; transform: translate(-50%,-50%) scale(1.08); }
+    .cdr__ticks { position: absolute; z-index: 2; top: var(--cdr-slider-inset); bottom: var(--cdr-slider-inset); left: 0; width: 100%; pointer-events: none; }
+    .cdr__tick { position: absolute; left: 0; width: 100%; display: grid; grid-template-columns: 42px 1fr; gap: 8px; align-items: center; color: rgba(23,43,58,.46); font-family: var(--sans); transform: translateY(-50%); }
+    .cdr__tick[data-cdr-level="0"] { top: 0%; }
+    .cdr__tick[data-cdr-level="0.5"] { top: 25%; }
+    .cdr__tick[data-cdr-level="1"] { top: 50%; }
+    .cdr__tick[data-cdr-level="2"] { top: 75%; }
+    .cdr__tick[data-cdr-level="3"] { top: 100%; }
+    .cdr__tick::before { content: ""; width: 15px; height: 15px; margin-left: 10px; border: 2px solid #8b7ca9; border-radius: 50%; background: #fbf8f1; }
+    .cdr__tick strong { display: block; color: inherit; font-size: 19px; font-weight: 900; line-height: 1; }
+    .cdr__tick small { display: block; margin-top: 4px; color: rgba(23,43,58,.46); font-size: 10.5px; font-weight: 700; line-height: 1.35; }
+    .cdr__tick.is-active { color: #59417f; }
+    .cdr__tick.is-active::before { border-color: #59417f; background: #59417f; }
+    .cdr__tick.is-active small { color: #59417f; }
+    .cdr__slider-note { margin: 16px 0 0; color: rgba(23,43,58,.54); font-size: 12px; font-weight: 700; line-height: 1.6; }
+    .cdr__stage { display: grid; grid-template-columns: minmax(120px,.45fr) minmax(170px,.75fr) minmax(270px,360px) minmax(170px,.75fr) minmax(120px,.45fr); grid-template-areas: ". . memory . ." ". care chart orientation ." ". home chart judgment ." ". . community . ."; gap: 16px 18px; align-items: center; min-height: 620px; }
+    .cdr__chart { grid-area: chart; width: min(360px,100%); margin: auto; }
+    .cdr__chart svg { width: 100%; height: auto; display: block; overflow: visible; }
+    .cdr__grid { fill: none; stroke: rgba(23,43,58,.16); stroke-width: 1; }
+    .cdr__axis { stroke: rgba(23,43,58,.16); stroke-width: 1; }
+    .cdr__shape { fill: rgba(117,96,159,.32); stroke: #6e579c; stroke-width: 2.5; transition: points .35s ease; }
+    .cdr__dot { fill: #6e579c; opacity: .9; transition: cx .35s ease, cy .35s ease; }
+    .cdr__center { fill: #4f3b73; font-family: var(--sans); text-anchor: middle; dominant-baseline: middle; }
+    .cdr__center-level { font-size: 14px; font-weight: 900; }
+    .cdr__center-label { font-size: 11px; font-weight: 800; }
+    .cdr__aspect { min-height: 112px; padding: 15px 16px; border: 1px solid rgba(110,87,156,.13); border-radius: 18px; background: rgba(255,255,255,.62); transition: border-color .2s ease, background .2s ease; }
+    .cdr__aspect h3 { margin: 0 0 7px; color: #4f3b73; font: 800 15px/1.4 var(--sans); }
+    .cdr__aspect p { margin: 0; color: #41484e; font-size: 13.5px; line-height: 1.65; }
+    .cdr__aspect--memory { grid-area: memory; text-align: center; }
+    .cdr__aspect--orientation { grid-area: orientation; }
+    .cdr__aspect--judgment { grid-area: judgment; }
+    .cdr__aspect--community { grid-area: community; text-align: center; }
+    .cdr__aspect--home { grid-area: home; text-align: right; }
+    .cdr__aspect--care { grid-area: care; text-align: right; }
+    .cdr__footer { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 30px; padding-top: 24px; border-top: 1px solid rgba(23,43,58,.16); }
+    .cdr__footer p { margin: 0; color: rgba(23,43,58,.66); font-size: 12px; line-height: 1.8; }
+    .cdr__footer strong { color: var(--ink); }
+
     .upward { background: var(--paper); }
     .upward-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
     .care-photo { position: relative; min-height: 620px; margin: 0; overflow: hidden; }
     .care-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
     .care-photo blockquote { position: absolute; right: 24px; bottom: 24px; left: 24px; margin: 0; padding: 22px; color: var(--ink); border-left: 5px solid var(--yellow); background: rgba(255,253,248,.94); font: 600 20px/1.7 var(--serif); }
-    .journey { height: 260vh; padding: 0; color: var(--white); background: var(--ink); }
+    .journey { height: 360vh; padding: 0; color: var(--white); background: var(--ink); }
     .journey__sticky { position: sticky; top: 0; height: 100vh; display: grid; place-items: center; overflow: hidden; }
     .journey__sticky::after { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(10,22,31,.12), rgba(10,22,31,.28)); pointer-events: none; }
     .journey__video { position: absolute; inset: 0; width: 100%; height: 100%; display: block; object-fit: cover; }
@@ -359,8 +456,10 @@
     .cafe-roles span { padding: 7px 12px; color: var(--ink); border: 1px solid rgba(184,150,39,.45); background: rgba(231,196,58,.3); border-radius: 99px; font-size: 12px; font-weight: 600; }
 
     .work { color: white; background: var(--ink); }
-    .work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
-    .work-quote { padding: 28px; color: var(--ink); border-left: 5px solid #b89627; background: var(--yellow); transform: none; font: 700 clamp(24px,3vw,38px)/1.55 var(--serif); }
+    .work-grid { display: grid; grid-template-columns: minmax(0, 960px); justify-content: center; gap: 28px; }
+    .work-grid > .reveal:first-child { width: 100%; }
+    .work-grid > .article-copy { width: 100%; }
+    .work-quote { width: min(620px, 100%); margin-top: 28px; padding: 28px; color: var(--ink); border-left: 5px solid #b89627; background: var(--yellow); transform: none; font: 700 clamp(24px,3vw,38px)/1.55 var(--serif); }
     .rights { margin-top: 45px; border-top: 1px solid rgba(255,255,255,.3); }
     .right-row { display: grid; grid-template-columns: 40px 1fr; gap: 20px; padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,.3); }
     .right-row strong { color: var(--yellow); font-size: 24px; font-weight: 700; }
@@ -398,7 +497,25 @@
       .problem { min-height: 100vh; padding-top: 120px; padding-bottom: 120px; background-attachment: scroll; }
       .problem__copy p { font-size: 16px; line-height: 1.85; }
       .support-quote { padding: 20px 22px; font-size: 18px; }
-      .journey { height: 230vh; }
+      .cdr__intro { margin-bottom: 34px; }
+      .cdr__interactive { display: block; padding: 22px; border-radius: 22px; }
+      .cdr__slider { --cdr-slider-inset: 14px; min-height: 94px; margin-bottom: 28px; padding: 0; touch-action: pan-y; }
+      .cdr__range { top: calc(var(--cdr-slider-inset) * -1); right: 20px; bottom: auto; left: 20px; width: calc(100% - 40px); height: 56px; writing-mode: horizontal-tb; direction: ltr; -webkit-appearance: none; appearance: none; }
+      .cdr__track { top: var(--cdr-slider-inset); right: 24px; bottom: auto; left: 24px; width: auto; height: 3px; }
+      .cdr__track-fill { width: var(--cdr-progress); height: 100%; }
+      .cdr__thumb { top: 50%; left: var(--cdr-progress); }
+      .cdr__ticks { position: relative; top: auto; right: auto; bottom: auto; left: auto; min-height: 0; display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); padding-top: 34px; }
+      .cdr__tick { position: static; width: auto; display: block; text-align: center; transform: none; }
+      .cdr__tick::before { display: none; }
+      .cdr__tick strong { font-size: 15px; }
+      .cdr__tick small { display: none; }
+      .cdr__slider-note { margin-top: 10px; text-align: center; }
+      .cdr__stage { min-height: 0; display: grid; grid-template-columns: 1fr; grid-template-areas: "chart" "memory" "orientation" "judgment" "community" "home" "care"; gap: 12px; }
+      .cdr__chart { width: min(330px,86vw); margin: 0 auto 18px; }
+      .cdr__aspect { min-height: 0; padding: 16px 0; border: 0; border-top: 1px solid rgba(23,43,58,.13); border-radius: 0; background: transparent; text-align: left; }
+      .cdr__aspect p { font-size: 14px; }
+      .cdr__footer { grid-template-columns: 1fr; gap: 12px; margin-top: 32px; }
+      .journey { height: 320vh; }
       .stat + .stat { border-left: 0; }
       .brain-scroll { display: block; }
       .brain-stage { top: 82px; z-index: 2; height: 52vh; min-height: 360px; margin: 0 -24px; background: rgba(243,239,230,.94); backdrop-filter: blur(8px); }
@@ -416,26 +533,32 @@
       .brain-step h3, .brain-step p, .brain-step .brain-effects, .brain-step .brain-step__number { background: var(--white); }
       .brain-step .brain-step__number { padding-top: 20px; }
       .brain-step .brain-effects { padding-bottom: 20px; }
+      .cube-drawing__grid { grid-template-columns: 1fr; gap: 22px; }
+      .cube-results__images { grid-template-columns: 1fr; }
       .support-metrics { grid-template-columns: 1fr; }
       .story, .story:nth-child(even) { width: 100%; }
       .story__copy, .story:nth-child(even) .story__copy { margin: 0; padding: 0; }
       .story--video .story__copy { grid-template-columns: 1fr; gap: 0; }
-      .story-video video { min-height: 420px; }
-      .story-transcript { min-height: 430px; padding: 28px 24px; }
+      .story-video { height: 430px; }
+      .story-transcript { height: 430px; padding: 28px 24px; }
       .story-transcript__lines { padding: 22px; }
       .story-transcript__lines span { font-size: 18px; line-height: 1.7; }
       .story-list { gap: 55px; }
       .photo-break { height: 72vh; min-height: 520px; }
-      .photo-break--editorial { height: 138vh; min-height: 900px; }
-      .photo-break--editorial .photo-break__story-card { top: 68vh; right: 24px; bottom: auto; left: 24px; width: auto; padding: 22px 24px; transform: none; }
+      .photo-break--editorial { height: 165vh; min-height: 980px; }
+      .photo-break--editorial .photo-break__story-card { top: 96vh; right: 24px; bottom: auto; left: 24px; width: auto; padding: 22px 24px; transform: none; }
       .photo-break--editorial .photo-break__story-card.visible { transform: none; }
       .photo-break--editorial .photo-break__story-card p { font-size: 18px; line-height: 1.75; }
+      .photo-break--young { height: 150vh; min-height: 920px; }
+      .photo-break--young .photo-break__young-note { top: 88vh; right: 24px; left: 24px; width: auto; padding: 18px 20px; }
+      .photo-break--young .photo-break__young-note p { font-size: 16px; line-height: 1.8; }
       .photo-duo { grid-template-columns: 1fr; }
       .news-photo { min-height: 62vh; }
       .care-photo { min-height: 72vh; margin: 0 -24px; }
       .objects__heading { display: block; }
       .objects__instruction { display: inline-block; margin: 16px 0 0; }
       .object-strip { grid-template-columns: 1fr; }
+      .object-card__button { grid-template-rows: auto 190px; }
       .object-modal { padding: 12px; }
       .object-modal__stage { max-height: calc(100vh - 24px); }
       .object-modal__content { max-height: calc(100vh - 24px); padding: 68px 24px 30px; }
@@ -587,6 +710,51 @@
       </div>
     </section>
 
+    <section class="cube-drawing" aria-labelledby="cube-drawing-title">
+      <div class="wrap reveal">
+        <div class="cube-drawing__intro">
+          <h2 id="cube-drawing-title">一些好像很簡單的事情，<br>對他們來說是困難的</h2>
+          <p>試著完成一個看似簡單的任務：畫出有透視感的方塊。完成後，可以看看年輕型失智症患者畫出來的樣子。</p>
+        </div>
+        <div class="cube-drawing__grid">
+          <div class="cube-pad">
+            <span class="cube-pad__number">01</span>
+            <p class="cube-pad__prompt">請複製這個圖形。</p>
+            <figure class="cube-pad__reference">
+              <img src="assets/photos/cube-reference.png" alt="透視方塊臨摹示意圖">
+            </figure>
+            <div class="cube-canvas-wrap">
+              <canvas class="cube-canvas" width="620" height="620" aria-label="臨摹透視方塊的繪圖畫布"></canvas>
+            </div>
+            <div class="cube-pad__actions">
+              <button class="cube-button" type="button" data-canvas-clear>重新畫一次</button>
+            </div>
+          </div>
+        </div>
+        <div class="cube-drawing__actions">
+          <button class="cube-button cube-button--primary" type="button" data-cube-show>完成作答，看患者的結果</button>
+        </div>
+        <article class="cube-results" hidden>
+          <p class="cube-results__eyebrow">患者畫出的結果</p>
+          <h3>以下是年輕型失智症患者畫出來的樣子</h3>
+          <p>對部分患者而言，線條、空間、順序與手眼協調，都可能因認知功能改變而變得困難。</p>
+          <div class="cube-results__group">
+            <h4>透視方塊</h4>
+            <div class="cube-results__images">
+              <figure>
+                <img src="assets/photos/cube-patient-01.png" alt="年輕型失智症患者畫出的透視方塊之一" loading="lazy">
+                <figcaption>患者作品一</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/photos/cube-patient-02.png" alt="年輕型失智症患者畫出的透視方塊之二" loading="lazy">
+                <figcaption>患者作品二</figcaption>
+              </figure>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
     <figure class="photo-break photo-break--editorial">
       <img src="assets/photos/story-transition.jpg" alt="一位年輕型失智症患者交握的雙手" loading="lazy">
       <div class="photo-break__story-card">
@@ -602,11 +770,8 @@
           <p class="stories__privacy">為了保護當事人，我們將名字抽換使用化名，有些也採用變聲處理。</p>
         </div>
         <div class="story-list">
-          <article class="story story--video reveal">
+          <article class="story story--video story--xiaohua reveal">
             <div class="story__copy">
-              <figure class="story-video">
-                <video src="assets/videos/zhengyu.mp4" controls preload="metadata" playsinline></video>
-              </figure>
               <div class="story-transcript">
                 <span class="tag">血管性失智症</span>
                 <h3>沒有病識感：小華</h3>
@@ -620,16 +785,48 @@
                   <span style="--i:6">語言能力也沒有傷到。</span>
                 </p>
               </div>
+              <figure class="story-video">
+                <video src="assets/videos/zhengyu.mp4" controls preload="metadata" playsinline></video>
+                <button class="story-video__play" type="button" aria-label="播放小華影片"></button>
+              </figure>
             </div>
           </article>
-          <article class="story reveal">
-            <div class="story__copy"><span class="tag">語言能力逐漸退化</span><h3>喪失語言能力：炤熙</h3><p>曾經能自然說出口的句子，逐漸被重複的字、情緒與動作取代。當想法無法完整轉化成語言時，炤熙有時只能反覆說出相同的詞，或以表情和動作回應身旁的人。對他而言，並不是沒有想法，而是原本熟悉的表達方式正一點一點離開。</p><p>語言能力的改變，也讓日常溝通需要更多等待。家人必須從零碎的字句、語氣與動作中理解他的需求；當雙方無法立即明白彼此時，挫折與情緒也會隨之出現。疾病改變的不只是說話能力，也改變了他與外界建立連結的方式。</p></div>
+          <article class="story story--video story--xige reveal">
+            <div class="story__copy">
+              <figure class="story-video">
+                <video src="assets/videos/xige.mp4" controls preload="metadata" playsinline></video>
+                <button class="story-video__play" type="button" aria-label="播放喜哥影片"></button>
+              </figure>
+              <div class="story-transcript">
+                <span class="tag">語言能力逐漸退化</span>
+                <h3>喪失語言能力：喜哥</h3>
+                <p class="story-transcript__lines" data-first-cue-duration="3" aria-label="喜哥訪談逐字稿">
+                  <span style="--i:0">我是喜哥（化名），年齡61歲。</span>
+                  <span style="--i:1">XXXXXX</span>
+                  <span style="--i:2">（敲敲敲敲敲敲）</span>
+                  <span style="--i:3">（哭）</span>
+                </p>
+                <p class="story-transcript__note">附註：患者無法用正常語言表達自己所想，有時會以不雅字眼、敲打桌面和哭來表達情緒。</p>
+              </div>
+            </div>
           </article>
-          <article class="story reveal">
-            <div class="story__copy"><span class="tag">離開原有工作</span><h3>被鄰居與工作排除：佳祥</h3><p>佳祥曾是一名八方雲集的計時人員，直到因為腦內疾病與小中風接受手術，加上血管狀況不佳，經常出現頭暈症狀，才不得不離開工作崗位。確診之後，他的生活節奏也變得緩慢許多，大部分時間都待在家中。</p><p>談起與鄰里的互動，佳祥說：「也不是不好，只是他們就比較不會理我。我會跟他們打招呼……」當身旁的人不了解失智症帶來的變化，患者在工作與社區裡可能逐漸被留在原本熟悉的關係之外。喜歡賞花的佳祥，偶爾會到住家附近的公園散步；有時在妹妹邀請下，也願意一起出門逛街，或到較遠的地方走走。這些看似平凡的日常，如今都成為他珍惜的生活片段。</p></div>
-          </article>
-          <article class="story reveal">
-            <div class="story__copy"><span class="tag">照顧者視角</span><h3>不敢對外說明：炤熙妻子</h3><p>炤熙確診後，妻子的生活也跟著改變。從協助穿衣、安撫情緒，到處理家庭收入與日常安排，照顧成為每天無法暫停的工作。然而，剛得知診斷時，她不敢向外說明丈夫的狀況，也不知道該如何面對親友的詢問與旁人的眼光。</p><p>當社會對年輕型失智症的認識仍停留在「老人容易忘記事情」，患者與家屬往往很難解釋語言、情緒與行為上的變化。對照顧者而言，壓力不只來自照顧本身，也來自害怕不被理解、擔心患者受到排斥，因此選擇沉默，將疾病留在家庭內部承受。</p></div>
+          <article class="story story--video story--xiaohua reveal">
+            <div class="story__copy">
+              <div class="story-transcript">
+                <span class="tag">離開原有工作</span>
+                <h3>被鄰居與工作排除：佳祥</h3>
+                <p class="story-transcript__lines" aria-label="佳祥訪談逐字稿">
+                  <span style="--i:0">我叫小威（化名），68年次，是 47 歲嗎？</span>
+                  <span style="--i:1">（鄰居），有些人（對我）不太好，</span>
+                  <span style="--i:2">不好只是，他們比較不會理我。</span>
+                  <span style="--i:3">（那你會跟他們打招呼嗎？）會會會。</span>
+                </p>
+              </div>
+              <figure class="story-video">
+                <video src="assets/videos/jiaxiang-2.mp4" controls preload="metadata" playsinline></video>
+                <button class="story-video__play" type="button" aria-label="播放佳祥影片"></button>
+              </figure>
+            </div>
           </article>
         </div>
       </div>
@@ -729,6 +926,58 @@
       </div>
     </section>
 
+    <section class="cdr" aria-labelledby="cdr-title">
+      <div class="wrap reveal">
+        <div class="cdr__intro">
+          <h2 id="cdr-title">CDR 量表：醫師如何看見失智程度？</h2>
+          <p>CDR（Clinical Dementia Rating，臨床失智評估量表）是臨床上用來評估失智程度的工具。它不是只看記憶力，而是從記憶、定向感、問題解決與判斷、社會事務處理、居家生活與愛好、自我照料能力六個面向，觀察一個人的認知與生活功能是否受到影響。</p>
+          <p class="cdr__notice">這個互動區塊僅用來協助理解 CDR 量表的觀察面向，不能作為自我診斷或自行評分依據。正式 CDR 分級需由專業人員依臨床訪談與評估規則判斷。</p>
+        </div>
+        <div class="cdr__interactive">
+          <div class="cdr__slider" data-cdr-slider>
+            <input class="cdr__range" type="range" min="0" max="4" step="1" value="1" aria-label="拖曳切換 CDR 等級" aria-valuetext="CDR 0.5｜極輕度">
+            <div class="cdr__track" aria-hidden="true">
+              <span class="cdr__track-fill"></span>
+              <span class="cdr__thumb"></span>
+            </div>
+            <div class="cdr__ticks" aria-hidden="true">
+              <span class="cdr__tick" data-cdr-level="0"><strong>0</strong></span>
+              <span class="cdr__tick is-active" data-cdr-level="0.5"><strong>0.5</strong></span>
+              <span class="cdr__tick" data-cdr-level="1"><strong>1</strong></span>
+              <span class="cdr__tick" data-cdr-level="2"><strong>2</strong><small>建議機構照護</small></span>
+              <span class="cdr__tick" data-cdr-level="3"><strong>3</strong><small>建議專業照護</small></span>
+            </div>
+            <p class="cdr__slider-note">拖曳紫色圓點切換等級</p>
+          </div>
+          <div class="cdr__stage" aria-live="polite">
+            <div class="cdr__chart" aria-label="CDR 六面向能力受影響程度雷達圖">
+              <svg viewBox="0 0 260 260" role="img" aria-labelledby="cdr-chart-title">
+                <title id="cdr-chart-title">CDR 六邊形能力圖</title>
+                <g class="cdr__grid-layer" aria-hidden="true"></g>
+                <g class="cdr__axis-layer" aria-hidden="true"></g>
+                <polygon class="cdr__shape" points=""></polygon>
+                <g class="cdr__dots" aria-hidden="true"></g>
+                <text class="cdr__center" x="130" y="130">
+                  <tspan class="cdr__center-level" x="130" y="124">CDR 0.5</tspan>
+                  <tspan class="cdr__center-label" x="130" y="143">極輕度</tspan>
+                </text>
+              </svg>
+            </div>
+            <div class="cdr__aspect cdr__aspect--memory" data-cdr-key="memory"><h3>記憶力</h3><p></p></div>
+            <div class="cdr__aspect cdr__aspect--orientation" data-cdr-key="orientation"><h3>定向感</h3><p></p></div>
+            <div class="cdr__aspect cdr__aspect--judgment" data-cdr-key="judgment"><h3>問題解決與判斷</h3><p></p></div>
+            <div class="cdr__aspect cdr__aspect--community" data-cdr-key="community"><h3>社會事務處理</h3><p></p></div>
+            <div class="cdr__aspect cdr__aspect--home" data-cdr-key="home"><h3>居家生活與愛好</h3><p></p></div>
+            <div class="cdr__aspect cdr__aspect--care" data-cdr-key="care"><h3>自我照料能力</h3><p></p></div>
+          </div>
+        </div>
+        <div class="cdr__footer">
+          <p><strong>說明：</strong>CDR 從 0（無失智）到 3（嚴重）共五個等級。數值越高，代表在該能力面向受到的影響越明顯，日常生活需要的協助也越多。</p>
+          <p><strong>資料來源：</strong>整理自高雄榮總《臨床失智評估量表分期定義》與 CDR 臨床評估概念。</p>
+        </div>
+      </div>
+    </section>
+
     <div class="photo-duo" aria-label="據點生活紀實">
       <figure class="news-photo reveal">
         <img src="assets/photos/member-closeup.jpg" alt="失智症患者在據點課程中表達情緒" loading="lazy">
@@ -761,8 +1010,11 @@
       </div>
     </section>
 
-    <figure class="photo-break reveal">
+    <figure class="photo-break photo-break--young reveal">
       <img src="assets/photos/young-cafe-exterior.jpg" alt="台北 Young 咖啡坊入口" loading="lazy">
+      <div class="photo-break__young-note">
+        <p>Young Coffee為臺灣唯一提供年輕型失智症患者工作的場所，為了減少患者的負擔，每次排班4小時，只在週六營業。</p>
+      </div>
       <figcaption>台北 Young 咖啡坊是目前少數專門提供年輕型失智症支持的據點。攝影／採訪團隊</figcaption>
     </figure>
 
@@ -829,6 +1081,221 @@
       }
     });
 
+    document.querySelectorAll('.cube-drawing').forEach(section => {
+      const showButton = section.querySelector('[data-cube-show]');
+      const results = section.querySelector('.cube-results');
+      if (!showButton || !results) return;
+
+      section.querySelectorAll('.cube-canvas').forEach(canvas => {
+        const context = canvas.getContext('2d');
+        const clearButton = canvas.closest('.cube-pad').querySelector('[data-canvas-clear]');
+        let isDrawing = false;
+        const resetCanvas = () => {
+          context.clearRect(0, 0, canvas.width, canvas.height);
+          context.lineCap = 'round';
+          context.lineJoin = 'round';
+          context.lineWidth = Math.max(3, 3 * devicePixelRatio);
+          context.strokeStyle = '#172b3a';
+        };
+        const resizeCanvas = () => {
+          const size = Math.round(canvas.getBoundingClientRect().width * devicePixelRatio);
+          if (!size || canvas.width === size) return;
+          canvas.width = size;
+          canvas.height = size;
+          resetCanvas();
+        };
+        const pointFromEvent = event => {
+          const rect = canvas.getBoundingClientRect();
+          return {
+            x: (event.clientX - rect.left) * (canvas.width / rect.width),
+            y: (event.clientY - rect.top) * (canvas.height / rect.height)
+          };
+        };
+        canvas.addEventListener('pointerdown', event => {
+          isDrawing = true;
+          const point = pointFromEvent(event);
+          context.beginPath();
+          context.moveTo(point.x, point.y);
+          canvas.setPointerCapture?.(event.pointerId);
+        });
+        canvas.addEventListener('pointermove', event => {
+          if (!isDrawing) return;
+          const point = pointFromEvent(event);
+          context.lineTo(point.x, point.y);
+          context.stroke();
+        });
+        const stopDrawing = () => { isDrawing = false; };
+        canvas.addEventListener('pointerup', stopDrawing);
+        canvas.addEventListener('pointercancel', stopDrawing);
+        clearButton?.addEventListener('click', resetCanvas);
+        resizeCanvas();
+        addEventListener('resize', resizeCanvas);
+      });
+
+      showButton.addEventListener('click', () => {
+        results.hidden = false;
+        results.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'nearest' });
+      });
+    });
+
+    const cdrData = {
+      "0": {
+        label: '無失智',
+        values: [0, 0, 0, 0, 0, 0],
+        memory: '無記憶減退。',
+        orientation: '對時間與地點完全定向。',
+        judgment: '能處理日常商業與財務，判斷力好。',
+        community: '獨立在工作、社交與購物中發揮。',
+        home: '家庭嗜好、知識性興趣維持良好。',
+        care: '完全自理。'
+      },
+      "0.5": {
+        label: '極輕度',
+        values: [1, 1, 1, 1, 1, 1],
+        memory: '輕微遺忘，事後僅能想起片段。',
+        orientation: '完全定向，時間關聯性稍有困難。',
+        judgment: '分析相似／差異性有輕微困難。',
+        community: '社會參與、購物稍有障礙。',
+        home: '家事、興趣略有減少或障礙。',
+        care: '完全自理。'
+      },
+      "1": {
+        label: '輕度',
+        values: [2, 2, 2, 2, 2, 2],
+        memory: '近事遺忘明顯，影響日常生活。',
+        orientation: '時間定向障礙，地點仍可辨認。',
+        judgment: '無法處理複雜問題，社會判斷尚可。',
+        community: '無法單獨參與社區活動。',
+        home: '複雜家事已不做，興趣減退。',
+        care: '需旁人提醒個人衛生。'
+      },
+      "2": {
+        label: '中度｜建議機構照護',
+        values: [3, 3, 3, 3, 3, 3],
+        memory: '嚴重記憶減退，僅存片段舊回憶。',
+        orientation: '時間與地點有嚴重定向障礙。',
+        judgment: '判斷力嚴重受損，無法解決問題。',
+        community: '無法單獨處理商務購物，需人引導。',
+        home: '僅能維持簡單家事，興趣喪失。',
+        care: '穿衣、如廁等個人照料需實質協助。'
+      },
+      "3": {
+        label: '嚴重｜建議專業照護',
+        values: [4, 4, 4, 4, 4, 4],
+        memory: '記憶嚴重喪失，僅存片段印象。',
+        orientation: '僅存對人的定向感。',
+        judgment: '完全失去判斷與解決問題能力。',
+        community: '無法出外活動，病情明顯。',
+        home: '完全無法進行任何家務。',
+        care: '需極大協助，常見大小便失禁。'
+      }
+    };
+
+    const cdrAxes = [
+      ['memory', '記憶力'],
+      ['orientation', '定向感'],
+      ['judgment', '問題解決與判斷'],
+      ['community', '社會事務處理'],
+      ['home', '居家生活與愛好'],
+      ['care', '自我照料能力']
+    ];
+    const cdrChart = document.querySelector('.cdr');
+    if (cdrChart) {
+      const center = { x: 130, y: 130 };
+      const radius = 78;
+      const maxValue = 4;
+      const svgNS = 'http://www.w3.org/2000/svg';
+      const gridLayer = cdrChart.querySelector('.cdr__grid-layer');
+      const axisLayer = cdrChart.querySelector('.cdr__axis-layer');
+      const dotsLayer = cdrChart.querySelector('.cdr__dots');
+      const shape = cdrChart.querySelector('.cdr__shape');
+      const centerLevel = cdrChart.querySelector('.cdr__center-level');
+      const centerLabel = cdrChart.querySelector('.cdr__center-label');
+      const chartGraphic = cdrChart.querySelector('.cdr__chart');
+      const aspectCopies = [...cdrChart.querySelectorAll('[data-cdr-key]')];
+      const slider = cdrChart.querySelector('[data-cdr-slider]');
+      const range = cdrChart.querySelector('.cdr__range');
+      const ticks = [...cdrChart.querySelectorAll('.cdr__tick')];
+      const levelKeys = ['0', '0.5', '1', '2', '3'];
+      let currentIndex = 1;
+
+      const pointFor = (index, value, scale = radius) => {
+        const angle = -Math.PI / 2 + index * (Math.PI * 2 / cdrAxes.length);
+        const distance = scale * (value / maxValue);
+        return {
+          x: center.x + Math.cos(angle) * distance,
+          y: center.y + Math.sin(angle) * distance
+        };
+      };
+      const pointsFor = scores => scores.map((score, index) => {
+        const point = pointFor(index, score);
+        return `${point.x.toFixed(2)},${point.y.toFixed(2)}`;
+      }).join(' ');
+      const makeSvg = (tag, attrs = {}) => {
+        const el = document.createElementNS(svgNS, tag);
+        Object.entries(attrs).forEach(([key, value]) => el.setAttribute(key, value));
+        return el;
+      };
+
+      for (let level = 1; level <= maxValue; level += 1) {
+        gridLayer.appendChild(makeSvg('polygon', {
+          class: 'cdr__grid',
+          points: pointsFor(Array(cdrAxes.length).fill(level))
+        }));
+      }
+      cdrAxes.forEach((_, index) => {
+        const end = pointFor(index, maxValue);
+        axisLayer.appendChild(makeSvg('line', {
+          class: 'cdr__axis',
+          x1: center.x,
+          y1: center.y,
+          x2: end.x.toFixed(2),
+          y2: end.y.toFixed(2)
+        }));
+        dotsLayer.appendChild(makeSvg('circle', {
+          class: 'cdr__dot',
+          r: 3,
+          cx: center.x,
+          cy: center.y
+        }));
+      });
+
+      const renderCdr = level => {
+        const data = cdrData[level];
+        if (!data) return;
+        const nextIndex = levelKeys.indexOf(level);
+        if (nextIndex === -1) return;
+        currentIndex = nextIndex;
+        const currentLabel = `CDR ${level}｜${data.label}`;
+        shape.setAttribute('points', pointsFor(data.values));
+        centerLevel.textContent = `CDR ${level}`;
+        centerLabel.textContent = data.label;
+        chartGraphic.setAttribute('aria-label', `${currentLabel}，六面向能力受影響程度雷達圖`);
+        slider.style.setProperty('--cdr-progress', `${(currentIndex / (levelKeys.length - 1)) * 100}%`);
+        range.value = String(currentIndex);
+        range.setAttribute('aria-valuetext', currentLabel);
+        aspectCopies.forEach(aspect => {
+          const copy = aspect.querySelector('p');
+          if (copy) copy.textContent = data[aspect.dataset.cdrKey];
+        });
+        [...dotsLayer.querySelectorAll('.cdr__dot')].forEach((dot, index) => {
+          const point = pointFor(index, data.values[index]);
+          dot.setAttribute('cx', point.x.toFixed(2));
+          dot.setAttribute('cy', point.y.toFixed(2));
+        });
+        ticks.forEach(tick => {
+          tick.classList.toggle('is-active', tick.dataset.cdrLevel === level);
+        });
+      };
+
+      const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+      const renderIndex = index => renderCdr(levelKeys[clamp(index, 0, levelKeys.length - 1)]);
+
+      range.addEventListener('input', () => renderIndex(Number(range.value)));
+      range.addEventListener('change', () => renderIndex(Number(range.value)));
+      renderCdr('0.5');
+    }
+
     const scrollVideos = [...document.querySelectorAll('.journey')];
     const syncScrollVideos = () => {
       scrollVideos.forEach(section => {
@@ -854,11 +1321,32 @@
 
     document.querySelectorAll('.story--video').forEach(story => {
       const video = story.querySelector('video');
-      const lines = [...story.querySelectorAll('.story-transcript__lines span')];
+      const videoFrame = story.querySelector('.story-video');
+      const playButton = story.querySelector('.story-video__play');
+      const transcript = story.querySelector('.story-transcript__lines');
+      const lines = transcript ? [...transcript.querySelectorAll('span')] : [];
       if (!video || !lines.length) return;
 
       const buildCues = () => {
         const duration = Number.isFinite(video.duration) && video.duration > 0 ? video.duration : lines.length * 3;
+        const firstCueDuration = Number(transcript?.dataset.firstCueDuration);
+        if (Number.isFinite(firstCueDuration) && firstCueDuration > 0 && lines.length > 1) {
+          const firstEnd = Math.min(duration, firstCueDuration);
+          const remainingLines = lines.slice(1);
+          const remainingDuration = Math.max(duration - firstEnd, .1);
+          const remainingWeight = remainingLines.reduce((sum, line) => sum + Math.max(line.textContent.trim().length, 8), 0);
+          let cursor = firstEnd;
+          return [
+            { line: lines[0], start: 0, end: firstEnd },
+            ...remainingLines.map(line => {
+              const weight = Math.max(line.textContent.trim().length, 8) / remainingWeight;
+              const start = cursor;
+              const end = Math.min(duration, cursor + remainingDuration * weight);
+              cursor = end;
+              return { line, start, end };
+            })
+          ];
+        }
         const totalWeight = lines.reduce((sum, line) => sum + Math.max(line.textContent.trim().length, 8), 0);
         let cursor = 0;
         return lines.map(line => {
@@ -889,6 +1377,16 @@
         if (transcriptFrame) cancelAnimationFrame(transcriptFrame);
         transcriptFrame = requestAnimationFrame(syncTranscript);
       };
+      const syncPlayButton = () => {
+        videoFrame?.classList.toggle('is-playing', !video.paused && !video.ended);
+      };
+
+      playButton?.addEventListener('click', () => {
+        const playPromise = video.play();
+        if (playPromise && typeof playPromise.catch === 'function') {
+          playPromise.catch(() => {});
+        }
+      });
 
       video.addEventListener('loadedmetadata', () => {
         cues = buildCues();
@@ -896,14 +1394,22 @@
       });
       video.addEventListener('timeupdate', updateTranscript);
       video.addEventListener('seeked', updateTranscript);
-      video.addEventListener('play', startTranscriptSync);
+      video.addEventListener('play', () => {
+        syncPlayButton();
+        startTranscriptSync();
+      });
       video.addEventListener('pause', () => {
+        syncPlayButton();
         if (transcriptFrame) cancelAnimationFrame(transcriptFrame);
         transcriptFrame = null;
         updateTranscript();
       });
-      video.addEventListener('ended', updateTranscript);
+      video.addEventListener('ended', () => {
+        syncPlayButton();
+        updateTranscript();
+      });
       updateTranscript();
+      syncPlayButton();
     });
 
     const countUps = [...document.querySelectorAll('.count-up')];
