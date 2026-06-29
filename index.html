@@ -21,7 +21,7 @@
       --line-light: rgba(255, 255, 255, .22);
       --shadow: 0 8px 24px rgba(23, 43, 58, .08);
       --serif: "Noto Serif TC", serif;
-      --sans: "Noto Sans TC", sans-serif;
+      --sans: -apple-system, BlinkMacSystemFont, "Noto Sans TC", "PingFang TC", sans-serif;
     }
 
     * { box-sizing: border-box; }
@@ -137,6 +137,12 @@
     .lead { max-width: 720px; font-size: clamp(17px, 1.8vw, 20px); font-weight: 400; }
     .note { color: var(--muted); font-size: 13px; font-weight: 400; }
     .tag { display: inline-block; padding: 4px 11px; border: 1px solid currentColor; border-radius: 99px; font-size: 12px; font-weight: 600; letter-spacing: .04em; }
+    .article-copy { width: min(680px,100%); color: #2f3133; }
+    .article-copy p { margin: 0 0 1.35em; font-size: 16.8px; font-weight: 400; line-height: 2; }
+    .article-copy h3 { margin: 2.2em 0 .9em; font-family: var(--sans); font-size: 28px; font-weight: 700; line-height: 1.5; }
+    .article-copy--dark { color: rgba(255,255,255,.88); }
+    .article-copy--dark p { color: rgba(255,255,255,.82); }
+    .article-copy--dark h3 { color: var(--white); }
     .photo-break { position: relative; height: min(72vw, 820px); margin: 0; overflow: hidden; background: var(--ink); }
     .photo-break img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .photo-break::after { content: ""; position: absolute; inset: 55% 0 0; background: linear-gradient(transparent, rgba(10,20,27,.72)); pointer-events: none; }
@@ -191,10 +197,9 @@
 
     .stories { padding-bottom: 130px; background: var(--paper); }
     .stories__intro { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: end; margin-bottom: 64px; }
-    .story-list { display: grid; gap: 64px; }
-    .story { display: grid; grid-template-columns: 1.08fr .92fr; align-items: center; }
-    .story:nth-child(even) { grid-template-columns: 1.08fr .92fr; }
-    .story:nth-child(even) .story__visual { order: initial; }
+    .story-list { display: grid; gap: 82px; }
+    .story { width: min(680px, 100%); margin: auto; padding-top: 42px; border-top: 1px solid var(--line); }
+    .story:nth-child(even) { width: min(680px, 100%); }
     .story__visual {
       position: relative; aspect-ratio: 4/3; display: grid; place-items: center; overflow: hidden; color: white;
       background: linear-gradient(145deg, #3f5665, var(--ink));
@@ -203,12 +208,17 @@
     .story:nth-child(3) .story__visual,
     .story:nth-child(4) .story__visual { background: linear-gradient(145deg, #3f5665, var(--ink)); }
     .story__initial { font: 900 110px/1 var(--serif); opacity: .22; }
-    .story__copy { position: relative; z-index: 2; margin-left: -24px; padding: 36px; border: 1px solid var(--line); background: var(--white); box-shadow: var(--shadow); }
-    .story:nth-child(even) .story__copy { margin-right: 0; margin-left: -24px; }
+    .story__copy { margin: 0; padding: 0; border: 0; background: transparent; box-shadow: none; }
+    .story:nth-child(even) .story__copy { margin: 0; }
+    .story__copy h3 { margin: 18px 0 30px; font-family: var(--sans); font-size: clamp(30px,4vw,42px); font-weight: 700; line-height: 1.45; }
+    .story__copy p { margin: 0 0 1.35em; color: #2f3133; font-size: 16.8px; font-weight: 400; line-height: 2; }
     .story__quote { margin: 22px 0; font: 600 clamp(18px,2vw,25px)/1.65 var(--serif); }
     .story__meta { display: flex; justify-content: space-between; gap: 20px; padding-top: 15px; border-top: 1px solid var(--line); font-size: 12px; }
 
     .objects { overflow: hidden; background: var(--white); }
+    .objects__heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 28px; }
+    .objects__heading h2 { margin-bottom: 0; }
+    .objects__instruction { flex: none; margin-bottom: 8px; padding-left: 18px; border-left: 3px solid var(--yellow); color: var(--muted); font-size: 14px; font-weight: 500; }
     .object-strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 45px; }
     .object-card { min-width: 0; border: 1px solid var(--line); background: var(--paper); }
     .object-card__button { width: 100%; height: 100%; padding: 0; border: 0; color: var(--ink); background: transparent; text-align: left; cursor: pointer; }
@@ -220,7 +230,6 @@
     .object-card__number { color: #8f710d; font: 700 26px/1 var(--serif); }
     .object-card__title { display: block; margin: 0 0 8px; font: 700 21px/1.4 var(--serif); }
     .object-card p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.7; }
-    .object-card__hint { display: inline-block; margin-top: 14px; color: #80650b; font-size: 12px; font-weight: 600; }
     .object-card__detail { display: none; }
 
     .object-modal[hidden] { display: none; }
@@ -258,6 +267,15 @@
     .care-photo { position: relative; min-height: 620px; margin: 0; overflow: hidden; }
     .care-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
     .care-photo blockquote { position: absolute; right: 24px; bottom: 24px; left: 24px; margin: 0; padding: 22px; color: var(--ink); border-left: 5px solid var(--yellow); background: rgba(255,253,248,.94); font: 600 20px/1.7 var(--serif); }
+    .journey { padding: 76px max(6vw,24px); color: var(--white); background: var(--ink); }
+    .journey__route { display: grid; grid-template-columns: auto 1fr auto; gap: 28px; align-items: center; width: min(1120px,100%); margin: auto; }
+    .journey__city { font: 700 clamp(28px,4vw,48px)/1 var(--serif); }
+    .journey__line { position: relative; height: 2px; background: rgba(255,255,255,.25); }
+    .journey__line::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 0; background: var(--yellow); animation: route-progress 5s ease-in-out infinite; }
+    .journey__line::after { content: ""; position: absolute; top: 50%; left: 0; width: 14px; height: 14px; border-radius: 50%; background: var(--yellow); transform: translate(-50%,-50%); animation: route-dot 5s ease-in-out infinite; }
+    .journey p { width: min(760px,100%); margin: 26px auto 0; color: rgba(255,255,255,.72); text-align: center; }
+    @keyframes route-progress { 0% { width:0 } 70%,100% { width:100% } }
+    @keyframes route-dot { 0% { left:0 } 70%,100% { left:100% } }
     .young { padding-top: 110px; background: var(--paper); }
     .young-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; margin-top: 0; }
     .cafe-window { min-height: 410px; display: flex; flex-direction: column; gap: 14px; align-items: stretch; justify-content: center; margin: 0; padding: 10px; border: 1px solid var(--line); background: var(--white); box-shadow: none; text-align: left; }
@@ -287,6 +305,9 @@
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       .reveal, .brain-figure, .object-modal, .object-card__image img { transition: none; }
+      .journey__line::before, .journey__line::after { animation: none; }
+      .journey__line::before { width: 100%; }
+      .journey__line::after { left: 100%; }
     }
 
     @media (max-width: 780px) {
@@ -311,14 +332,15 @@
       .brain-step .brain-step__number { padding-top: 20px; }
       .brain-step .brain-effects { padding-bottom: 20px; }
       .support-metrics { grid-template-columns: 1fr; }
-      .story, .story:nth-child(even) { grid-template-columns: 1fr; }
-      .story:nth-child(even) .story__visual { order: initial; }
-      .story__copy, .story:nth-child(even) .story__copy { margin: -25px 18px 0; padding: 27px; }
+      .story, .story:nth-child(even) { width: 100%; }
+      .story__copy, .story:nth-child(even) .story__copy { margin: 0; padding: 0; }
       .story-list { gap: 55px; }
       .photo-break { height: 72vh; min-height: 520px; }
       .photo-duo { grid-template-columns: 1fr; }
       .news-photo { min-height: 62vh; }
       .care-photo { min-height: 72vh; margin: 0 -24px; }
+      .objects__heading { display: block; }
+      .objects__instruction { display: inline-block; margin: 16px 0 0; }
       .object-strip { grid-template-columns: 1fr; }
       .object-modal { padding: 12px; }
       .object-modal__stage { max-height: calc(100vh - 24px); }
@@ -464,19 +486,6 @@
       <figcaption>據點透過手作與團體活動，讓患者維持日常互動與認知刺激。攝影／採訪團隊</figcaption>
     </figure>
 
-    <section class="opening-story">
-      <div class="wrap definition-grid">
-        <div class="reveal">
-          <h2>「我還是想要工作」</h2>
-          <blockquote>「但是他們都不希望我去公司上班，擔心我沒辦法勝任。但我也沒辦法拿出證據反駁他們。」</blockquote>
-        </div>
-        <div class="reveal">
-          <p class="lead">41 歲的小華在中風後被診斷為血管性失智症。公司沒有解雇他，而是將他從第一線居服員調整為在家處理排班與行政事務。</p>
-          <p>他仍領有薪資，也維持員工身分，工作方式卻與過去截然不同。大部分時間，他待在家裡看網路小說、滑手機或打電動。「我現在在家裡就是這樣，很擔心、閒得發慌。」對他而言，問題不只有沒有收入，而是能否回到熟悉的生活節奏。</p>
-        </div>
-      </div>
-    </section>
-
     <section class="stories" id="stories">
       <div class="wrap">
         <div class="stories__intro reveal">
@@ -485,20 +494,16 @@
         </div>
         <div class="story-list">
           <article class="story reveal">
-            <div class="story__visual"><span class="story__initial">華</span></div>
-            <div class="story__copy"><span class="tag">41 歲｜血管性失智症</span><h3>小華：我還是想要工作</h3><p class="story__quote">「我喜歡工作，因為沒有工作的話，我每天都待在家裡。」</p><p>中風後，公司將他從第一線居服員調整為在家處理排班與行政事務。他仍有薪資與員工身分，卻失去原本的工作節奏。他持續投遞履歷、參與評估，等待一個重新證明自己的機會。</p></div>
+            <div class="story__copy"><span class="tag">血管性失智症</span><h3>沒有病識感：正宇</h3><p>「（失智症）沒有傷到我任何的肢體、語言跟行為能力，所以我都覺得我可以正常上班啊！」正宇語氣篤定地說。在他的認知裡，既然仍能行動、溝通，就代表自己具備工作的能力。談起疾病帶來的影響，他也曾直言：「我沒有遇到困難，我沒有中風啊……腦袋也沒有傷到邏輯。」</p><p>然而，現實卻不如他所想。在醫療診斷與制度評估之下，是否能回到職場，仍需經過勞動部勞動力發展署的職業重建評估，判斷他是否適合回到原職或勝任新的工作。即使他積極投遞履歷、期待重返職場，最終仍需等待制度與企業的同意。在「自認仍有能力」與「需經評估才能工作」之間的落差，也讓他在重返職場的過程中，面臨更多不確定與限制。</p></div>
           </article>
           <article class="story reveal">
-            <div class="story__visual"><span class="story__initial">喜</span></div>
-            <div class="story__copy"><span class="tag">61 歲｜血管性失智症</span><h3>喜哥：想說的話，變成失控的表達</h3><p class="story__quote">情緒起伏時，他可能突然爆出髒話、神情緊繃，甚至出現衝動的肢體反應。</p><p>在電影分享會裡，他也會主動回應感興趣的話題，以握手、拍手表達認同。但當情緒波動，內心感受與外在表現可能完全相反，也因此更容易在日常互動中被誤解。</p></div>
+            <div class="story__copy"><span class="tag">語言能力逐漸退化</span><h3>喪失語言能力：炤熙</h3><p>曾經能自然說出口的句子，逐漸被重複的字、情緒與動作取代。當想法無法完整轉化成語言時，炤熙有時只能反覆說出相同的詞，或以表情和動作回應身旁的人。對他而言，並不是沒有想法，而是原本熟悉的表達方式正一點一點離開。</p><p>語言能力的改變，也讓日常溝通需要更多等待。家人必須從零碎的字句、語氣與動作中理解他的需求；當雙方無法立即明白彼此時，挫折與情緒也會隨之出現。疾病改變的不只是說話能力，也改變了他與外界建立連結的方式。</p></div>
           </article>
           <article class="story reveal">
-            <div class="story__visual"><span class="story__initial">暉</span></div>
-            <div class="story__copy"><span class="tag">罹病 18 年｜血管性失智症</span><h3>邱孟暉：穿梭在混亂的時間裡</h3><p class="story__quote">年齡從「70 幾歲」改成「66 歲」，再到「69 歲」、「70 歲」，答案隨著記憶反覆更動。</p><p>今天是星期幾、做過哪些事，有時也需要停下來想一想，或由妻子用動作與手勢提醒。兩人在一來一往的對話中，慢慢拼湊出日常。</p></div>
+            <div class="story__copy"><span class="tag">離開原有工作</span><h3>被鄰居與工作排除：佳祥</h3><p>佳祥曾是一名八方雲集的計時人員，直到因為腦內疾病與小中風接受手術，加上血管狀況不佳，經常出現頭暈症狀，才不得不離開工作崗位。確診之後，他的生活節奏也變得緩慢許多，大部分時間都待在家中。</p><p>談起與鄰里的互動，佳祥說：「也不是不好，只是他們就比較不會理我。我會跟他們打招呼……」當身旁的人不了解失智症帶來的變化，患者在工作與社區裡可能逐漸被留在原本熟悉的關係之外。喜歡賞花的佳祥，偶爾會到住家附近的公園散步；有時在妹妹邀請下，也願意一起出門逛街，或到較遠的地方走走。這些看似平凡的日常，如今都成為他珍惜的生活片段。</p></div>
           </article>
           <article class="story reveal">
-            <div class="story__visual"><span class="story__initial">仁</span></div>
-            <div class="story__copy"><span class="tag">從公司經營者到被照顧者</span><h3>林善仁：失去決策與動手能力</h3><p class="story__quote">「本來我要照顧你的，但現在變成要你照顧我。」</p><p>過去負責公司決策，也習慣修理家中大小事；確診後，他逐漸無法判斷與行動。一次深夜水龍頭漏水，他反覆檢查卻修不好，只能默默回到房間。能力的轉變，也讓公司營運與家庭角色一起改變。</p></div>
+            <div class="story__copy"><span class="tag">照顧者視角</span><h3>不敢對外說明：炤熙妻子</h3><p>炤熙確診後，妻子的生活也跟著改變。從協助穿衣、安撫情緒，到處理家庭收入與日常安排，照顧成為每天無法暫停的工作。然而，剛得知診斷時，她不敢向外說明丈夫的狀況，也不知道該如何面對親友的詢問與旁人的眼光。</p><p>當社會對年輕型失智症的認識仍停留在「老人容易忘記事情」，患者與家屬往往很難解釋語言、情緒與行為上的變化。對照顧者而言，壓力不只來自照顧本身，也來自害怕不被理解、擔心患者受到排斥，因此選擇沉默，將疾病留在家庭內部承受。</p></div>
           </article>
         </div>
       </div>
@@ -506,48 +511,48 @@
 
     <section class="objects">
       <div class="wrap reveal">
-        <h2>留在身邊的<br>六件日常物品</h2>
+        <div class="objects__heading"><h2>留在身邊的<br>六件日常物品</h2><span class="objects__instruction">點開圖片看故事細節</span></div>
         <p class="lead">一件平常的東西，記錄疾病如何進入工作、關係與生活。</p>
         <div class="object-strip" aria-label="六件案例小物件">
           <article class="object-card">
             <button class="object-card__button" type="button" data-object="01" aria-label="閱讀喜哥與汽車雜誌的故事">
               <span class="object-card__image"><img src="assets/objects/car-magazine.jpg" alt="汽車雜誌" loading="lazy"></span>
-              <span class="object-card__copy"><span class="object-card__number">01</span><span><span class="object-card__title">喜哥的汽車雜誌</span><span>開始無法掌握自己的工作</span><span class="object-card__hint">點開閱讀故事</span></span></span>
+              <span class="object-card__copy"><span class="object-card__number">01</span><span><span class="object-card__title">喜哥的汽車雜誌</span><span>開始無法掌握自己的工作</span></span></span>
             </button>
             <div class="object-card__detail"><p>曾擔任汽車銷售員的喜哥回憶，隨著病情逐漸惡化，他開始無法妥善掌握工作的時間安排，也難以應對不同客戶的需求。直到一場突如其來的車禍，讓他確診罹患年輕型失智症，也被迫告別熱愛多年的汽車銷售工作。雖然無法再回到職場，喜哥對汽車的熱情卻從未消失，至今仍會閱讀汽車雜誌、關注最新的汽車資訊。他最懷念的，不僅是汽車銷售工作本身，更是每天奔波拜訪客戶、與不同客戶交流互動的生活節奏。對他而言，那段日子已成為難以重返的回憶。</p></div>
           </article>
           <article class="object-card">
             <button class="object-card__button" type="button" data-object="02" aria-label="閱讀喜哥妻子與電話的故事">
               <span class="object-card__image"><img src="assets/objects/telephone.jpg" alt="家用電話" loading="lazy"></span>
-              <span class="object-card__copy"><span class="object-card__number">02</span><span><span class="object-card__title">喜哥妻子的電話</span><span>耐心向其他人解釋他的狀況</span><span class="object-card__hint">點開閱讀故事</span></span></span>
+              <span class="object-card__copy"><span class="object-card__number">02</span><span><span class="object-card__title">喜哥妻子的電話</span><span>耐心向其他人解釋他的狀況</span></span></span>
             </button>
             <div class="object-card__detail"><p>喜哥妻子提及，喜哥曾在觀看電視購物節目時，被節目中的優惠方案吸引，認為「買越多越划算」，便自行撥打購買專線下單。事後，喜哥妻子看見家用電話放在一旁，便詢問喜哥是否有來電；喜哥已全然忘記自己剛才曾訂購商品，告訴她沒有來電，口中卻不斷講述自己購買的方案。喜哥妻子發現事情不對勁後，立即聯繫業者並說明喜哥罹患失智症的情況，所幸對方理解並協助取消訂單。</p></div>
           </article>
           <article class="object-card">
             <button class="object-card__button" type="button" data-object="03" aria-label="閱讀邱孟輝與藍色 T 恤的故事">
               <span class="object-card__image"><img src="assets/objects/blue-shirt.jpg" alt="摺好的藍色 T 恤" loading="lazy"></span>
-              <span class="object-card__copy"><span class="object-card__number">03</span><span><span class="object-card__title">邱孟輝的藍色 T 恤</span><span>按照台北 101 的顏色順序辨認星期</span><span class="object-card__hint">點開閱讀故事</span></span></span>
+              <span class="object-card__copy"><span class="object-card__number">03</span><span><span class="object-card__title">邱孟輝的藍色 T 恤</span><span>按照台北 101 的顏色順序辨認星期</span></span></span>
             </button>
             <div class="object-card__detail"><p>由於失智症會導致短期記憶衰退，邱孟輝也摸索出屬於自己的記憶方式。他參考台北 101 夜間燈光每天不同的顏色，依照「紅、橙、黃、綠、藍、靛、紫」的順序搭配每天穿著的衣服，藉此提醒自己今天是星期幾。他笑著說，這不是什麼特別的創意，只是向台北 101「借來」的小技巧，卻成了自己維持日常生活的重要依靠。邱孟輝的妻子也表示，失智症患者最常見的症狀就是短期記憶受損，同一個問題可能在短短幾分鐘內重複詢問好幾次，因此照顧者更需要以耐心與同理心陪伴，而不是因反覆提問感到不耐。</p></div>
           </article>
           <article class="object-card">
             <button class="object-card__button" type="button" data-object="04" aria-label="閱讀佳祥與花的故事">
               <span class="object-card__image"><img src="assets/objects/flowers.jpg" alt="散步途中盛開的花" loading="lazy"></span>
-              <span class="object-card__copy"><span class="object-card__number">04</span><span><span class="object-card__title">佳祥散步途中看見的花</span><span>離開工作後，散步成為生活的一部分</span><span class="object-card__hint">點開閱讀故事</span></span></span>
+              <span class="object-card__copy"><span class="object-card__number">04</span><span><span class="object-card__title">佳祥散步途中看見的花</span><span>離開工作後，散步成為生活的一部分</span></span></span>
             </button>
             <div class="object-card__detail"><p>佳祥曾是一名八方雲集的計時人員，直到因為腦內疾病與小中風接受手術，加上血管狀況不佳，經常出現頭暈症狀，才不得不離開工作崗位。確診之後，他的生活節奏也變得緩慢許多。佳祥平時大多待在家中，喜歡賞花的他偶爾會到住家附近的公園散步。有時在妹妹的邀請下，他也願意一起出門逛街，或到較遠的地方走走。這些看似平凡的日常，如今都成為他珍惜的生活片段。</p></div>
           </article>
           <article class="object-card">
             <button class="object-card__button" type="button" data-object="05" aria-label="閱讀小華與零食的故事">
               <span class="object-card__image"><img src="assets/objects/snacks.jpg" alt="賣場中的零食貨架" loading="lazy"></span>
-              <span class="object-card__copy"><span class="object-card__number">05</span><span><span class="object-card__title">小華面前的零食</span><span>判斷與行為認知逐漸受到影響</span><span class="object-card__hint">點開閱讀故事</span></span></span>
+              <span class="object-card__copy"><span class="object-card__number">05</span><span><span class="object-card__title">小華面前的零食</span><span>判斷與行為認知逐漸受到影響</span></span></span>
             </button>
             <div class="object-card__detail"><p>小華認為自己的生活與工作能力並未受到太大影響，甚至直言：「只要我自己不說，其他人都看不出來，我有失智症。」然而，疾病帶來的影響並非全然不可見。據志工轉述，小華的妻子曾提及，由於其他健康因素，小華被限制不能吃零食，卻曾在賣場內尚未完成結帳便拆開零食食用。事後面對店員詢問時，他否認自己曾有相關行為。這些情況顯示，失智症可能正逐漸影響小華的判斷能力與對自身行為的認知。</p></div>
           </article>
           <article class="object-card">
             <button class="object-card__button" type="button" data-object="06" aria-label="閱讀劉鳳蓮與尿布的故事">
               <span class="object-card__image"><img src="assets/objects/diapers.jpg" alt="成人紙尿褲" loading="lazy"></span>
-              <span class="object-card__copy"><span class="object-card__number">06</span><span><span class="object-card__title">劉鳳蓮準備的尿布</span><span>伴侶開始失禁，也難以接受身體的改變</span><span class="object-card__hint">點開閱讀故事</span></span></span>
+              <span class="object-card__copy"><span class="object-card__number">06</span><span><span class="object-card__title">劉鳳蓮準備的尿布</span><span>伴侶開始失禁，也難以接受身體的改變</span></span></span>
             </button>
             <div class="object-card__detail"><p>劉鳳蓮的丈夫林善仁確診後，家人為了維護他的自尊，總是盡可能讓他保有生活中的角色。例如劉鳳蓮會藉口自己提不動菜，邀請他一同到菜市場買菜，並不斷告訴他「有你真好」。然而，隨著病情惡化，林善仁開始出現失禁症狀。一次返家途中，林善仁突然說想上廁所，卻遲遲沒有邁開腳步，劉鳳蓮這才發現他早已尿濕褲子。即使如此，林善仁依然拒絕穿上尿布生活。劉鳳蓮表示，一位正值壯年的男性，要接受自己逐漸失去對身體的控制，遠比接受疾病本身更加困難。</p></div>
           </article>
@@ -581,33 +586,23 @@
     <section class="problem" id="support">
       <div class="wrap problem-grid">
         <div class="reveal"><h2>還清醒著，<br>卻逐漸被排除</h2><p class="lead">對輕度失智者而言，需要的往往不只是生活照顧，而是被肯定、繼續參與社會，並找回自身價值。</p></div>
-        <div class="problems reveal">
-          <article class="problem-row">
-            <div>
-              <h3>專屬據點，全台僅兩處</h3>
-              <p>目前專門提供年輕型失智症服務的據點相當有限，主要為台北 Young 記憶會館與台中向上清活小屋。服務距離與交通成本，也讓持續參與成為負擔。</p>
-              <div class="support-sites"><span>台北｜Young 記憶會館</span><span>台中｜向上清活小屋</span></div>
-            </div>
-          </article>
-          <article class="problem-row">
-            <div>
-              <h3>他們需要的，不只是生活照顧</h3>
-              <p>相較於高齡患者多以生活照顧為主，年輕患者通常仍具一定自理能力，更需要維持社交參與、建立生活重心與延緩功能退化。</p>
-              <p>據點透過分享對話、繪畫拼貼、觀影、瑜珈與音樂等課程，提供患者交流、維持認知功能，以及建立規律生活與人際互動的機會。</p>
-            </div>
-          </article>
-          <article class="problem-row">
-            <div>
-              <h3>有需求，卻未必符合資格</h3>
-              <p>向上清活小屋目前的收案條件，將疾病程度與長照等級都畫出了界線。</p>
-              <div class="support-metrics">
-                <div class="support-metric"><strong>CDR 0.5–1</strong><span>臨床失智症評估量表</span></div>
-                <div class="support-metric"><strong>未達第 3 級</strong><span>長照 3 級（含）以上不收案</span></div>
-              </div>
-              <blockquote class="support-quote">「現在 CDR 一定要是 0.5 到 1 分才能收，如果是 2 分就不能收；另外，如果長照等級超過 3（包含 3），我們也沒辦法服務、不能收案。」<cite>—— 向上清活小屋工作人員 王姿穎</cite></blockquote>
-              <p>隨著收案標準限縮，部分仍有需求的患者可能因資格不符，無法進入據點接受支持，也反映出台灣年輕型失智症照顧資源仍有不足。</p>
-            </div>
-          </article>
+        <div class="article-copy article-copy--dark reveal">
+          <p>年輕型失智症在初期的變化往往來得更早，也更不易察覺——有人先從情緒與性格改變開始，有人逐漸出現語言障礙，也有人在空間與距離判斷上出現偏差。患者多處於中年打拚及承擔家庭責任的階段，疾病卻讓他們逐漸偏離原本的位置。</p>
+          <p>在心理層面上，患者常擔心自己是否造成他人的困擾，甚至懷疑自身能力。向上清活小屋工作人員王姿懿說：「他們患上失智症後，還是有病識感的，所以他們會覺得對家裡有愧疚感，可是明明生病不是他的錯。」對輕度失智者而言，他們需要的往往不只是被照顧，而是被肯定，並重新找回自身價值。</p>
+          <p>當社會停留在既有印象、缺乏對年輕型失智症的理解時，患者一旦出現異於常人的行為，在日常生活中便可能與他人產生距離，甚至不被社會理解與接納。年輕型失智症對患者的影響具有高度差異性，不同個案會有截然不同的變化。王姿懿分享：「有些人以前不會迷路，發病後就開始很會迷路；有人生病之後會罵髒話，甚至有人出現一些偷竊的行為，但這些其實都是疾病造成的影響。」疾病帶來的不只是症狀改變，也讓患者在面對他人眼光時，多了一層心理壓力。</p>
+          <p>然而，現行長照體系多以高齡者為主要設計對象，服務內容偏向照顧導向。對仍具行動與工作能力的年輕型失智症患者而言，往往難以適應與接受，也因此在進入日照中心後，常出現格格不入的情形。劉鳳蓮提到，因工作關係，有時需將林善仁帶到日照中心，但離開前總會特別交代工作人員：「把他當成工作人員就好，當作正常人用，不用特別照顧他。」在這樣的安排下，林善仁透過協助他人，在中心裡重新找回自己的價值。劉鳳蓮坦言，對失智者而言，「被需要」的感覺仍然重要。</p>
+          <h3>認知訓練結合社交活動</h3>
+          <p>國立臺灣大學醫學院附設醫院神經部兼任醫師邱銘章表示：「失智症據點透過設計認知訓練與多元活動課程，結合社交互動與刺激，協助患者維持認知功能，進而延緩病情惡化。」透過參與工作與課程，有助於失智症患者延緩腦部退化、維持基本功能。</p>
+          <p>目前相關服務以課程與職務安排為主，但實際提供此類支持的據點，主要僅有台北 Young 記憶會館與台中向上清活小屋。以向上清活小屋為例，課程內容涵蓋分享與對話活動、繪畫與拼貼等手作課程、觀影、瑜珈與音樂課，透過多元安排，讓患者接觸不同領域的活動，豐富日常生活。</p>
+          <div class="support-sites"><span>台北｜Young 記憶會館</span><span>台中｜向上清活小屋</span></div>
+          <h3>有需求，卻未必符合資格</h3>
+          <p>除了據點數量有限，收案資格也成為患者取得服務的一大門檻。向上清活小屋目前的收案條件，將疾病程度與長照等級都畫出了界線。</p>
+          <div class="support-metrics">
+            <div class="support-metric"><strong>CDR 0.5–1</strong><span>臨床失智症評估量表</span></div>
+            <div class="support-metric"><strong>未達第 3 級</strong><span>長照 3 級（含）以上不收案</span></div>
+          </div>
+          <blockquote class="support-quote">「現在 CDR 一定要是 0.5 到 1 分才能收，如果是 2 分就不能收；另外，如果長照等級超過 3（包含 3），我們也沒辦法服務、不能收案。」<cite>—— 向上基金會長者服務督導 王姿瓔</cite></blockquote>
+          <p>隨著收案標準限縮，部分仍有需求的患者可能因資格不符，無法進入據點接受支持，也反映出台灣年輕型失智症照顧資源仍有不足。</p>
         </div>
       </div>
     </section>
@@ -623,8 +618,12 @@
           <img src="assets/photos/caregiver-meal.jpg" alt="家屬在用餐時陪伴失智症患者" loading="lazy">
           <blockquote>「在接受這個事情的過程中，心裡非常掙扎與疲憊，情緒也近乎崩潰。」<br><small>—— 喜哥妻子</small></blockquote>
         </figure>
-        <div class="reveal"><h2>照顧者也困在<br>反覆的日常裡</h2><p class="lead">喜哥確診後，妻子失去原先的社交生活，生活主軸都圍繞著丈夫，身體也曾多次亮起紅燈。患者在公共空間難以控制行動與語言，旁人的眼光、如廁與走失風險，都讓家屬不敢輕易帶他們外出。</p><p>向上清活小屋曾帶患者到高雄出遊。活動結束後，許多家屬說，那是患者生病後第一次離開台中。對照顧者而言，這是喘息；對患者而言，則是重新與社會互動的機會。</p></div>
+        <div class="reveal"><h2>向上清活小屋的<br>課程與陪伴</h2><div class="article-copy"><p>向上清活小屋的課程涵蓋分享與對話、繪畫與拼貼等手作活動、觀影、瑜珈與音樂課，透過多元體驗豐富患者的生活。據點也將做飯融入課程，讓失智症患者在實作中動手、動腦。即使過程中出現失誤、料理煎焦，課程更重視參與當下的投入與互動，讓患者從過程中獲得成就感與快樂。</p><p>向上清活小屋曾帶患者到高雄出遊。王姿穎提及：「那一次活動結束後，非常多的家屬告訴我們，那是他們生病後，第一次離開台中。」多數家屬不敢輕易帶患者外出，因為患者在行動與語言上較難自我控制，外出時常面臨他人異樣的眼光；加上照顧者多為配偶，若在公共空間找不到無障礙或身心障礙廁所，兩人甚至必須分開如廁，也增加患者走失的風險。</p><p>對照顧者而言，這類活動讓他們得以在長期高壓且循環的照顧日常中稍作喘息；對失智者而言，則是走出原有生活範圍、重新與社會互動的機會，也有助於延緩身心與認知功能的退化。</p></div></div>
       </div>
+    </section>
+
+    <section class="journey" aria-label="從台中前往台北的服務距離">
+      <div class="journey__route"><span class="journey__city">台中</span><span class="journey__line" aria-hidden="true"></span><span class="journey__city">台北</span></div>
     </section>
 
     <figure class="photo-break reveal">
@@ -637,9 +636,10 @@
         <div class="young-layout">
           <div class="reveal">
             <h2>在咖啡坊裡，<br>重新被需要</h2>
-            <p class="lead">Young 咖啡坊每週開放一天，讓失智症患者實際參與咖啡廳的運作。從沖煮咖啡、接受點單到送餐，他們在一項項基本服務中，重新練習工作與人際互動。</p>
-            <p>這並非正式職場中的工作，卻是真實的勞動與交流。與顧客互動的過程，讓患者重新建立與他人的連結，也一點一點找回「自己仍被需要」的感受。</p>
-            <div class="cafe-roles" aria-label="Young 咖啡坊參與工作"><span>沖煮咖啡</span><span>接受點單</span><span>送餐服務</span><span>顧客互動</span></div>
+            <div class="article-copy">
+              <p>在工作支持上，Young 咖啡坊每週開放一天，讓失智症患者參與咖啡廳內的運作。他們負責沖煮咖啡、點單與送餐等基本服務。雖然此活動不是真正進入職場工作，但在實際勞動過程中，他們得以重新建立與他人的互動連結；在與顧客交流的過程中，也逐步找回被需要的感受。</p>
+              <p>除此之外，政府目前也提供職業重建與職務再設計等措施，依據失智症患者的個別狀況，協助媒合返回職場。然而，實際成效仍有限。王姿穎指出，政府一直希望能出現失智症患者成功重返職場的案例，但截至目前，仍缺乏穩定的成功個案。雖然政府有專門媒合工作的管道，患者在職場的去留仍是企業端的決定。</p>
+            </div>
           </div>
           <figure class="cafe-window reveal">
             <img src="assets/photos/cafe-menu-task.jpg" alt="患者在 Young 咖啡坊依照圖像菜單進行服務工作" loading="lazy">
@@ -652,16 +652,11 @@
     <section class="work" id="work">
       <div class="wrap work-grid">
         <div class="reveal"><h2>患者想工作，<br>社會準備好了嗎？</h2><div class="work-quote">「我還是想要工作啊，但是他們都不希望我去公司上班。」<small style="display:block;margin-top:12px;font:500 13px var(--sans)">—— 小華</small></div></div>
-        <div class="reveal">
-          <p class="lead">多數年輕型失智症患者仍處於為事業打拚的年齡，工作不只是收入，也是身分、尊嚴與社會連結。然而，目前台灣針對失智症患者的就業支持依舊相當有限。</p>
-          <div class="rights">
-            <div class="right-row"><strong>01</strong><div><h3>措施存在，支持仍未接上</h3><p>現行已有職務再設計、失智者就業推動計畫與失智友善職場等措施，但就業媒合多以肢體障礙者為主，針對認知障礙者的穩定支持模式仍然不足。</p></div></div>
-            <div class="right-row"><strong>02</strong><div><h3>確診以前，可能已被職場淘汰</h3><p>企業普遍缺乏對年輕型失智症的正確認知。患者可能先被視為效率下降、頻繁出錯，甚至在確診之前便因工作表現改變而遭到資遣。</p></div></div>
-            <div class="right-row"><strong>03</strong><div><h3>改變工作，而不是先排除人</h3><p>將流程拆成簡單步驟、降低工作複雜度，或使用數位工具提醒，都能協助患者發揮仍保有的能力。隨病程變化，職務設計與訓練也必須更具彈性與專業性。</p></div></div>
-            <div class="right-row"><strong>04</strong><div><h3>企業需要一套可執行的方法</h3><p>政府仍需建立年輕型失智症的職務再設計指引、培訓專業人才，並加強宣導與倡議，降低企業因追求效率而產生的聘用疑慮。</p></div></div>
-          </div>
-          <div class="work-reality"><strong>邱惠玲｜臺北醫學大學高齡健康暨長期照護學系主任</strong>失智症患者並非完全失去工作能力，而是需要適當的職務調整與支持。現有制度與企業現場之間，仍缺乏針對認知障礙者建立的穩定支持模式。</div>
-          <div class="work-reality"><strong>郭慈安｜中山醫學大學醫學系副教授</strong>勞動部需要建立年輕型失智症患者的職務再設計指引與專業人才培訓，也應加強社會與企業溝通，讓仍具工作能力的患者有機會留在職場。</div>
+        <div class="article-copy article-copy--dark reveal">
+          <p>多數年輕型失智症患者仍處於為事業打拚的年齡，因此工作權也成為他們面臨的重要議題。然而，目前台灣針對失智症患者的就業支持依舊相當有限。</p>
+          <p>臺北醫學大學高齡健康暨長期照護學系主任邱惠玲指出，現行雖然已有職務再設計、失智者就業推動計畫及失智友善職場等措施，但實務上，企業普遍缺乏對年輕型失智症的正確認知，患者往往在確診前便因工作表現下降而遭到資遣。就業媒合機制也多以肢體障礙者為主，較少針對認知障礙者建立穩定的支持模式。</p>
+          <p>邱惠玲也表示，失智症患者並非完全失去工作能力，而是需要透過適當的職務調整與支持。例如將工作流程拆解為簡單的步驟、降低工作的複雜度，或運用數位工具進行提醒，都有助於患者發揮工作能力。然而，由於年輕型失智症患者的學習能力會隨病程逐漸下降，因此相關職務設計與職務訓練也需要更具彈性與專業性。</p>
+          <p>中山醫學大學醫學系副教授郭慈安則指出，勞動部需要建立年輕型失智症患者的職務再設計指引及專業人才培訓。目前企業因追求效率而缺乏聘用意願，政府也應加強對企業的宣導與支持，提升業界對年輕型失智症的理解，讓仍具有工作能力的患者有機會留在職場。</p>
         </div>
       </div>
     </section>
