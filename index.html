@@ -187,7 +187,7 @@
     .photo-break--quote img { object-position: center; }
     .photo-break--caregiver img { object-position: 58% center; }
     .photo-break__quote-card { position: absolute; z-index: 3; left: max(6vw, 28px); bottom: max(8vh, 48px); width: min(720px, calc(100% - 56px)); padding: clamp(28px,4vw,52px); color: var(--white); background: rgba(14,37,58,.78); border-left: 5px solid var(--yellow); box-shadow: 0 18px 48px rgba(0,0,0,.25); backdrop-filter: blur(4px); }
-    .photo-break__quote-card p { margin: 0; font: 800 clamp(24px,3vw,42px)/1.65 var(--serif); letter-spacing: 0; }
+    .photo-break__quote-card p { margin: 0; font: 800 clamp(20px,2.2vw,30px)/1.7 var(--serif); letter-spacing: 0; }
     .data { color: white; background: var(--ink); }
     .data__lead { max-width: 780px; color: rgba(255,255,255,.76); font-size: clamp(20px, 2vw, 23px); }
     .data__lead p { margin: 0 0 .9em; line-height: 1.9; }
@@ -458,6 +458,8 @@
     .journey__sticky { position: sticky; top: 0; height: 100vh; display: grid; place-items: center; overflow: hidden; }
     .journey__sticky::after { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(10,22,31,.12), rgba(10,22,31,.28)); pointer-events: none; }
     .journey__video { position: absolute; inset: 0; width: 100%; height: 100%; display: block; object-fit: cover; }
+    .journey__card { position: absolute; z-index: 2; left: max(6vw, 28px); bottom: max(8vh, 48px); width: min(620px, calc(100% - 56px)); padding: clamp(24px, 3vw, 38px); color: rgba(255,255,255,.94); background: rgba(14,37,58,.78); border-left: 5px solid var(--yellow); box-shadow: 0 18px 48px rgba(0,0,0,.25); backdrop-filter: blur(5px); }
+    .journey__card p { margin: 0; font: 800 clamp(20px, 2.1vw, 30px)/1.7 var(--serif); letter-spacing: 0; }
     .young { padding-top: 110px; background: var(--paper); }
     .young-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; margin-top: 0; }
     .cafe-window { min-height: 410px; display: flex; flex-direction: column; gap: 14px; align-items: stretch; justify-content: center; margin: 0; padding: 10px; border: 1px solid var(--line); background: var(--white); box-shadow: none; text-align: left; }
@@ -524,8 +526,8 @@
     .japan-case img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; object-fit: cover; }
     .japan-case::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,22,31,.45), rgba(10,22,31,.1) 62%), linear-gradient(180deg, rgba(10,22,31,.12), rgba(10,22,31,.34)); pointer-events: none; }
     .japan-case__card { position: relative; z-index: 2; width: min(980px, 100%); padding: clamp(30px, 4.4vw, 58px); color: var(--ink); border-left: 5px solid rgba(83,130,176,.8); background: rgba(239,247,250,.84); box-shadow: 0 24px 70px rgba(0,0,0,.24); backdrop-filter: blur(4px); }
-    .japan-case h4 { margin: 0 0 20px; color: var(--ink); font-size: clamp(28px, 3.6vw, 42px); line-height: 1.35; }
-    .japan-case p { margin: 0; color: #53606b; font-size: clamp(22px, 2.35vw, 32px); font-weight: 700; line-height: 1.9; }
+    .japan-case h4 { margin: 0 0 16px; color: var(--ink); font-size: clamp(24px, 2.8vw, 34px); line-height: 1.35; }
+    .japan-case p { margin: 0; color: #53606b; font-size: clamp(18px, 1.85vw, 24px); font-weight: 700; line-height: 1.9; }
     .kyoto-scroll-video { width: 100vw; height: 330vh; margin: 46px calc(50% - 50vw) 0; color: var(--white); background: var(--ink); }
     .kyoto-scroll-video__sticky { position: sticky; top: 0; height: 100vh; min-height: 680px; overflow: hidden; background: #0b141a; }
     .kyoto-scroll-video__media { position: absolute; inset: 0; width: 100%; height: 100%; display: block; object-fit: cover; }
@@ -555,7 +557,7 @@
       .support-panel__body { transition: none; }
     }
 
-    @media (max-width: 780px) {
+    @media (max-width: 980px) {
       .nav a:not(.nav__cta), .nav__brand span { display: none; }
       section { padding-top: 80px; padding-bottom: 80px; }
       h1 { font-size: clamp(51px,18vw,78px); }
@@ -572,8 +574,8 @@
       .support-step::before { top: auto; right: auto; bottom: -15px; left: calc(50% - 4px); transform: rotate(135deg); }
       .japan-case { min-height: 78vh; margin-top: 38px; padding: 42px 24px; }
       .japan-case__card { padding: 24px; }
-      .japan-case h4 { font-size: 26px; }
-      .japan-case p { font-size: 19px; line-height: 1.85; }
+      .japan-case h4 { font-size: 22px; }
+      .japan-case p { font-size: 17px; line-height: 1.8; }
       .xiaohua-work-photo { min-height: auto; }
       .xiaohua-work-photo__sticky { height: 100svh; }
       .xiaohua-work-photo__sticky img { object-position: 58% center; }
@@ -614,6 +616,8 @@
       .cdr__explain { margin-top: 18px; padding-top: 20px; font-size: 18px; line-height: 1.9; }
       .cdr__footer { margin-top: 14px; }
       .journey { height: 320vh; }
+      .journey__card { right: 24px; bottom: 32px; left: 24px; width: auto; padding: 22px 24px; }
+      .journey__card p { font-size: 19px; line-height: 1.7; }
       .stat + .stat { border-left: 0; }
       .brain-scroll { display: block; }
       .brain-stage { top: 82px; z-index: 2; height: 52vh; min-height: 360px; margin: 0 -24px; background: rgba(243,239,230,.94); backdrop-filter: blur(8px); }
@@ -637,9 +641,15 @@
       .caregiver-testimony { padding: 62px 0 78px; }
       .story, .story:nth-child(even) { width: 100%; }
       .story__copy, .story:nth-child(even) .story__copy { margin: 0; padding: 0; }
-      .story--video .story__copy { grid-template-columns: 1fr; gap: 0; }
+      .story--video .story__copy,
+      .story--xiaohua .story__copy,
+      .story--xige .story__copy,
+      .story--xiaowei .story__copy,
+      .story--caregiver .story__copy { grid-template-columns: minmax(0, 1fr); grid-template-areas: "video" "transcript"; gap: 0; }
+      .story-transcript-shell { width: 100%; min-width: 0; }
       .story-video { height: 430px; }
       .story-transcript { height: 430px; padding: 28px 24px; }
+      .story-transcript__note { width: 100%; writing-mode: horizontal-tb; white-space: normal; word-break: normal; overflow-wrap: break-word; font-size: 13px; line-height: 1.8; }
       .story-transcript__lines { padding: 22px; }
       .story-transcript__lines span { font-size: 18px; line-height: 1.7; }
       .story-list { gap: 55px; }
@@ -653,7 +663,7 @@
       .photo-break--young .photo-break__young-note p { font-size: 18px; line-height: 1.85; }
       .photo-break--quote { height: 82vh; min-height: 560px; }
       .photo-break__quote-card { right: 24px; bottom: 28px; left: 24px; width: auto; padding: 22px 24px; }
-      .photo-break__quote-card p { font-size: 22px; line-height: 1.65; }
+      .photo-break__quote-card p { font-size: 19px; line-height: 1.7; }
       .care-photo { min-height: 72vh; margin: 0 -24px; }
       .objects__heading { display: block; }
       .objects__instruction { display: inline-block; margin: 16px 0 0; }
@@ -1152,6 +1162,9 @@
 	    <section class="journey" data-scroll-video aria-label="地圖滾動影片過場">
       <div class="journey__sticky">
         <video class="journey__video" src="assets/videos/taichung-taipei.mp4" muted playsinline preload="auto"></video>
+        <div class="journey__card">
+          <p>目前年輕型失智症照顧據點僅在臺北市及台中市兩處直轄市。</p>
+        </div>
       </div>
     </section>
 
